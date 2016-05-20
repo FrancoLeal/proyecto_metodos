@@ -14,8 +14,8 @@ public class ControladorLogin implements ActionListener {
             ControladorLogin cl = new ControladorLogin();
             cl.vl = new VistaLogin();
             cl.lg = new Login("franco", "juegos");
-            cl.lg.getUsuario(usuario);
-            cl.lg.getPassword(password);
+            cl.lg.getUsuario();
+            cl.lg.getPassword();
     }
     public void actionPerformed(ActionEvent e){
             if(vl.getButton())
