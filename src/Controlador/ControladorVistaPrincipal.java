@@ -9,10 +9,14 @@ public class ControladorVistaPrincipal implements ActionListener{
     private VistaPrincipal vp;
     private Principal pl;
     public ControladorVistaPrincipal(){
-    
-}
+        this.vp = new VistaPrincipal();
+        this.pl = new Principal();
+        vp.setVisible(true);
+        
+    }
     public void actionPerformed(ActionEvent e){
         
+    }
+}
     
-}
-}
+

@@ -98,10 +98,10 @@ public class VistaLogin extends javax.swing.JFrame {
     private void usuarioFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioFieldActionPerformed
-    private void usuarioInexistente(String usuario){
+    public void usuarioInexistente(String usuario){
         JOptionPane.showMessageDialog(null, "El usuario " + usuario + " no existe.", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
-    private void contrasenaIncorrecta(){
+    public void contrasenaIncorrecta(){
         JOptionPane.showMessageDialog(null, "Contraseña Incorrecta", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -127,6 +127,9 @@ public class VistaLogin extends javax.swing.JFrame {
     }
     public String getPasswordVista(){
         return this.passwordField.getText();
+    }
+    public void agregarListener(ActionListener al){
+        this.Ingresar.addActionListener(al);
     }
 
 }
