@@ -14,17 +14,17 @@ public class Login{
             return false;
         }
     }
-    public int verificarDatos(String username, String password){
+    public boolean verificarDatos(String username, String password){
         if (username.equals(this.usuario)){ 
                 if (password.equals(this.password)){
-                    return 0;
+                    return true;
                 }
                 else{
-                    return 1;
+                    return false;
                 }
         }
         else{
-           return 2; 
+           return false; 
         }
     } 
     public String getUsuario(){

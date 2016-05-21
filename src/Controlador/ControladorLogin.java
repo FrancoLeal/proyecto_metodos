@@ -19,7 +19,14 @@ public class ControladorLogin implements ActionListener {
     }
     public void actionPerformed(ActionEvent e){
             if(vl.getButtonIngresar()==e.getSource()){
+                String usuario = vl.getUsuarioVista();
+                String password = vl.getPasswordVista();
+                if(lg.verificarDatos(usuario,password)){
+                    vl.setVisible(false);
+                    
                 
+                    
+                }
         }
     }
 }
