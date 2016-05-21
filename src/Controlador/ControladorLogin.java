@@ -18,7 +18,8 @@ public class ControladorLogin implements ActionListener {
             cl.lg.getPassword();
     }
     public void actionPerformed(ActionEvent e){
-            if(vl.getButton())
+            if(vl.getButtonIngresar()==e.getSource()){
+                
         }
     }
 }
