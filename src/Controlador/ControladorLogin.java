@@ -9,17 +9,16 @@ import Controlador.ControladorVistaPrincipal;
 public class ControladorLogin implements ActionListener {
     //Atributos
     private Login lg;
-    private VistaLogin vl;
+    public VistaLogin vl;
     private ControladorVistaPrincipal cvp;
-    
-        public static void main(String[] args){
-            ControladorLogin cl = new ControladorLogin();
-            cl.vl = new VistaLogin();
-            cl.vl.setVisible(true);
-            cl.lg = new Login("franco", "juegos");
-            cl.lg.getUsuario();
-            cl.lg.getPassword();
-            cl.vl.agregarListener(cl);
+    public ControladorLogin(){
+            vl = new VistaLogin();
+            vl.setVisible(true);
+            vl.setLocationRelativeTo(null);
+            lg = new Login("franco", "juegos");
+            lg.getUsuario();
+            lg.getPassword();
+            vl.agregarListener(this);
     }
     public void actionPerformed(ActionEvent e){
             if(vl.getButtonIngresar()==e.getSource()){
@@ -27,7 +26,7 @@ public class ControladorLogin implements ActionListener {
                 String password = vl.getPasswordVista();
                 if (lg.existeUsuario(usuario)){
                     if(lg.verificarDatos(usuario,password)){
-                        vl.setVisible(false);
+                        vl.dispose();
                         cvp = new ControladorVistaPrincipal();
                     }
                 }
