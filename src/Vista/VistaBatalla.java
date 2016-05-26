@@ -90,17 +90,12 @@ public class VistaBatalla extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODOgenerarnumeros objDado = new generarnumeros();
- int datos = objDado.calcularnumero();
- imagenes objImag1 = new imagenes();
- lblMostrarDado.setIcon(objImag1.gifDado1(datos)); 
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TOgenerarnumeros objDado = new generarnumeros();
-ImagenesResul objImag1=new ImagenesResul();
-int num1 = objDado.calcularnumero();
-lblMostrarDado.setIcon(objImag1.pngDadoR(num1));
-txtResultado.setText(Float.toString(num1));
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     

@@ -29,6 +29,8 @@ public class ControladorLogin implements ActionListener {
                         vl.dispose();
                         cvp = new ControladorVistaPrincipal();
                     }
+                        else{ vl.contrasenaIncorrecta();}
+                    
                 }
                 else{
                     vl.usuarioInexistente(usuario);
