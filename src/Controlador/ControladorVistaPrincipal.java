@@ -2,7 +2,6 @@ package Controlador;
 //Importar clases
 import Modelo.Principal;
 import Vista.VistaPrincipal;
-import Vista.VistaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //Declaracion clase
@@ -21,9 +20,15 @@ public class ControladorVistaPrincipal implements ActionListener{
             vp.dispose();
             ControladorLogin cl = new ControladorLogin();
             cl.vl.setVisible(true);
-            
         }
-        
+        else if(vp.getButtonBatalla()==e.getSource()){
+            vp.setVisible(false);
+            ControladorBatalla cb = new ControladorBatalla();
+        }
+        else if(vp.getButtonTorneo()==e.getSource()){
+            //vp.setVisible(false);
+            //Creacion objeto torneo
+        }
     }
 }
     
