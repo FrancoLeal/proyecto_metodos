@@ -18,19 +18,19 @@ class ImagenCara {
     public ImageIcon cara;
     public ImageIcon pngDadoR(float ResultadoDado){
         if (ResultadoDado==1){   
-            cara=new ImageIcon("ATAQUE.png");
+            cara=new ImageIcon("ATAQUE.png","Cara Ataque");
         }
         else if (ResultadoDado==2){   
-            cara=new ImageIcon("INVOCAR.png");
+            cara=new ImageIcon("INVOCAR.png","Cara Invocacion");
         }
         else if (ResultadoDado==3){
-            cara=new ImageIcon("MOVIMIENTO.png");
+            cara=new ImageIcon("MOVIMIENTO.png","Cara Movimiento");
         }  
         else if (ResultadoDado==4){
-            cara=new ImageIcon("TRAMPA.png");
+            cara=new ImageIcon("TRAMPA.png","Cara Trampa");
         }
         else if (ResultadoDado==5){
-            cara=new ImageIcon("MAGIA.png");
+            cara=new ImageIcon("MAGIA.png","Cara Magia");
         }    
     return cara;    
  }

@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Batalla;
 import Modelo.Dado;
 import Vista.VistaBatalla;
+import Vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //Definicion clase
@@ -20,7 +21,7 @@ public class ControladorBatalla implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
-            cvp.vp.setVisisble(true);
+            //cvp.vp.setVisible(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
             

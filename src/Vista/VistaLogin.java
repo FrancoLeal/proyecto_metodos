@@ -123,5 +123,9 @@ public class VistaLogin extends javax.swing.JFrame {
     public void agregarListener(ActionListener al){
         this.Ingresar.addActionListener(al);
     }
+ @Override
+protected void paintComponent(Graphics g) {
+    super.paintComponent(g); // paint the background image and scale it to fill the entire space
+    g.drawImage();}
 
 }
