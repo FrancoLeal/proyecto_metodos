@@ -112,6 +112,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public void agregarListener(ActionListener al){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
+        this.Atras.addActionListener(al);
     }
     public JButton getButtonParar(){
         return this.Parar;

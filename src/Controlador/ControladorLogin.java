@@ -9,8 +9,7 @@ import Controlador.ControladorVistaPrincipal;
 public class ControladorLogin implements ActionListener {
     //Atributos
     private Login lg;
-    public VistaLogin vl;
-    private ControladorVistaPrincipal cvp;
+    private VistaLogin vl;
     public ControladorLogin(){
             vl = new VistaLogin();
             vl.setVisible(true);
@@ -27,7 +26,7 @@ public class ControladorLogin implements ActionListener {
                 if (lg.existeUsuario(usuario)){
                     if(lg.verificarDatos(usuario,password)){
                         vl.dispose();
-                        cvp = new ControladorVistaPrincipal();
+                        ControladorVistaPrincipal cvp = new ControladorVistaPrincipal();
                     }
                         else{ vl.contrasenaIncorrecta();}
                     

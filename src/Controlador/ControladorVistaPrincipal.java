@@ -19,7 +19,6 @@ public class ControladorVistaPrincipal implements ActionListener{
         if (vp.getButtonCerrarSesion()==e.getSource()){
             vp.dispose();
             ControladorLogin cl = new ControladorLogin();
-            cl.vl.setVisible(true);
         }
         else if(vp.getButtonBatalla()==e.getSource()){
             vp.setVisible(false);
