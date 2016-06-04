@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 public class Dado {
 class GenerarNumeros {
     public int resultado;
-
+    
     public int calcularNumero(){
         Random numero = new Random();  
          // nextint(5) toma valores de 0 a 4, por lo que le sumamos 1 para que el rango sea de 1 a 5
@@ -14,7 +14,7 @@ class GenerarNumeros {
         return resultado;
     }   
 }
-class ImagenCara {
+private class ImagenCara {
     public ImageIcon cara;
     public ImageIcon pngDadoR(float ResultadoDado){
         if (ResultadoDado==1){   

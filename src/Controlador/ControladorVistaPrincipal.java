@@ -22,12 +22,16 @@ public class ControladorVistaPrincipal implements ActionListener{
         }
         else if(vp.getButtonBatalla()==e.getSource()){
             vp.setVisible(false);
-            ControladorBatalla cb = new ControladorBatalla();
+            ControladorBatalla cb = new ControladorBatalla(this);
         }
         else if(vp.getButtonTorneo()==e.getSource()){
             //vp.setVisible(false);
             //Creacion objeto torneo
         }
+     
+    }
+    public void setVista(boolean b){
+        this.vp.setVisible(b);
     }
 }
     

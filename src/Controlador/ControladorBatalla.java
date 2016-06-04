@@ -11,8 +11,10 @@ public class ControladorBatalla implements ActionListener {
     //Definicion atributos
     private VistaBatalla vb;
     private Batalla b;
+    private ControladorVistaPrincipal cvp;
     //Definicion constructor
-    public ControladorBatalla(){
+    public ControladorBatalla(ControladorVistaPrincipal cvp){
+        this.cvp = cvp;
         this.vb = new VistaBatalla();
         this.b = new Batalla();
         vb.setVisible(true);
@@ -21,7 +23,7 @@ public class ControladorBatalla implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
-            //cvp.vp.setVisible(true);
+            cvp.setVista(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
             

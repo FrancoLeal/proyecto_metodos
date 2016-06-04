@@ -4,7 +4,6 @@ import Modelo.Login;
 import Vista.VistaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import Controlador.ControladorVistaPrincipal;
 //Definición de la clase
 public class ControladorLogin implements ActionListener {
     //Atributos
