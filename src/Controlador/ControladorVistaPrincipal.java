@@ -11,6 +11,7 @@ public class ControladorVistaPrincipal implements ActionListener{
     public ControladorVistaPrincipal(){
         this.vp = new VistaPrincipal();
         this.pl = new Principal();
+        vp.setLocationRelativeTo(null);
         vp.agregarListener(this);
         vp.setVisible(true);
         
