@@ -17,6 +17,7 @@ public class VistaLogin extends javax.swing.JFrame{
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        Registrarse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         Ingresar = new javax.swing.JButton();
@@ -25,11 +26,21 @@ public class VistaLogin extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 768));
+        setPreferredSize(new java.awt.Dimension(500, 800));
+        setResizable(false);
+        getContentPane().setLayout(null);
+
+        Registrarse.setText("Registrate!");
+        getContentPane().add(Registrarse);
+        Registrarse.setBounds(383, 480, 90, 23);
 
         jLabel1.setText("Nombre usuario");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(180, 290, 110, 14);
 
         jLabel2.setText("Contraseña");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(180, 340, 100, 14);
 
         Ingresar.setText("Ingresar");
         Ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -37,64 +48,28 @@ public class VistaLogin extends javax.swing.JFrame{
                 IngresarActionPerformed(evt);
             }
         });
+        getContentPane().add(Ingresar);
+        Ingresar.setBounds(200, 390, 73, 23);
 
         usuarioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(usuarioField);
+        usuarioField.setBounds(180, 310, 99, 20);
 
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordFieldActionPerformed(evt);
             }
         });
+        getContentPane().add(passwordField);
+        passwordField.setBounds(180, 360, 99, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesJuego/lucho_jara.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(Ingresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(usuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel2)
-                        .addGap(6, 6, 6)
-                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(Ingresar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(usuarioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 510, 790);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -124,6 +99,7 @@ public class VistaLogin extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Ingresar;
+    private javax.swing.JButton Registrarse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -141,8 +117,12 @@ public class VistaLogin extends javax.swing.JFrame{
     public String getPasswordVista(){
         return this.passwordField.getText();
     }
+    public JButton getButtonRegistrarse(){
+        return this.Registrarse;
+    }
     public void agregarListener(ActionListener al){
         this.Ingresar.addActionListener(al);
+        this.Registrarse.addActionListener(al);
     }
 
 }

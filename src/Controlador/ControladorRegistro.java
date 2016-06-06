@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controlador;
 
-/**
- *
- * @author FRANCO L
- */
-public class ControladorRegistro {
-    
+import Vista.VistaRegistro;
+import Modelo.Registro;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ControladorRegistro implements ActionListener{
+    private Registro r;
+    private VistaRegistro vr;
+    private ControladorLogin cl;
+    public ControladorRegistro(ControladorLogin cl){
+        r = new Registro();
+        vr = new VistaRegistro();
+        vr.setVisible(true);
+        vr.setLocationRelativeTo(null);
+        vr.agregarListener(this);
+        this.cl = cl;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if(vr.getButtonAtras()==e.getSource()){
+            vr.setVisible(false);
+            cl.setVista(true);
+            
+        }
+    }
 }

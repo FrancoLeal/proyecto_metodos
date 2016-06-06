@@ -15,6 +15,7 @@ public class ControladorBatalla implements ActionListener {
     private Batalla b;
     private ControladorVistaPrincipal cvp;
     private Tablero tablero;
+    private JButton[][] boton;
     //Definicion constructor
     public ControladorBatalla(ControladorVistaPrincipal cvp){
         this.cvp = cvp;
@@ -33,6 +34,9 @@ public class ControladorBatalla implements ActionListener {
         }
         else if(vb.getButtonLanzar()==e.getSource()){
             
+        }
+        else if(boton[1][2]==e.getSource()){
+            System.out.println("Wena, boton 1,2");
         }
     }
 }

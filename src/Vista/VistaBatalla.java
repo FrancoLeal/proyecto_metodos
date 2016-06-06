@@ -109,6 +109,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JButton Parar;
     private javax.swing.JPanel tablero;
     // End of variables declaration//GEN-END:variables
+    
     public void agregarListener(ActionListener al){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);

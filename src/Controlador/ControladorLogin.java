@@ -1,7 +1,9 @@
 package Controlador;
 //Importación de clases
 import Modelo.Login;
+import Modelo.Registro;
 import Vista.VistaLogin;
+import Vista.VistaRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //Definición de la clase
@@ -33,6 +35,13 @@ public class ControladorLogin implements ActionListener {
                 else{
                     vl.usuarioInexistente(usuario);
                 }
-        }
+            }
+            if(vl.getButtonRegistrarse()==e.getSource()){
+                ControladorRegistro cr = new ControladorRegistro(this);
+                vl.setVisible(false);
+            }
+    }
+    public void setVista(boolean b){
+        this.vl.setVisible(b);
     }
 }
