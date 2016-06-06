@@ -24,7 +24,6 @@ public class ControladorBatalla implements ActionListener {
         JPanel t = vb.getTablero();
         vb.setTablero(this.tablero = new Tablero(t));
         vb.agregarListener(this);
-        
         vb.setLocationRelativeTo(null);
     }
     public void actionPerformed(ActionEvent e){
