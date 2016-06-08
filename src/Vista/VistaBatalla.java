@@ -1,12 +1,15 @@
 package Vista;
+import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.*;
 public class VistaBatalla extends javax.swing.JFrame {
     public VistaBatalla() {
         initComponents();
+        tablero.setBackground(Color.blue);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +51,20 @@ public class VistaBatalla extends javax.swing.JFrame {
             tableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 600, Short.MAX_VALUE)
         );
+
+        tablero.setLayout(new java.awt.GridLayout(15,15));
+        for (int i = 0 ; i<15 ; i++){
+            ArrayList<JButton> columna = new ArrayList<JButton>();
+            terreno.add(columna);
+            for (int j = 0 ; j<15 ; j++){
+                columna.add(new JButton());
+            }
+        }
+        for (ArrayList<JButton> columna : terreno ){
+            for (JButton boton : columna ){
+                tablero.add(boton);
+            }
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,11 +126,19 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JButton Parar;
     private javax.swing.JPanel tablero;
     // End of variables declaration//GEN-END:variables
-    
+    private ArrayList<ArrayList<JButton>> terreno = new ArrayList<>();
+    public ArrayList<ArrayList<JButton>> getTerreno(){
+        return this.terreno;
+    }
     public void agregarListener(ActionListener al){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
         this.Atras.addActionListener(al);
+        for (ArrayList<JButton> columna : terreno){
+            for (JButton boton : columna){
+                boton.addActionListener(al);
+            }
+        }
     }
     public JButton getButtonParar(){
         return this.Parar;
@@ -124,10 +149,10 @@ public class VistaBatalla extends javax.swing.JFrame {
     public JButton getButtonAtras(){
         return this.Atras;
     }
-    public JPanel getTablero(){
+    /*public JPanel getTablero(){
         return this.tablero;
     }
     public void setTablero(JPanel tablero){
         this.tablero = tablero;
-    }
+    }*/
 }
