@@ -20,8 +20,11 @@ public class VistaBatalla extends javax.swing.JFrame {
         Parar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         tablero = new javax.swing.JPanel();
-        lblMostrarDado = new javax.swing.JLabel();
-        txtResultado = new javax.swing.JTextField();
+        GifDados = new javax.swing.JLabel();
+        dado1 = new javax.swing.JLabel();
+        dado2 = new javax.swing.JLabel();
+        dado3 = new javax.swing.JLabel();
+        dado4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,14 +68,20 @@ public class VistaBatalla extends javax.swing.JFrame {
             }
         }
 
-        lblMostrarDado.setText("jLabel1");
+        GifDados.setBackground(Color.blue);
+        GifDados.setVisible(false);
 
-        txtResultado.setText("jTextField1");
-        txtResultado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResultadoActionPerformed(evt);
-            }
-        });
+        dado1.setVisible(false);
+        dado1.setPreferredSize(new java.awt.Dimension(110, 110));
+
+        dado2.setVisible(false);
+        dado2.setPreferredSize(new java.awt.Dimension(110, 110));
+
+        dado3.setVisible(false);
+        dado3.setPreferredSize(new java.awt.Dimension(110, 110));
+
+        dado4.setVisible(false);
+        dado4.setPreferredSize(new java.awt.Dimension(110, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,19 +89,24 @@ public class VistaBatalla extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(Atras)
-                .addContainerGap())
+                .addGap(165, 165, 165)
+                .addComponent(Atras))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Parar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Lanzar)
-                .addGap(18, 18, 18)
-                .addComponent(lblMostrarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Lanzar)
+                    .addComponent(Parar))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(GifDados, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(dado3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(dado4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,19 +116,26 @@ public class VistaBatalla extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(Atras)))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Parar)
-                            .addComponent(Lanzar))
-                        .addGap(28, 28, 28))
+                        .addGap(24, 24, 24)
+                        .addComponent(Lanzar)
+                        .addGap(11, 11, 11)
+                        .addComponent(Parar))
+                    .addComponent(GifDados, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMostrarDado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addGap(20, 20, 20)
+                        .addComponent(dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(dado3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(dado4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -128,10 +149,6 @@ public class VistaBatalla extends javax.swing.JFrame {
         // TOgenerarnumeros objDado = new generarnumeros();
     }//GEN-LAST:event_PararActionPerformed
 
-    private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtResultadoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -139,11 +156,14 @@ public class VistaBatalla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JLabel GifDados;
     private javax.swing.JButton Lanzar;
     private javax.swing.JButton Parar;
-    private javax.swing.JLabel lblMostrarDado;
+    private javax.swing.JLabel dado1;
+    private javax.swing.JLabel dado2;
+    private javax.swing.JLabel dado3;
+    private javax.swing.JLabel dado4;
     private javax.swing.JPanel tablero;
-    private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
     private JButton[][] terreno;
     public JButton[][] getTerreno(){
@@ -171,10 +191,29 @@ public class VistaBatalla extends javax.swing.JFrame {
     public JButton getBotonTerreno(int i , int j){
         return this.terreno[i][j];
     }
-    /*public JPanel getTablero(){
-        return this.tablero;
+    public void setGifDados(ImageIcon imagen){
+        this.GifDados.setVisible(true);
+        this.GifDados.setIcon(imagen);
     }
-    public void setTablero(JPanel tablero){
-        this.tablero = tablero;
-    }*/
+    public void setGifDados(boolean b){
+        this.GifDados.setVisible(b);
+        this.dado1.setVisible(false);
+    }
+    public void setResultadoDado1(ImageIcon imagen){
+        this.dado1.setIcon(imagen);
+        this.dado1.setVisible(true);
+    }
+    public void setResultadoDado2(ImageIcon imagen){
+        this.dado2.setIcon(imagen);
+        this.dado2.setVisible(true);
+    }
+    public void setResultadoDado3(ImageIcon imagen){
+        this.dado3.setIcon(imagen);
+        this.dado3.setVisible(true);
+    }
+    public void setResultadoDado4(ImageIcon imagen){
+        this.dado4.setIcon(imagen);
+        this.dado4.setVisible(true);
+    }
+    
 }

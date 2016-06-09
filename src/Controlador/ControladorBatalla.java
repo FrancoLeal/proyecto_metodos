@@ -18,8 +18,11 @@ public class ControladorBatalla implements ActionListener {
     private Batalla b;
     private ControladorVistaPrincipal cvp;
     private JButton[][] terreno;
-    private ImageIcon iconImage;
-
+    private ImageIcon ImagenAtaque;
+    private ImageIcon ImagenMagia ;
+    private ImageIcon ImagenMovimiento;
+    private ImageIcon ImagenTrampa;
+    private ImageIcon ImagenInvocar;
     
     //Definicion constructor
     public ControladorBatalla(ControladorVistaPrincipal cvp){
@@ -30,6 +33,11 @@ public class ControladorBatalla implements ActionListener {
         vb.agregarListener(this);
         vb.setLocationRelativeTo(null);
         this.terreno = vb.getTerreno();
+        ImagenAtaque = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\ATAQUE.png");
+        ImagenMagia = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\MAGIA.png");
+        ImagenMovimiento = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\MOVIMIENTO.png");
+        ImagenTrampa = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\TRAMPA.png");
+        ImagenInvocar = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\INVOCAR.png");
     }
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
@@ -37,18 +45,27 @@ public class ControladorBatalla implements ActionListener {
             cvp.setVista(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
-            Dado objDado = new Dado();
-            ImageIcon cara = objDado.resultado();
+            vb.setGifDados(new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\dados.gif"));
+            /*Dado Dado1 = new Dado("ATAQUE.png","INVOCAR.png","MAGIA.png","MOVIMIENTO.png","TRAMPA.png","ATAQUE.png");
+            String cara = Dado1.resultado();*/
             
             System.out.println("Ok, funciona");
             //setIcon con la foto de la cara (En el Jpanel Batalla)
             //setText con el nombre de la cara (En el Jpanel Batalla)
-
-    }
+        }
+        else if (vb.getButtonParar()==e.getSource()){
+            vb.setGifDados(false);
+            Dado Dado1 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
+            vb.setResultadoDado1(Dado1.resultado());
+            Dado Dado2 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
+            vb.setResultadoDado2(Dado2.resultado());
+            Dado Dado3 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
+            vb.setResultadoDado3(Dado3.resultado());
+            Dado Dado4 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
+            vb.setResultadoDado4(Dado4.resultado());
+        }
   
-     
-            
-   /*else if(vb.getButtonParar()==e.getSource()){
+     /*else if(vb.getButtonParar()==e.getSource()){
        
       Dado objDado = new Dado();
         Dado2 objImag1=new Dado2();
