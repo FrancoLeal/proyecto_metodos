@@ -2,6 +2,7 @@ package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
 import Modelo.Dado;
+import Modelo.Dado2;
 import Modelo.Tablero;
 import Vista.VistaBatalla;
 import Vista.VistaPrincipal;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.ImageIcon;
 //Definicion clase
 public class ControladorBatalla implements ActionListener {
     //Definicion atributos
@@ -17,6 +19,7 @@ public class ControladorBatalla implements ActionListener {
     private ControladorVistaPrincipal cvp;
     private Tablero tablero;
     private ArrayList<ArrayList<JButton>> terreno;
+    private ImageIcon iconImage;
     //Definicion constructor
     public ControladorBatalla(ControladorVistaPrincipal cvp){
         this.cvp = cvp;
@@ -35,8 +38,29 @@ public class ControladorBatalla implements ActionListener {
             cvp.setVista(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
+            Dado objDado = new Dado();
+            int datos = objDado.calcularNumero();
             
+            System.out.println("Ok, funciona");
+            //setIcon con la foto de la cara (En el Jpanel Batalla)
+            //setText con el nombre de la cara (En el Jpanel Batalla)
+
+    }
+  
+     
+            
+   else if(vb.getButtonParar()==e.getSource()){
+       
+      Dado objDado = new Dado();
+        Dado2 objImag1=new Dado2();
+        int result = objDado.calcularNumero();
+        lblMostrarDado.setIcon(objImag1.pngDadoR(result));
+        txtResultado.setText(DadoR);
+        System.out.println("Wena");
+        // Falta que reconozca el textfield y el label de la vistaBatalla
         }
+    }
+}
         /*else{
             System.out.println(e.getSource());
             for (int i = 0 ; i<15 ; i++){
@@ -47,5 +71,5 @@ public class ControladorBatalla implements ActionListener {
                 }
             }
         }*/
-    }
-}
+ 
+

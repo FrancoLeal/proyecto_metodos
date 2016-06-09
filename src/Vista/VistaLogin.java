@@ -32,7 +32,7 @@ public class VistaLogin extends javax.swing.JFrame{
 
         Registrarse.setText("Registrate!");
         getContentPane().add(Registrarse);
-        Registrarse.setBounds(383, 480, 90, 23);
+        Registrarse.setBounds(363, 480, 110, 23);
 
         jLabel1.setText("Nombre usuario");
         getContentPane().add(jLabel1);
@@ -49,7 +49,7 @@ public class VistaLogin extends javax.swing.JFrame{
             }
         });
         getContentPane().add(Ingresar);
-        Ingresar.setBounds(200, 390, 73, 23);
+        Ingresar.setBounds(183, 390, 90, 23);
 
         usuarioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
