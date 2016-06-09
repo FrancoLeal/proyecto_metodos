@@ -17,7 +17,6 @@ public class ControladorBatalla implements ActionListener {
     private VistaBatalla vb;
     private Batalla b;
     private ControladorVistaPrincipal cvp;
-    private JButton[][] tablero;
     private JButton[][] terreno;
     private ImageIcon iconImage;
 
@@ -32,8 +31,6 @@ public class ControladorBatalla implements ActionListener {
         vb.setLocationRelativeTo(null);
         this.terreno = vb.getTerreno();
     }
-    private int i=0;
-    private int j=0;
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
@@ -41,7 +38,7 @@ public class ControladorBatalla implements ActionListener {
         }
         else if(vb.getButtonLanzar()==e.getSource()){
             Dado objDado = new Dado();
-            int datos = objDado.calcularNumero();
+            ImageIcon cara = objDado.resultado();
             
             System.out.println("Ok, funciona");
             //setIcon con la foto de la cara (En el Jpanel Batalla)
