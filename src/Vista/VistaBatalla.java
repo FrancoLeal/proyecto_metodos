@@ -20,6 +20,8 @@ public class VistaBatalla extends javax.swing.JFrame {
         Parar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         tablero = new javax.swing.JPanel();
+        lblMostrarDado = new javax.swing.JLabel();
+        txtResultado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +65,15 @@ public class VistaBatalla extends javax.swing.JFrame {
             }
         }
 
+        lblMostrarDado.setText("jLabel1");
+
+        txtResultado.setText("jTextField1");
+        txtResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtResultadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,6 +88,10 @@ public class VistaBatalla extends javax.swing.JFrame {
                 .addComponent(Parar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Lanzar)
+                .addGap(18, 18, 18)
+                .addComponent(lblMostrarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,11 +102,19 @@ public class VistaBatalla extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(Atras)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Parar)
-                    .addComponent(Lanzar))
-                .addGap(28, 28, 28))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Parar)
+                            .addComponent(Lanzar))
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMostrarDado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         pack();
@@ -105,13 +128,10 @@ public class VistaBatalla extends javax.swing.JFrame {
         // TOgenerarnumeros objDado = new generarnumeros();
     }//GEN-LAST:event_PararActionPerformed
 
-    
-
-                                      
-
-    private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void txtResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResultadoActionPerformed
         // TODO add your handling code here:
-    }  
+    }//GEN-LAST:event_txtResultadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -121,7 +141,9 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JButton Atras;
     private javax.swing.JButton Lanzar;
     private javax.swing.JButton Parar;
+    private javax.swing.JLabel lblMostrarDado;
     private javax.swing.JPanel tablero;
+    private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
     private JButton[][] terreno;
     public JButton[][] getTerreno(){
