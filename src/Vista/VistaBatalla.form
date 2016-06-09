@@ -87,7 +87,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            ArrayList&lt;JButton&gt; columna = new ArrayList&lt;JButton&gt;();&#xa;            terreno.add(columna);&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                columna.add(new JButton());&#xa;            }&#xa;        }&#xa;for (ArrayList&lt;JButton&gt; columna : terreno ){&#xa;    for (JButton boton : columna ){&#xa;        tablero.add(boton);&#xa;    }&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.gray);&#xa;                terreno[i][j]=boton;&#xa;            }&#xa;        }"/>
       </AuxValues>
 
       <Layout>

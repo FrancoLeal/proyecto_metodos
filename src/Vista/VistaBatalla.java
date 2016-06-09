@@ -53,16 +53,13 @@ public class VistaBatalla extends javax.swing.JFrame {
         );
 
         tablero.setLayout(new java.awt.GridLayout(15,15));
+        terreno = new JButton[15][15];
         for (int i = 0 ; i<15 ; i++){
-            ArrayList<JButton> columna = new ArrayList<JButton>();
-            terreno.add(columna);
             for (int j = 0 ; j<15 ; j++){
-                columna.add(new JButton());
-            }
-        }
-        for (ArrayList<JButton> columna : terreno ){
-            for (JButton boton : columna ){
+                JButton boton = new JButton();
                 tablero.add(boton);
+                boton.setBackground(Color.gray);
+                terreno[i][j]=boton;
             }
         }
 
@@ -126,15 +123,15 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JButton Parar;
     private javax.swing.JPanel tablero;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<ArrayList<JButton>> terreno = new ArrayList<>();
-    public ArrayList<ArrayList<JButton>> getTerreno(){
+    private JButton[][] terreno;
+    public JButton[][] getTerreno(){
         return this.terreno;
     }
     public void agregarListener(ActionListener al){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
         this.Atras.addActionListener(al);
-        for (ArrayList<JButton> columna : terreno){
+        for (JButton[] columna : terreno){
             for (JButton boton : columna){
                 boton.addActionListener(al);
             }
@@ -148,6 +145,9 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
     public JButton getButtonAtras(){
         return this.Atras;
+    }
+    public JButton getBotonTerreno(int i , int j){
+        return this.terreno[i][j];
     }
     /*public JPanel getTablero(){
         return this.tablero;

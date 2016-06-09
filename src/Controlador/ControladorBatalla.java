@@ -15,8 +15,8 @@ public class ControladorBatalla implements ActionListener {
     private VistaBatalla vb;
     private Batalla b;
     private ControladorVistaPrincipal cvp;
-    private Tablero tablero;
-    private ArrayList<ArrayList<JButton>> terreno;
+    private JButton[][] tablero;
+    private JButton[][] terreno;
     //Definicion constructor
     public ControladorBatalla(ControladorVistaPrincipal cvp){
         this.cvp = cvp;
@@ -37,15 +37,14 @@ public class ControladorBatalla implements ActionListener {
         else if(vb.getButtonLanzar()==e.getSource()){
             
         }
-        /*else{
-            System.out.println(e.getSource());
+        else{
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
-                    if(e.getSource()==terreno<i><j>){
-                    
-                }
+                    if(vb.getBotonTerreno(i,j)==e.getSource()){
+                        System.out.println("X="+i+"y="+j);
+                    }
                 }
             }
-        }*/
+        }
     }
 }
