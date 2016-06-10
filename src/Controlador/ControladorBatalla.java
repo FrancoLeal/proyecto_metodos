@@ -8,11 +8,13 @@ import Vista.VistaBatalla;
 import Vista.VistaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.ImageIcon;
 //Definicion clase
-public class ControladorBatalla implements ActionListener {
+public class ControladorBatalla extends MouseAdapter implements ActionListener {
     //Definicion atributos
     private VistaBatalla vb;
     private Batalla b;
@@ -30,7 +32,7 @@ public class ControladorBatalla implements ActionListener {
         this.vb = new VistaBatalla();
         this.b = new Batalla();
         vb.setVisible(true);
-        vb.agregarListener(this);
+        vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
         this.terreno = vb.getTerreno();
         ImagenAtaque = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuego\\ATAQUE.png");
@@ -84,5 +86,22 @@ public class ControladorBatalla implements ActionListener {
                 }
             }
         }
+    }
+    public void mouseEntered(MouseEvent e){
+        if (e.getSource()==vb.getBotonTerreno(0,0)){
+            System.out.println("Eureka!");
+        }
+    }
+    public void mouseReleased(MouseEvent e){
+        
+    }
+    public void mouseClicked(MouseEvent e){
+        
+    }
+    public void mousePressed(MouseEvent e){
+        
+    }
+    public void mouseExited(MouseEvent e){
+        
     }
 }

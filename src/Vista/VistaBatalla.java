@@ -2,6 +2,8 @@ package Vista;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -65,6 +67,18 @@ public class VistaBatalla extends javax.swing.JFrame {
                 tablero.add(boton);
                 boton.setBackground(Color.gray);
                 terreno[i][j]=boton;
+                if(i==0 && j==7){
+                    terreno[i][j].setBackground(Color.black);
+                }
+                if (i==7 && j ==0){
+                    terreno[i][j].setBackground(Color.black);
+                }
+                if (i==7 && j == 14){
+                    terreno[i][j].setBackground(Color.black);
+                }
+                if (i==14 && j == 7){
+                    terreno[i][j].setBackground(Color.black);
+                }
             }
         }
 
@@ -169,13 +183,14 @@ public class VistaBatalla extends javax.swing.JFrame {
     public JButton[][] getTerreno(){
         return this.terreno;
     }
-    public void agregarListener(ActionListener al){
+    public void agregarListener(ActionListener al, MouseListener ml){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
         this.Atras.addActionListener(al);
         for (JButton[] columna : terreno){
             for (JButton boton : columna){
                 boton.addActionListener(al);
+                boton.addMouseListener(ml);
             }
         }
     }
@@ -214,6 +229,9 @@ public class VistaBatalla extends javax.swing.JFrame {
     public void setResultadoDado4(ImageIcon imagen){
         this.dado4.setIcon(imagen);
         this.dado4.setVisible(true);
+    }
+    public void mousePressed(MouseEvent e){
+        
     }
     
 }

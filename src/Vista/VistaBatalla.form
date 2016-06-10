@@ -119,7 +119,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.gray);&#xa;                terreno[i][j]=boton;&#xa;            }&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.gray);&#xa;                terreno[i][j]=boton;&#xa;                if(i==0 &amp;&amp; j==7){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==7 &amp;&amp; j ==0){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==7 &amp;&amp; j == 14){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==14 &amp;&amp; j == 7){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;            }&#xa;        }"/>
       </AuxValues>
 
       <Layout>
