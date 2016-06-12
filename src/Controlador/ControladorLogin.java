@@ -11,6 +11,7 @@ public class ControladorLogin implements ActionListener {
     //Atributos
     private Login lg;
     private VistaLogin vl;
+    public static String usuarioActivo;
     public ControladorLogin(){
             vl = new VistaLogin();
             vl.setVisible(true);
@@ -26,13 +27,19 @@ public class ControladorLogin implements ActionListener {
                 String password = vl.getPasswordVista();
                 if (lg.existeUsuario(usuario)){
                     if(lg.verificarDatos(usuario,password)){
+                        usuarioActivo = usuario;
+                        System.out.println("El usuario "+usuarioActivo+" ha iniciado sesión.");
                         vl.dispose();
                         ControladorVistaPrincipal cvp = new ControladorVistaPrincipal();
                     }
-                        else{ vl.contrasenaIncorrecta();}
+                    else{
+                        System.out.println("Inicio de sesión fallida: Usuario "+usuario+"; Contraseña incorrecta.");
+                        vl.contrasenaIncorrecta();
+                    }
                     
                 }
                 else{
+                    System.out.println("Inicio de sesión fallida: Usuario "+usuario+" no existe.");
                     vl.usuarioInexistente(usuario);
                 }
             }

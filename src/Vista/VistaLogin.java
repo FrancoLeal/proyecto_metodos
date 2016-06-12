@@ -36,11 +36,11 @@ public class VistaLogin extends javax.swing.JFrame{
 
         jLabel1.setText("Nombre usuario");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(180, 290, 110, 14);
+        jLabel1.setBounds(180, 300, 110, 14);
 
         jLabel2.setText("Contraseña");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(180, 340, 100, 14);
+        jLabel2.setBounds(180, 350, 100, 14);
 
         Ingresar.setText("Ingresar");
         Ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -49,7 +49,7 @@ public class VistaLogin extends javax.swing.JFrame{
             }
         });
         getContentPane().add(Ingresar);
-        Ingresar.setBounds(183, 390, 90, 23);
+        Ingresar.setBounds(180, 400, 90, 23);
 
         usuarioField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,7 +57,7 @@ public class VistaLogin extends javax.swing.JFrame{
             }
         });
         getContentPane().add(usuarioField);
-        usuarioField.setBounds(180, 310, 99, 20);
+        usuarioField.setBounds(180, 320, 99, 20);
 
         passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,7 +65,7 @@ public class VistaLogin extends javax.swing.JFrame{
             }
         });
         getContentPane().add(passwordField);
-        passwordField.setBounds(180, 360, 99, 20);
+        passwordField.setBounds(180, 370, 99, 20);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesJuego/lucho_jara.jpg"))); // NOI18N
         getContentPane().add(jLabel3);

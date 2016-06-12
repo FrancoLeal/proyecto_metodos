@@ -18,16 +18,29 @@ public class ControladorVistaPrincipal implements ActionListener{
     }
     public void actionPerformed(ActionEvent e){
         if (vp.getButtonCerrarSesion()==e.getSource()){
+            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha cerrado sesión.");
             vp.dispose();
             ControladorLogin cl = new ControladorLogin();
         }
         else if(vp.getButtonBatalla()==e.getSource()){
+            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha iniciado una batalla.");
             vp.setVisible(false);
-            ControladorBatalla cb = new ControladorBatalla(this);
+            ControladorBatallaTipo cbt = new ControladorBatallaTipo(this);
         }
         else if(vp.getButtonTorneo()==e.getSource()){
+            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha iniciado un torneo.");
             //vp.setVisible(false);
             //Creacion objeto torneo
+        }
+        else if(vp.getButtonEditarDados()==e.getSource()){
+            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha entrado a edición de dados.");
+            //vp.setVisible(false);
+            //Creacion ventana editar dados     
+        }
+        else if(vp.getButtonSalir()==e.getSource()){
+            System.out.println("El usuario "+ Controlador.ControladorLogin.usuarioActivo +" ha salido del programa.");
+            System.out.println("Cerrando...");
+            System.exit(0);
         }
      
     }

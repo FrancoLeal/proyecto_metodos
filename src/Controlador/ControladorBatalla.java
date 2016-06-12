@@ -20,7 +20,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     //Definicion atributos
     private VistaBatalla vb;
     private Batalla b;
-    private ControladorVistaPrincipal cvp;
+    private ControladorBatallaConfiguracion cbg;
     private JButton[][] terreno;
     private ImageIcon ImagenAtaque;
     private ImageIcon ImagenMagia ;
@@ -29,8 +29,9 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenInvocar;
     
     //Definicion constructor
-    public ControladorBatalla(ControladorVistaPrincipal cvp){
-        this.cvp = cvp;
+    public ControladorBatalla(ControladorBatallaConfiguracion cbg){
+        //this.cvp = cvp;
+        this.cbg = cbg;
         this.vb = new VistaBatalla();
         this.b = new Batalla();
         vb.setVisible(true);
@@ -45,11 +46,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
-        if(vb.getButtonAtras()==e.getSource()){
+        /*if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
             cvp.setVista(true);
-        }
-        else if(vb.getButtonLanzar()==e.getSource()){
+        }*/
+        /*else*/ if(vb.getButtonLanzar()==e.getSource()){
             vb.setGifDados(new ImageIcon(this.getClass().getResource("dados.gif")));
             System.out.println("Ok, funciona");
         }
@@ -71,7 +72,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
                     if(vb.getBotonTerreno(i,j)==e.getSource()){
-                        System.out.println("X="+i+"Y="+j);
+                        System.out.println("X="+i+", Y="+j);
                     }
                 }
             }
