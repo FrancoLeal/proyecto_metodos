@@ -22,34 +22,39 @@
 
   <Layout>
     <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Component id="tablero" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="165" pref="165" max="-2" attributes="0"/>
-              <Component id="Atras" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+      <Group type="103" groupAlignment="1" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="Lanzar" min="-2" max="-2" attributes="0"/>
-                  <Component id="Parar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Lanzar" min="-2" max="-2" attributes="0"/>
+                          <Component id="Parar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="GifDados" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                              <Component id="dado1" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="dado2" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="dado3" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Component id="dado4" min="-2" pref="140" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="tablero" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="25" pref="25" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="GifDados" min="-2" pref="120" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                      <Component id="dado1" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Component id="desplegar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="Atras" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Component id="dado2" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="dado3" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="dado4" min="-2" pref="140" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="desplegar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -59,42 +64,41 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="tablero" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="88" pref="88" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="Atras" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="GifDados" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="dado1" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="dado2" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="dado3" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="dado4" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                               <Component id="Lanzar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="Parar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="GifDados" min="-2" pref="90" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="dado1" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="dado2" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="dado3" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                              <Component id="dado4" min="-2" pref="120" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="desplegar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   </Group>
@@ -124,6 +128,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="tablero">
       <Properties>
@@ -132,7 +139,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.gray);&#xa;                terreno[i][j]=boton;&#xa;                if(i==0 &amp;&amp; j==7){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==7 &amp;&amp; j ==0){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==7 &amp;&amp; j == 14){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;                if (i==14 &amp;&amp; j == 7){&#xa;                terreno[i][j].setBackground(Color.black);&#xa;                }&#xa;            }&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.white);&#xa;                terreno[i][j]=boton;&#xa;            }&#xa;        }"/>
       </AuxValues>
 
       <Layout>

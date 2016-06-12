@@ -2,12 +2,13 @@ package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
 import Modelo.Dado;
+import Modelo.JefeDeTerreno;
 //import Modelo.Dado2;
 import Modelo.Tablero;
+import Modelo.Jugador;
 import Vista.VistaBatalla;
 import Vista.VistaPrincipal;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -22,6 +23,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private Batalla b;
     private ControladorVistaPrincipal cvp;
     private JButton[][] terreno;
+    private int cantidadDeJugadores;
+    private int turnoActual;
     private ImageIcon ImagenAtaque;
     private ImageIcon ImagenMagia ;
     private ImageIcon ImagenMovimiento;
@@ -29,19 +32,23 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenInvocar;
     
     //Definicion constructor
-    public ControladorBatalla(ControladorVistaPrincipal cvp){
+    public ControladorBatalla(ControladorVistaPrincipal cvp, int cantidadDeJugadores){
+        this.cantidadDeJugadores = cantidadDeJugadores;
+        this.turnoActual = 1;
         this.cvp = cvp;
         this.vb = new VistaBatalla();
-        this.b = new Batalla();
+        this.b = new Batalla(this.cantidadDeJugadores);
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
         this.terreno = vb.getTerreno();
-        ImagenAtaque = new ImageIcon(this.getClass().getResource("ATAQUE.png"));
-        ImagenMagia = new ImageIcon(this.getClass().getResource("MAGIA.png"));
-        ImagenMovimiento = new ImageIcon(this.getClass().getResource("MOVIMIENTO.png"));
-        ImagenTrampa = new ImageIcon(this.getClass().getResource("TRAMPA.png"));
-        ImagenInvocar = new ImageIcon(this.getClass().getResource("INVOCAR.png"));
+        //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
+        //al querer cambiarlas rutas por algo generico dejo de funcionar.
+        ImagenAtaque = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\ATAQUE.png");
+        ImagenMagia = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MAGIA.png");
+        ImagenMovimiento = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MOVIMIENTO.png");
+        ImagenTrampa = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\TRAMPA.png");
+        ImagenInvocar = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\INVOCAR.png");
     }
     
     public void actionPerformed(ActionEvent e){
@@ -50,7 +57,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             cvp.setVista(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
-            vb.setGifDados(new ImageIcon(this.getClass().getResource("dados.gif")));
+            vb.setGifDados(new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\dados.gif"));
             System.out.println("Ok, funciona");
         }
         else if (vb.getButtonParar()==e.getSource()){
@@ -91,5 +98,13 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     public void mouseExited(MouseEvent e){
         
+    }
+    public void setTurno(){
+        if (this.turnoActual<cantidadDeJugadores){
+            this.turnoActual++;
+        }
+        else{
+            this.turnoActual = 1;
+        }
     }
 }

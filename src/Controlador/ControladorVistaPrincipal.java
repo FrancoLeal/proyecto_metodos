@@ -22,8 +22,13 @@ public class ControladorVistaPrincipal implements ActionListener{
             ControladorLogin cl = new ControladorLogin();
         }
         else if(vp.getButtonBatalla()==e.getSource()){
-            vp.setVisible(false);
-            ControladorBatalla cb = new ControladorBatalla(this);
+            if(vp.getTexto().length()!=0){
+                vp.setVisible(false);
+                ControladorBatalla cb = new ControladorBatalla(this, this.vp.getCantidadDeJugadores());
+            }
+            else{
+                System.out.println("Ingrese cantidad de Jugadores");
+            }
         }
         else if(vp.getButtonTorneo()==e.getSource()){
             //vp.setVisible(false);

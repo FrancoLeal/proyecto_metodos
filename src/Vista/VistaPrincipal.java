@@ -20,6 +20,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
         CerrarSesión = new javax.swing.JButton();
         Batalla = new javax.swing.JButton();
         Torneo = new javax.swing.JButton();
+        cantidadDeJugadores = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,6 +43,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
         Torneo.setText("Torneo");
 
+        cantidadDeJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantidadDeJugadoresActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Ingrese Cantidad de Jugadores");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -52,13 +62,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Batalla)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                        .addComponent(CerrarSesión)
-                        .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                                .addComponent(CerrarSesión)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(cantidadDeJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(Torneo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +86,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CerrarSesión))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Batalla)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Batalla)
+                    .addComponent(cantidadDeJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(Torneo)
                 .addContainerGap(186, Short.MAX_VALUE))
@@ -85,6 +106,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BatallaActionPerformed
 
+    private void cantidadDeJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadDeJugadoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cantidadDeJugadoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -92,7 +117,9 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton Batalla;
     private javax.swing.JButton CerrarSesión;
     private javax.swing.JButton Torneo;
+    private javax.swing.JTextField cantidadDeJugadores;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
     public JButton getButtonCerrarSesion(){
         return this.CerrarSesión;
@@ -102,6 +129,12 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }
     public JButton getButtonTorneo(){
         return this.Torneo;
+    }
+    public int getCantidadDeJugadores(){
+        return Integer.parseInt(this.cantidadDeJugadores.getText());
+    }
+    public String getTexto(){
+        return this.cantidadDeJugadores.getText();
     }
     public void agregarListener(ActionListener al){
         this.CerrarSesión.addActionListener(al);

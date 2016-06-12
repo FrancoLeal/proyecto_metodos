@@ -1,13 +1,13 @@
 package Modelo;
 
 public class JefeDeTerreno {
-    private final int vida;
-    private final int atributo;
-    private final String nombre;
-    public JefeDeTerreno(int vida, int atributo, String nombre){
+    private int vida;
+    private int atributo;
+    private int turno;
+    public JefeDeTerreno(int vida, int atributo, int turno){
         this.vida=vida;
         this.atributo=atributo;
-        this.nombre=nombre;
+        this.turno=turno;
     }
     public int getVida(){
         return this.vida;
@@ -15,7 +15,7 @@ public class JefeDeTerreno {
     public int getAtributo(){
         return this.atributo;
     }
-    public String getNombre(){
-        return this.nombre;
+    public int getTurno(){
+        return this.turno;
     }
 }

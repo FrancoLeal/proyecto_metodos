@@ -31,9 +31,20 @@
                           <Component id="Batalla" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="103" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="180" max="32767" attributes="0"/>
-                      <Component id="CerrarSesión" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="180" max="32767" attributes="0"/>
+                              <Component id="CerrarSesión" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="cantidadDeJugadores" min="-2" pref="21" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -53,7 +64,11 @@
                   <Component id="CerrarSesión" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Batalla" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Batalla" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cantidadDeJugadores" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Torneo" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="186" max="32767" attributes="0"/>
@@ -86,6 +101,16 @@
     <Component class="javax.swing.JButton" name="Torneo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Torneo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="cantidadDeJugadores">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadDeJugadoresActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ingrese Cantidad de Jugadores"/>
       </Properties>
     </Component>
   </SubComponents>
