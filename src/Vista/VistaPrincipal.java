@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 public class VistaPrincipal extends javax.swing.JFrame {
     public VistaPrincipal() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -22,10 +23,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         Torneo = new javax.swing.JButton();
         cantidadDeJugadores = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        EditarDados = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Menu Principal");
+        jLabel1.setText("Aquí va el logo");
 
         CerrarSesión.setText("Cerrar sesión");
         CerrarSesión.addActionListener(new java.awt.event.ActionListener() {
@@ -50,6 +55,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Ingrese Cantidad de Jugadores");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel2.setText("USUARIO ACTIVO:");
+
+        jLabel3.setText(Controlador.ControladorLogin.usuarioActivo);
+
+        EditarDados.setText("Editar Dados");
+
+        Salir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,6 +90,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(Torneo)
                         .addContainerGap())))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Torneo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Salir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EditarDados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Batalla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(CerrarSesión)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,8 +119,25 @@ public class VistaPrincipal extends javax.swing.JFrame {
                     .addComponent(cantidadDeJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(CerrarSesión))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)))
+                .addGap(91, 91, 91)
+                .addComponent(Batalla)
+                .addGap(13, 13, 13)
                 .addComponent(Torneo)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addComponent(EditarDados)
+                .addGap(13, 13, 13)
+                .addComponent(Salir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,10 +161,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Batalla;
     private javax.swing.JButton CerrarSesión;
+    private javax.swing.JButton EditarDados;
+    private javax.swing.JButton Salir;
     private javax.swing.JButton Torneo;
     private javax.swing.JTextField cantidadDeJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
     public JButton getButtonCerrarSesion(){
         return this.CerrarSesión;
@@ -136,9 +184,17 @@ public class VistaPrincipal extends javax.swing.JFrame {
     public String getTexto(){
         return this.cantidadDeJugadores.getText();
     }
+    public JButton getButtonEditarDados(){
+        return this.EditarDados;
+    }
+    public JButton getButtonSalir(){
+        return this.Salir;
+    }
     public void agregarListener(ActionListener al){
         this.CerrarSesión.addActionListener(al);
         this.Batalla.addActionListener(al);
         this.Torneo.addActionListener(al);
+        this.EditarDados.addActionListener(al);
+        this.Salir.addActionListener(al);
     }
 }

@@ -21,7 +21,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     //Definicion atributos
     private VistaBatalla vb;
     private Batalla b;
-    private ControladorVistaPrincipal cvp;
+    private ControladorBatallaConfiguracion cbg;
     private JButton[][] terreno;
     private int cantidadDeJugadores;
     private int turnoActual;
@@ -32,10 +32,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenInvocar;
     
     //Definicion constructor
-    public ControladorBatalla(ControladorVistaPrincipal cvp, int cantidadDeJugadores){
+    public ControladorBatalla(/*ControladorVistaPrincipal cvp, int cantidadDeJugadores,*/ ControladorBatallaConfiguracion cbg){
         this.cantidadDeJugadores = cantidadDeJugadores;
         this.turnoActual = 1;
-        this.cvp = cvp;
+        //this.cvp = cvp;
+        this.cbg = cbg;
         this.vb = new VistaBatalla();
         this.b = new Batalla(this.cantidadDeJugadores);
         vb.setVisible(true);
@@ -52,12 +53,17 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
-        if(vb.getButtonAtras()==e.getSource()){
+        /*if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
             cvp.setVista(true);
+<<<<<<< HEAD
         }
         else if(vb.getButtonLanzar()==e.getSource()){
             vb.setGifDados(new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\dados.gif"));
+=======
+        }*/
+        /*else*/ if(vb.getButtonLanzar()==e.getSource()){
+            vb.setGifDados(new ImageIcon(this.getClass().getResource("dados.gif")));
             System.out.println("Ok, funciona");
         }
         else if (vb.getButtonParar()==e.getSource()){
@@ -78,7 +84,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
                     if(vb.getBotonTerreno(i,j)==e.getSource()){
-                        System.out.println("X="+i+"Y="+j);
+                        System.out.println("X="+i+", Y="+j);
                     }
                 }
             }
