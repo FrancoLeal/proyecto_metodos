@@ -8,8 +8,21 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     
     private boolean batallaPorEquipos;
 
-    public VistaBatallaConfiguracion() {
+    public VistaBatallaConfiguracion(boolean batallaPorEquipos) {
         initComponents();
+        this.batallaPorEquipos = batallaPorEquipos;
+        jRadioButton1.setVisible(batallaPorEquipos);
+        jRadioButton2.setVisible(batallaPorEquipos);
+        jRadioButton3.setVisible(batallaPorEquipos);
+        jRadioButton4.setVisible(batallaPorEquipos);
+        jRadioButton5.setVisible(batallaPorEquipos);
+        jRadioButton6.setVisible(batallaPorEquipos);
+        jRadioButton7.setVisible(batallaPorEquipos);
+        jRadioButton8.setVisible(batallaPorEquipos);
+        jRadioButton9.setVisible(batallaPorEquipos);
+        jRadioButton10.setVisible(batallaPorEquipos);
+        jRadioButton11.setVisible(batallaPorEquipos);
+        jRadioButton12.setVisible(batallaPorEquipos);
     }
 
     /**

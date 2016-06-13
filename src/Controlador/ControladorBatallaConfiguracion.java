@@ -12,11 +12,11 @@ public class ControladorBatallaConfiguracion implements ActionListener {
     
     public ControladorBatallaConfiguracion(ControladorBatallaTipo cbt){
         this.cbt = cbt;
-        this.vbc = new VistaBatallaConfiguracion();
+        batallaPorEquipos = cbt.getBatallaPorEquipos();
+        this.vbc = new VistaBatallaConfiguracion(batallaPorEquipos);
         vbc.setVisible(true);
         vbc.agregarListener(this);
         vbc.setLocationRelativeTo(null);
-        batallaPorEquipos = cbt.getBatallaPorEquipos();
     }
     
     @Override
