@@ -45,11 +45,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         this.terreno = vb.getTerreno();
         //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
         //al querer cambiarlas rutas por algo generico dejo de funcionar.
-        ImagenAtaque = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\ATAQUE.png");
-        ImagenMagia = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MAGIA.png");
-        ImagenMovimiento = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MOVIMIENTO.png");
-        ImagenTrampa = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\TRAMPA.png");
-        ImagenInvocar = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\INVOCAR.png");
+        ImagenAtaque = new ImageIcon("/ImagenesJuegos/ATAQUE.png");
+        ImagenMagia = new ImageIcon("ImagenesJuegos/MAGIA.png");
+        ImagenMovimiento = new ImageIcon("/ImagenesJuegos/MOVIMIENTO.png");
+        ImagenTrampa = new ImageIcon("/ImagenesJuegos/TRAMPA.png");
+        ImagenInvocar = new ImageIcon("/ImagenesJuegos/INVOCAR.png");
     }
     
     public void actionPerformed(ActionEvent e){
@@ -68,14 +68,9 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if (vb.getButtonParar()==e.getSource()){
             vb.setGifDados(false);
-            Dado Dado1 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado1(Dado1.resultado());
-            Dado Dado2 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado2(Dado2.resultado());
-            Dado Dado3 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado3(Dado3.resultado());
-            Dado Dado4 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado4(Dado4.resultado());
+            Dado dado1 = new Dado();
+            String cara = dado1.resultado();
+            vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
             ControladorDadoDesplegado cdd = new ControladorDadoDesplegado(this);
