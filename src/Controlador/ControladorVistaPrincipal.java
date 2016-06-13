@@ -23,13 +23,6 @@ public class ControladorVistaPrincipal implements ActionListener{
             ControladorLogin cl = new ControladorLogin();
         }
         else if(vp.getButtonBatalla()==e.getSource()){
-            /*if(vp.getTexto().length()!=0){
-                vp.setVisible(false);
-                ControladorBatalla cb = new ControladorBatalla(this, this.vp.getCantidadDeJugadores());
-            }
-            else{
-                System.out.println("Ingrese cantidad de Jugadores");
-            }*/
             System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha iniciado una batalla.");
             vp.setVisible(false);
             ControladorBatallaTipo cbt = new ControladorBatallaTipo(this);
