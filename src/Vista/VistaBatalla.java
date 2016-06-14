@@ -1,16 +1,14 @@
 package Vista;
+import Modelo.Tablero;
 import java.awt.Color;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.*;
+
 public class VistaBatalla extends javax.swing.JFrame {
-    public VistaBatalla() {
+    public VistaBatalla(Tablero terreno) {
+        this.terreno=terreno;
         initComponents();
         tablero.setBackground(Color.blue);
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -68,13 +66,11 @@ public class VistaBatalla extends javax.swing.JFrame {
         );
 
         tablero.setLayout(new java.awt.GridLayout(15,15));
-        terreno = new JButton[15][15];
         for (int i = 0 ; i<15 ; i++){
             for (int j = 0 ; j<15 ; j++){
-                JButton boton = new JButton();
-                tablero.add(boton);
-                boton.setBackground(Color.white);
-                terreno[i][j]=boton;
+
+                tablero.add(terreno.board[i][j]);
+                terreno.board[i][j].setBackground(Color.white);
             }
         }
 
@@ -192,19 +188,17 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JLabel dado4;
     private javax.swing.JButton desplegar;
     private javax.swing.JPanel tablero;
+    private Tablero terreno;
     // End of variables declaration//GEN-END:variables
-    private JButton[][] terreno;
-    public JButton[][] getTerreno(){
-        return this.terreno;
-    }
+
     public void agregarListener(ActionListener al, MouseListener ml){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
         this.Atras.addActionListener(al);
-        for (JButton[] columna : terreno){
-            for (JButton boton : columna){
-                boton.addActionListener(al);
-                boton.addMouseListener(ml);
+        for (int i = 0 ; i<15 ; i++){
+            for (int j = 0 ; j<15 ; j++){
+                terreno.board[i][j].addActionListener(al);
+                terreno.board[i][j].addMouseListener(ml);
             }
         }
         this.desplegar.addActionListener(al);
@@ -218,9 +212,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public JButton getButtonAtras(){
         return this.Atras;
     }
-    public JButton getBotonTerreno(int i , int j){
-        return this.terreno[i][j];
-    }
+   
     public void setGifDados(ImageIcon imagen){
         this.GifDados.setVisible(true);
         this.GifDados.setIcon(imagen);
@@ -258,19 +250,25 @@ public class VistaBatalla extends javax.swing.JFrame {
             }
         }
     }
-    public void setElemento(String nombre, JButton terreno[][]){
-        for (int i=0 ; i<15 ; i++){
-            for (int j=0 ; j<15 ; j++){
-                if (this.terreno[i][j].getText()!=null){
-                    this.terreno[i][j].setText(nombre);
-                }
-                else{
-                    System.out.println("Esta ocupado");
-                }
-            }
-        }
+    
+    
+    
+    /*public void setElemento(String nombre, JButton terreno[][]){
+    for (int i=0 ; i<15 ; i++){
+    for (int j=0 ; j<15 ; j++){
+    if (this.terreno[i][j].getText()!=null){
+    this.terreno[i][j].setText(nombre);
+    }
+    else{
+    System.out.println("Esta ocupado");
+    }
+    }
+    }
     }
     public void setJefeDeTerreno(int i , int j, String nombre, String color){
-        this.terreno[i][j].setText(nombre);
+    this.terreno[i][j].setText(nombre);
+    }*/
+    public Tablero getTerreno(){
+        return terreno;
     }
 }
