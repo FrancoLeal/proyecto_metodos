@@ -46,12 +46,17 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         
        
         //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
-        //al querer cambiarlas rutas por algo generico dejo de funcionar.
+        //al querer cambiarlas rutas por algo generico dejo de funcionar
         ImagenAtaque = new ImageIcon("\\ImagenesJuegos\\ATAQUE.png");
         ImagenMagia = new ImageIcon("\\ImagenesJuegos\\MAGIA.png");
         ImagenMovimiento = new ImageIcon("\\ImagenesJuegos\\MOVIMIENTO.png");
         ImagenTrampa = new ImageIcon("\\ImagenesJuegos\\TRAMPA.png");
         ImagenInvocar = new ImageIcon("\\ImagenesJuegos\\INVOCAR.png");
+        ImagenAtaque = new ImageIcon("/ImagenesJuegos/ATAQUE.png");
+        ImagenMagia = new ImageIcon("ImagenesJuegos/MAGIA.png");
+        ImagenMovimiento = new ImageIcon("/ImagenesJuegos/MOVIMIENTO.png");
+        ImagenTrampa = new ImageIcon("/ImagenesJuegos/TRAMPA.png");
+        ImagenInvocar = new ImageIcon("/ImagenesJuegos/INVOCAR.png");
     }
     
     public void actionPerformed(ActionEvent e){
@@ -73,6 +78,10 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.setResultadoDado3(Dado3.resultado());
             Dado Dado4 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
             vb.setResultadoDado4(Dado4.resultado());*/
+            vb.setGifDados(false);
+            Dado dado1 = new Dado();
+            String cara = dado1.resultado();
+            vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
             ControladorDadoDesplegado cdd = new ControladorDadoDesplegado(this);
