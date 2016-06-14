@@ -139,7 +139,8 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        terreno = new JButton[15][15];&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                JButton boton = new JButton();&#xa;                tablero.add(boton);&#xa;                boton.setBackground(Color.white);&#xa;                terreno[i][j]=boton;&#xa;            }&#xa;        }"/>
+        <AuxValue name="JavaCodeGenerator_DeclarationPost" type="java.lang.String" value="private Tablero terreno;"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="tablero.setLayout(new java.awt.GridLayout(15,15));&#xa;        for (int i = 0 ; i&lt;15 ; i++){&#xa;            for (int j = 0 ; j&lt;15 ; j++){&#xa;                &#xa;                tablero.add(terreno.board[i][j]);&#xa;                terreno.board[i][j].setBackground(Color.white);&#xa;            }&#xa;        }"/>
       </AuxValues>
 
       <Layout>
