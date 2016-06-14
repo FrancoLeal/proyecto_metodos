@@ -2,25 +2,26 @@ package Modelo;
 
 import java.util.Random;
 import javax.swing.ImageIcon;
+import java.awt.Color;
+import Controlador.ControladorBatalla;
 //Declaraacion clase
 public class Dado {
     //Atributos
     ImageIcon[] caras;
+    public int i;
+    public int j;
+    public int[][] forma1 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
+    public int[][] forma2 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
     //Constructor
-    public Dado(ImageIcon cara0 , ImageIcon cara1, ImageIcon cara2, ImageIcon cara3, ImageIcon cara4, ImageIcon cara5){
-        ImageIcon[] cara= new ImageIcon[6];
-        cara[0]=cara0;
-        cara[1]=cara1;
-        cara[2]=cara2;
-        cara[3]=cara3;
-        cara[4]=cara4;
-        cara[5]=cara5;
-        this.caras=cara;
-        
+    public Dado(){
     }
     //Métodos
     public ImageIcon resultado(){
         Random rGenerador = new Random();
         return caras[rGenerador.nextInt(6)];
     }
+    public int[][] getForma1(){
+        return this.forma1;
+    }
+    
 }
