@@ -46,12 +46,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         
        
         //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
-        //al querer cambiarlas rutas por algo generico dejo de funcionar
-        ImagenAtaque = new ImageIcon("\\ImagenesJuegos\\ATAQUE.png");
-        ImagenMagia = new ImageIcon("\\ImagenesJuegos\\MAGIA.png");
-        ImagenMovimiento = new ImageIcon("\\ImagenesJuegos\\MOVIMIENTO.png");
-        ImagenTrampa = new ImageIcon("\\ImagenesJuegos\\TRAMPA.png");
-        ImagenInvocar = new ImageIcon("\\ImagenesJuegos\\INVOCAR.png");
+        //al querer cambiarlas rutas por algo generico dejo de funcionar.
         ImagenAtaque = new ImageIcon("/ImagenesJuegos/ATAQUE.png");
         ImagenMagia = new ImageIcon("ImagenesJuegos/MAGIA.png");
         ImagenMovimiento = new ImageIcon("/ImagenesJuegos/MOVIMIENTO.png");
