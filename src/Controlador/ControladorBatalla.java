@@ -3,7 +3,7 @@ package Controlador;
 import Modelo.Batalla;
 import Modelo.Dado;
 import Modelo.JefeDeTerreno;
-//import Modelo.Dado2;
+import Modelo.Casilla;
 import Modelo.Tablero;
 import Modelo.Jugador;
 import Vista.VistaBatalla;
@@ -22,7 +22,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private VistaBatalla vb;
     private Batalla b;
     private ControladorBatallaConfiguracion cbg;
-    private JButton[][] terreno;
     private int cantidadDeJugadores;
     private int turnoActual;
     private ImageIcon ImagenAtaque;
@@ -30,44 +29,42 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenMovimiento;
     private ImageIcon ImagenTrampa;
     private ImageIcon ImagenInvocar;
+    private Tablero terreno = new Tablero();
+    Dado dado;
     
     //Definicion constructor
-    public ControladorBatalla(/*ControladorVistaPrincipal cvp, int cantidadDeJugadores,*/ ControladorBatallaConfiguracion cbg){
+    public ControladorBatalla(/*int cantidadDeJugadores,*/ ControladorBatallaConfiguracion cbg){
         this.cantidadDeJugadores = cantidadDeJugadores;
         this.turnoActual = 1;
         //this.cvp = cvp;
         this.cbg = cbg;
-        this.vb = new VistaBatalla();
+        this.vb = new VistaBatalla(terreno);
         this.b = new Batalla(this.cantidadDeJugadores);
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
-        this.terreno = vb.getTerreno();
+        
+       
         //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
         //al querer cambiarlas rutas por algo generico dejo de funcionar.
-        ImagenAtaque = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\ATAQUE.png");
-        ImagenMagia = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MAGIA.png");
-        ImagenMovimiento = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\MOVIMIENTO.png");
-        ImagenTrampa = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\TRAMPA.png");
-        ImagenInvocar = new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\INVOCAR.png");
+        ImagenAtaque = new ImageIcon("\\ImagenesJuegos\\ATAQUE.png");
+        ImagenMagia = new ImageIcon("\\ImagenesJuegos\\MAGIA.png");
+        ImagenMovimiento = new ImageIcon("\\ImagenesJuegos\\MOVIMIENTO.png");
+        ImagenTrampa = new ImageIcon("\\ImagenesJuegos\\TRAMPA.png");
+        ImagenInvocar = new ImageIcon("\\ImagenesJuegos\\INVOCAR.png");
     }
     
     public void actionPerformed(ActionEvent e){
-        /*if(vb.getButtonAtras()==e.getSource()){
+        if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
-            cvp.setVista(true);
-<<<<<<< HEAD
+            //cvp.setVista(true);
         }
         else if(vb.getButtonLanzar()==e.getSource()){
-            vb.setGifDados(new ImageIcon("C:\\Users\\FRANCO L\\Desktop\\Proyecto\\proyecto_metodos\\src\\ImagenesJuegos\\dados.gif"));
-=======
-        }*/
-        /*else*/ if(vb.getButtonLanzar()==e.getSource()){
-            vb.setGifDados(new ImageIcon(this.getClass().getResource("dados.gif")));
+            vb.setGifDados(new ImageIcon("\\ImagenesJuegos\\dados.gif"));
             System.out.println("Ok, funciona");
         }
         else if (vb.getButtonParar()==e.getSource()){
-            vb.setGifDados(false);
+           /* vb.setGifDados(false);
             Dado Dado1 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
             vb.setResultadoDado1(Dado1.resultado());
             Dado Dado2 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
@@ -75,7 +72,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             Dado Dado3 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
             vb.setResultadoDado3(Dado3.resultado());
             Dado Dado4 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado4(Dado4.resultado());
+            vb.setResultadoDado4(Dado4.resultado());*/
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
             ControladorDadoDesplegado cdd = new ControladorDadoDesplegado(this);
@@ -83,20 +80,27 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         else{
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
-                    if(vb.getBotonTerreno(i,j)==e.getSource()){
+                    if(terreno.board[i][j]==e.getSource()){
+                        dado = new Dado();
                         System.out.println("X="+i+", Y="+j);
+                        terreno.pintar(i,j,dado.getForma1());
                     }
                 }
             }
         }
     }
     public void mouseEntered(MouseEvent e){
-        
+      
     }
+    
     public void mouseReleased(MouseEvent e){
         
     }
     public void mouseClicked(MouseEvent e){
+        
+        
+    }
+    public void click(int i,int j){
         
     }
     public void mousePressed(MouseEvent e){
