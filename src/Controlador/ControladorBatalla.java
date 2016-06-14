@@ -64,15 +64,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             System.out.println("Ok, funciona");
         }
         else if (vb.getButtonParar()==e.getSource()){
-           /* vb.setGifDados(false);
-            Dado Dado1 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado1(Dado1.resultado());
-            Dado Dado2 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado2(Dado2.resultado());
-            Dado Dado3 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado3(Dado3.resultado());
-            Dado Dado4 = new Dado(ImagenAtaque,ImagenMagia,ImagenMovimiento,ImagenTrampa,ImagenInvocar,ImagenAtaque);
-            vb.setResultadoDado4(Dado4.resultado());*/
             vb.setGifDados(false);
             Dado dado1 = new Dado();
             String cara = dado1.resultado();
