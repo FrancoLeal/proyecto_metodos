@@ -17,6 +17,7 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
  public static void main(String[] args) {
    Connection conn = null;
    Statement stmt = null;
+   //If boton ingresar o registrarse :
    try{
       
       Class.forName("com.mysql.jdbc.Driver");
@@ -24,7 +25,7 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
       
       System.out.println("Conectando a BDD");
       conn = DriverManager.getConnection(URL_BDD);
-      System.out.println("CONECTADO A BDD");
+      System.out.println("Conectado a BDD");
       
      
       System.out.println("POBLANDO BDD");
@@ -50,7 +51,7 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
          se.printStackTrace();
       }
    }
-   System.out.println("Adios!");
+ 
 }
   
    
