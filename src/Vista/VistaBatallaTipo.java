@@ -8,6 +8,7 @@ public class VistaBatallaTipo extends javax.swing.JFrame {
 
     public VistaBatallaTipo() {
         initComponents();
+        this.setTitle("Luch Oh!:Dados de Mantequilla");
     }
 
     /**

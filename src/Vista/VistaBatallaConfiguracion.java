@@ -1,15 +1,21 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JToggleButton;
+import javax.swing.JComboBox;
 
 public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     
     private boolean batallaPorEquipos;
+    private byte equipoJugador1;
+    private byte equipoJugador2;
+    private byte equipoJugador3;
+    private byte equipoJugador4;
 
     public VistaBatallaConfiguracion(boolean batallaPorEquipos) {
         initComponents();
+        this.setTitle("Luch Oh!:Dados de Mantequilla");
         this.batallaPorEquipos = batallaPorEquipos;
         jRadioButton1.setVisible(batallaPorEquipos);
         jRadioButton2.setVisible(batallaPorEquipos);
@@ -17,14 +23,89 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         jRadioButton4.setVisible(batallaPorEquipos);
         jRadioButton5.setVisible(batallaPorEquipos);
         jRadioButton6.setVisible(batallaPorEquipos);
+        jRadioButton9.setVisible(batallaPorEquipos);
         jRadioButton7.setVisible(batallaPorEquipos);
         jRadioButton8.setVisible(batallaPorEquipos);
-        jRadioButton9.setVisible(batallaPorEquipos);
         jRadioButton10.setVisible(batallaPorEquipos);
         jRadioButton11.setVisible(batallaPorEquipos);
         jRadioButton12.setVisible(batallaPorEquipos);
+        if(this.batallaPorEquipos==true){
+            tipoBatalla.setText("Batalla por Equipos");
+        }
+        else{
+            tipoBatalla.setText("Todos Contra Todos");
+        }
     }
 
+    public boolean getBatallaPorEquipos() {
+        return batallaPorEquipos;
+    }
+
+    public byte getJugador1Equipo() {
+        if(jRadioButton1.isSelected()){
+            equipoJugador1 = 1;
+        }
+        else if(jRadioButton2.isSelected()){
+            equipoJugador1 = 2;
+        }
+        else if(jRadioButton3.isSelected()){
+            equipoJugador1 = 3;
+        }
+        return equipoJugador1;
+    }
+
+    public byte getJugador2Equipo() {
+        if(jRadioButton4.isSelected()){
+            equipoJugador2 = 1;
+        }
+        else if(jRadioButton5.isSelected()){
+            equipoJugador2 = 2;
+        }
+        else if(jRadioButton6.isSelected()){
+            equipoJugador2 = 3;
+        }
+        return equipoJugador2;
+    }
+    
+    public byte getJugador3Equipo() {
+        if(jRadioButton7.isSelected()){
+            equipoJugador3 = 1;
+        }
+        else if(jRadioButton8.isSelected()){
+            equipoJugador3 = 2;
+        }
+        else if(jRadioButton9.isSelected()){
+            equipoJugador3 = 3;
+        }
+        return equipoJugador3;
+    }
+    
+    public byte getJugador4Equipo() {
+        if(jRadioButton10.isSelected()){
+            equipoJugador4 = 1;
+        }
+        else if(jRadioButton11.isSelected()){
+            equipoJugador4 = 2;
+        }
+        else if(jRadioButton12.isSelected()){
+            equipoJugador4 = 3;
+        }
+        return equipoJugador4;
+    }
+
+    public String getSeleccionJugador2() {
+        return seleccionJugador2.getSelectedItem().toString();
+    }
+
+    public String getSeleccionJugador3() {
+        return seleccionJugador3.getSelectedItem().toString();
+    }
+
+    public String getSeleccionJugador4() {
+        return seleccionJugador4.getSelectedItem().toString();
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,7 +136,6 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         seleccionJugador4 = new javax.swing.JComboBox<>();
         editarPuzleJ4 = new javax.swing.JButton();
-        comenzarBatalla = new javax.swing.JToggleButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
@@ -71,6 +151,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         iniciarSesionJ2 = new javax.swing.JButton();
         iniciarSesionJ3 = new javax.swing.JButton();
         iniciarSesionJ4 = new javax.swing.JButton();
+        comenzarBatalla = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,8 +165,8 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Tipo de batalla:");
 
-        tipoBatalla.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        tipoBatalla.setText("código: tipo de batalla");
+        tipoBatalla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tipoBatalla.setText("<custom code>");
 
         jLabel3.setText("Jugador 1:");
 
@@ -95,7 +176,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
 
         jLabel5.setText("Jugador 2:");
 
-        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PNJ 1", "PNJ 2", "PNJ 3", "PNJ 4" }));
 
         editarPuzleJ2.setText("Editar puzle");
 
@@ -110,8 +191,6 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         seleccionJugador4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         editarPuzleJ4.setText("Editar puzle");
-
-        comenzarBatalla.setText("Comenzar");
 
         jugador1Equipo.add(jRadioButton1);
         jRadioButton1.setText("Equipo 1");
@@ -132,13 +211,13 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         jRadioButton6.setText("Equipo 3");
 
         jugador3Equipo.add(jRadioButton7);
-        jRadioButton7.setText("Equipo 3");
+        jRadioButton7.setText("Equipo 1");
 
         jugador3Equipo.add(jRadioButton8);
-        jRadioButton8.setText("Equipo 1");
+        jRadioButton8.setText("Equipo 2");
 
         jugador3Equipo.add(jRadioButton9);
-        jRadioButton9.setText("Equipo 2");
+        jRadioButton9.setText("Equipo 3");
 
         jugador4Equipo.add(jRadioButton10);
         jRadioButton10.setText("Equipo 2");
@@ -154,6 +233,8 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         iniciarSesionJ3.setText("Iniciar sesión");
 
         iniciarSesionJ4.setText("Iniciar sesión");
+
+        comenzarBatalla.setText("Comenzar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,11 +252,12 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
                         .addComponent(usuarioActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(comenzarBatalla))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(atrás))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -212,9 +294,9 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
                                             .addComponent(jRadioButton4)
                                             .addComponent(jRadioButton5)
                                             .addComponent(jRadioButton6)
+                                            .addComponent(jRadioButton7)
                                             .addComponent(jRadioButton8)
                                             .addComponent(jRadioButton9)
-                                            .addComponent(jRadioButton7)
                                             .addComponent(jRadioButton11)
                                             .addComponent(jRadioButton10)
                                             .addComponent(jRadioButton12))))
@@ -223,12 +305,13 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
                                     .addComponent(editarPuzleJ3)
                                     .addComponent(editarPuzleJ2)
                                     .addComponent(editarPuzleJ1)
-                                    .addComponent(editarPuzleJ4)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
-                                .addComponent(atrás)))))
+                                    .addComponent(editarPuzleJ4))
+                                .addGap(0, 117, Short.MAX_VALUE)))))
                 .addGap(33, 33, 33))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(comenzarBatalla)
+                .addGap(61, 61, 61))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,39 +351,35 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
                     .addComponent(iniciarSesionJ2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton8)
+                    .addComponent(jRadioButton7)
                     .addComponent(jLabel6)
                     .addComponent(seleccionJugador3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editarPuzleJ3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comenzarBatalla)
-                        .addGap(27, 27, 27))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jRadioButton9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton7))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(iniciarSesionJ3)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton11)
-                            .addComponent(jLabel7)
-                            .addComponent(seleccionJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(editarPuzleJ4))
+                        .addGap(2, 2, 2)
+                        .addComponent(jRadioButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton12))
-                            .addComponent(iniciarSesionJ4))
-                        .addContainerGap(58, Short.MAX_VALUE))))
+                        .addComponent(jRadioButton9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(iniciarSesionJ3)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton11)
+                    .addComponent(jLabel7)
+                    .addComponent(seleccionJugador4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editarPuzleJ4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton12))
+                    .addComponent(iniciarSesionJ4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addComponent(comenzarBatalla)
+                .addGap(33, 33, 33))
         );
 
         tipoBatalla.getAccessibleContext().setAccessibleName("");
@@ -314,7 +393,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atrás;
-    private javax.swing.JToggleButton comenzarBatalla;
+    private javax.swing.JButton comenzarBatalla;
     private javax.swing.JButton editarPuzleJ1;
     private javax.swing.JButton editarPuzleJ2;
     private javax.swing.JButton editarPuzleJ3;
@@ -390,7 +469,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     public JButton getButtonEditarPuzleJ4(){
         return this.editarPuzleJ4;
     }
-    public JToggleButton getButtonComenzarBatalla(){
+    public JButton getButtonComenzarBatalla(){
         return this.comenzarBatalla;
     }
     public JButton getButtonIniciarSesionJ2(){

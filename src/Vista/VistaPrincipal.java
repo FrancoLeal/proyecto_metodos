@@ -19,6 +19,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
+        this.setTitle("Luch Oh!:Dados de Mantequilla");
     }
 
     /**
