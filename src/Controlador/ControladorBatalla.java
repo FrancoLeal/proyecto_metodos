@@ -29,6 +29,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenMovimiento;
     private ImageIcon ImagenTrampa;
     private ImageIcon ImagenInvocar;
+    private ImageIcon GifDados;
     private Tablero terreno = new Tablero();
     Dado dado;
     
@@ -45,26 +46,25 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         vb.setLocationRelativeTo(null);
         
        
-        //Hay error al cargar las imagenes del dado a la pantalla. Funcoionaba, pero
-        //al querer cambiarlas rutas por algo generico dejo de funcionar.
-        ImagenAtaque = new ImageIcon("/ImagenesJuegos/ATAQUE.png");
-        ImagenMagia = new ImageIcon("ImagenesJuegos/MAGIA.png");
-        ImagenMovimiento = new ImageIcon("/ImagenesJuegos/MOVIMIENTO.png");
-        ImagenTrampa = new ImageIcon("/ImagenesJuegos/TRAMPA.png");
-        ImagenInvocar = new ImageIcon("/ImagenesJuegos/INVOCAR.png");
+        
+        
+        
     }
     
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
-            //cvp.setVista(true);
+            
         }
         else if(vb.getButtonLanzar()==e.getSource()){
-            vb.setGifDados(new ImageIcon("\\ImagenesJuegos\\dados.gif"));
-            System.out.println("Ok, funciona");
+            vb.setGifDados(true);
+            vb.GifDados.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/dados.gif"))); 
+            System.out.println("Se ha lanzado el dado");
+            
         }
         else if (vb.getButtonParar()==e.getSource()){
-            vb.setGifDados(false);
+            vb.getButtonLanzar().setVisible(false);
+            vb.getGifDados().setVisible(false);
             Dado dado1 = new Dado();
             String cara = dado1.resultado();
             vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
