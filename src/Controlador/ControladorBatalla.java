@@ -18,7 +18,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private VistaBatalla vb;
     private Batalla b;
     private ControladorBatallaConfiguracion cbg;
-    private int cantidadDeJugadores;
     private int turnoActual;
     private Tablero tablero;
     private ImageIcon ImagenAtaque;
@@ -30,16 +29,19 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     Dado dado;
     
     //Definicion constructor
-    public ControladorBatalla(/*int cantidadDeJugadores,*/ ControladorBatallaConfiguracion cbg){
+    public ControladorBatalla(ControladorBatallaConfiguracion cbg){
         tablero = new Tablero();
         this.turnoActual = 1;
-        //this.cvp = cvp;
         this.cbg = cbg;
         this.vb = new VistaBatalla();
-        this.b = new Batalla(this.cantidadDeJugadores);
+        this.b = new Batalla();
+        b.getJugadores().add("franco");
+        b.getJugadores().add("juanfra");
+        b.getJugadores().add("moises");
+        b.getJugadores().add("pinky");
         vb.setVisible(true);
         vb.agregarListener(this,this);
-        vb.setLocationRelativeTo(null); 
+        vb.setLocationRelativeTo(null);
     }
     
     public void actionPerformed(ActionEvent e){
@@ -91,7 +93,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         
     }
     public void setTurno(){
-        if (this.turnoActual<cantidadDeJugadores){
+        if (this.turnoActual<b.getJugadores().size()){
             this.turnoActual++;
         }
         else{
