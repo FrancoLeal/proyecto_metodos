@@ -8,11 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class VistaBatalla extends javax.swing.JFrame {
-    public VistaBatalla(Tablero terreno) {
-        this.terreno=terreno;
+    public VistaBatalla() {
         initComponents();
-        tablero.setBackground(Color.blue);
-        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
@@ -80,9 +77,9 @@ public class VistaBatalla extends javax.swing.JFrame {
         tablero.setLayout(new java.awt.GridLayout(15,15));
         for (int i = 0 ; i<15 ; i++){
             for (int j = 0 ; j<15 ; j++){
-
-                tablero.add(terreno.board[i][j]);
-                terreno.board[i][j].setBackground(Color.white);
+                board[i][j]= new JButton();
+                tablero.add(board[i][j]);
+                board[i][j].setBackground(Color.white);
             }
         }
 
@@ -204,8 +201,8 @@ public class VistaBatalla extends javax.swing.JFrame {
                             .addComponent(ptosAtk)
                             .addComponent(attack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(magic)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(magic, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ptosMag, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -276,15 +273,15 @@ public class VistaBatalla extends javax.swing.JFrame {
     private Tablero terreno;
     private javax.swing.JLabel trap;
     // End of variables declaration//GEN-END:variables
-
+    private JButton[][] board = new JButton[15][15];
     public void agregarListener(ActionListener al, MouseListener ml){
         this.Parar.addActionListener(al);
         this.Lanzar.addActionListener(al);
         this.Atras.addActionListener(al);
         for (int i = 0 ; i<15 ; i++){
             for (int j = 0 ; j<15 ; j++){
-                terreno.board[i][j].addActionListener(al);
-                terreno.board[i][j].addMouseListener(ml);
+                board[i][j].addActionListener(al);
+                board[i][j].addMouseListener(ml);
             }
         }
         this.desplegar.addActionListener(al);
@@ -349,11 +346,15 @@ public class VistaBatalla extends javax.swing.JFrame {
             }
         }
     }
-    
-    
-    
-  
-    public Tablero getTerreno(){
-        return terreno;
+    public JButton[][] getBoardVisible(){
+        return this.board;
+    }
+    public void pintar(int i,int j,int[][] forma){
+        board[forma[0][0]+i][forma[0][1]+j].setBackground(Color.yellow);
+        board[forma[1][0]+i][forma[1][1]+j].setBackground(Color.yellow);
+        board[forma[2][0]+i][forma[2][1]+j].setBackground(Color.yellow);
+        board[forma[3][0]+i][forma[3][1]+j].setBackground(Color.yellow);
+        board[forma[4][0]+i][forma[4][1]+j].setBackground(Color.yellow);
+        board[forma[5][0]+i][forma[5][1]+j].setBackground(Color.yellow);
     }
 }

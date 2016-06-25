@@ -7,14 +7,10 @@ import Modelo.Casilla;
 import Modelo.Tablero;
 import Modelo.Jugador;
 import Vista.VistaBatalla;
-import Vista.VistaPrincipal;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import javax.swing.*;
 import javax.swing.ImageIcon;
 //Definicion clase
 public class ControladorBatalla extends MouseAdapter implements ActionListener {
@@ -24,31 +20,26 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ControladorBatallaConfiguracion cbg;
     private int cantidadDeJugadores;
     private int turnoActual;
+    private Tablero tablero;
     private ImageIcon ImagenAtaque;
     private ImageIcon ImagenMagia ;
     private ImageIcon ImagenMovimiento;
     private ImageIcon ImagenTrampa;
     private ImageIcon ImagenInvocar;
     private ImageIcon GifDados;
-    private Tablero terreno = new Tablero();
     Dado dado;
     
     //Definicion constructor
     public ControladorBatalla(/*int cantidadDeJugadores,*/ ControladorBatallaConfiguracion cbg){
-        this.cantidadDeJugadores = cantidadDeJugadores;
+        tablero = new Tablero();
         this.turnoActual = 1;
         //this.cvp = cvp;
         this.cbg = cbg;
-        this.vb = new VistaBatalla(terreno);
+        this.vb = new VistaBatalla();
         this.b = new Batalla(this.cantidadDeJugadores);
         vb.setVisible(true);
         vb.agregarListener(this,this);
-        vb.setLocationRelativeTo(null);
-        
-       
-        
-        
-        
+        vb.setLocationRelativeTo(null); 
     }
     
     public void actionPerformed(ActionEvent e){
@@ -75,10 +66,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         else{
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
-                    if(terreno.board[i][j]==e.getSource()){
-                        dado = new Dado();
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
                         System.out.println("X="+i+", Y="+j);
-                        terreno.pintar(i,j,dado.getForma1());
                     }
                 }
             }
@@ -93,11 +82,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     public void mouseClicked(MouseEvent e){
         
-        
     }
-    public void click(int i,int j){
-        
-    }
+    
     public void mousePressed(MouseEvent e){
         
     }

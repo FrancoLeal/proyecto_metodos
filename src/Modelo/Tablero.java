@@ -16,12 +16,4 @@ public class Tablero{
             }
         }
     }
-    public void pintar(int i,int j,int[][] forma){
-        board[forma[0][0]+i][forma[0][1]+j].setBackground(Color.yellow);
-        board[forma[1][0]+i][forma[1][1]+j].setBackground(Color.yellow);
-        board[forma[2][0]+i][forma[2][1]+j].setBackground(Color.yellow);
-        board[forma[3][0]+i][forma[3][1]+j].setBackground(Color.yellow);
-        board[forma[4][0]+i][forma[4][1]+j].setBackground(Color.yellow);
-        board[forma[5][0]+i][forma[5][1]+j].setBackground(Color.yellow);
-    }
 }

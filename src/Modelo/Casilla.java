@@ -1,8 +1,6 @@
 package Modelo;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-public class Casilla extends JButton {
+
+public class Casilla {
     private int dueño;
     public Casilla(){
     }
