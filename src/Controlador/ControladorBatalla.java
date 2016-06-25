@@ -39,7 +39,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         b.getJugadores().add("juanfra");
         b.getJugadores().add("moises");
         b.getJugadores().add("pinky");
-        vb.setJugadorActual(b.getJugadores().get(0));
+        b.setOrdenJugadores();
+        vb.setJugadorActual(b.getOrdenJugadores().get(0));
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
@@ -68,8 +69,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
             setTurno();
-            vb.setJugadorActual(b.getJugadores().get(turnoActual));
-            System.out.println(b.getJugadores().get(turnoActual));
+            vb.setJugadorActual(b.getOrdenJugadores().get(turnoActual));
+            System.out.println(b.getOrdenJugadores().get(turnoActual));
         }
         else{
             for (int i = 0 ; i<15 ; i++){
@@ -103,7 +104,10 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             this.turnoActual++;
         }
         else {
+            b.getOrdenJugadores().clear();
+            b.setOrdenJugadores();
             this.turnoActual = 0;
+            System.out.println("Nueva ronda");
         }
     }
 }

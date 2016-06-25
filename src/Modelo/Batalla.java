@@ -42,11 +42,11 @@ public class Batalla {
     }
     public void setOrdenJugadores(){
         Random r = new Random();
-        ArrayList<String> jugadoresTemporal = (ArrayList<String>)turnoJugadores.clone();
+        ArrayList<String> jugadoresTemporal = (ArrayList<String>)jugadores.clone();
         while (!jugadoresTemporal.isEmpty()){
             int i = r.nextInt(jugadoresTemporal.size());
             this.turnoJugadores.add(jugadoresTemporal.get(i));
-            turnoJugadores.remove(i);
+            jugadoresTemporal.remove(i);
         }
     }
 }
