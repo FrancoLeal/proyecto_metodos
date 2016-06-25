@@ -31,7 +31,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
         tablero = new Tablero();
-        this.turnoActual = 1;
+        this.turnoActual = 0;
         this.cbg = cbg;
         this.vb = new VistaBatalla();
         this.b = new Batalla();
@@ -39,6 +39,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         b.getJugadores().add("juanfra");
         b.getJugadores().add("moises");
         b.getJugadores().add("pinky");
+        vb.setJugadorActual(b.getJugadores().get(0));
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
@@ -64,6 +65,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
             ControladorDadoDesplegado cdd = new ControladorDadoDesplegado(this);
+        }
+        else if(vb.getButtonCambioTurno()==e.getSource()){
+            setTurno();
+            vb.setJugadorActual(b.getJugadores().get(turnoActual));
+            System.out.println(b.getJugadores().get(turnoActual));
         }
         else{
             for (int i = 0 ; i<15 ; i++){
@@ -93,11 +99,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         
     }
     public void setTurno(){
-        if (this.turnoActual<b.getJugadores().size()){
+        if (this.turnoActual<b.getJugadores().size()-1){
             this.turnoActual++;
         }
-        else{
-            this.turnoActual = 1;
+        else {
+            this.turnoActual = 0;
         }
     }
 }
