@@ -19,6 +19,9 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private Batalla b;
     private ControladorBatallaConfiguracion cbg;
     private int turnoActual;
+    private ControladorDadoDesplegado cdd;
+    private int ultimaSeleccion = 0;
+    private int[][] forma;
     private Tablero tablero;
     private ImageIcon ImagenAtaque;
     private ImageIcon ImagenMagia ;
@@ -44,18 +47,18 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
+        
     }
     
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
-            
         }
         else if(vb.getButtonLanzar()==e.getSource()){
+            
             vb.setGifDados(true);
             vb.GifDados.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/dados.gif"))); 
             System.out.println("Se ha lanzado el dado");
-            
         }
         else if (vb.getButtonParar()==e.getSource()){
             vb.getButtonLanzar().setVisible(false);
@@ -65,12 +68,24 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
-            ControladorDadoDesplegado cdd = new ControladorDadoDesplegado(this);
+            cdd = new ControladorDadoDesplegado(this);
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
             setTurno();
             vb.setJugadorActual(b.getOrdenJugadores().get(turnoActual));
             System.out.println(b.getOrdenJugadores().get(turnoActual));
+        }
+        else if (vb.getButtonAtacar()==e.getSource()){
+            this.ultimaSeleccion=1;
+        }
+        else if(vb.getButtonInvocar()==e.getSource()){
+            this.ultimaSeleccion=3;
+        }
+        else if(vb.getButtonMagia()==e.getSource()){
+            this.ultimaSeleccion=4;
+        }
+        else if(vb.getButtonTrampa()==e.getSource()){
+            this.ultimaSeleccion=5;
         }
         else{
             for (int i = 0 ; i<15 ; i++){
@@ -83,21 +98,48 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
     }
     public void mouseEntered(MouseEvent e){
-      
+        if (this.ultimaSeleccion==6){
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        vb.vistaPreviaEntrando(i,j,forma);
+                        System.out.println("Entrando a"+i+","+j);
+                    }
+                }
+            }
+        }
     }
     
     public void mouseReleased(MouseEvent e){
         
     }
     public void mouseClicked(MouseEvent e){
-        
+        if (this.ultimaSeleccion==6){
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        this.ultimaSeleccion=0;
+                        System.out.println("Click en"+i+","+j);
+                    }
+                }
+            }
+        }
     }
     
     public void mousePressed(MouseEvent e){
         
     }
     public void mouseExited(MouseEvent e){
-        
+        if (this.ultimaSeleccion==6){
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        vb.vistaPreviaSaliendo(i,j,forma);
+                        System.out.println("Saliendo de"+i+","+j);
+                    }
+                }
+            }
+        }
     }
     public void setTurno(){
         if (this.turnoActual<b.getJugadores().size()-1){
@@ -109,5 +151,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             this.turnoActual = 0;
             System.out.println("Nueva ronda");
         }
+    }
+    public void setForma(int[][] forma){
+        this.forma=forma;
+        System.out.println("asd");
+    }
+    public void setUltimoBoton(int i ){
+        this.ultimaSeleccion=i;
     }
 }

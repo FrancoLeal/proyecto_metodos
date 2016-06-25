@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 public class ControladorDadoDesplegado implements ActionListener{
     private VistaDado vd;
     private Dado dd;
-    private int[][] forma;
     private ControladorBatalla cb;
     
     public ControladorDadoDesplegado(ControladorBatalla cb){
@@ -22,10 +21,9 @@ public class ControladorDadoDesplegado implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(vd.getForma1()==e.getSource()){
-            this.forma=dd.getForma1();
+            vd.dispose();
+            this.cb.setForma(dd.getForma1());
+            this.cb.setUltimoBoton(6);
         }
-    }
-    public int[][] getForma(){
-        return this.forma;
     }
 }

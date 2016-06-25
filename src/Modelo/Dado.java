@@ -7,10 +7,10 @@ import Controlador.ControladorBatalla;
 //Declaraacion clase
 public class Dado {
     //Atributos
-    public int i;
-    public int j;
-    public int[][] forma1 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
-    public int[][] forma2 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
+    private int i;
+    private int j;
+    private int[][] forma1 = {{0,0},{0,1},{0,2},{1,1},{2,1},{3,1}};
+    private int[][] forma2 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
     String [] caras;
     //Constructor
     public Dado(){
