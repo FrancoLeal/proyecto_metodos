@@ -462,4 +462,24 @@ public class VistaBatalla extends javax.swing.JFrame {
         board[forma[4][0]+i][forma[4][1]+j].setIcon(null);
         board[forma[5][0]+i][forma[5][1]+j].setIcon(null);
     }
+    public void vistaPreviaEntrandoErrona(int i,int j,int[][] forma){
+        board[forma[0][0]+i][forma[0][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+        board[forma[1][0]+i][forma[1][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+        board[forma[2][0]+i][forma[2][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+        board[forma[3][0]+i][forma[3][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+        board[forma[4][0]+i][forma[4][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+        board[forma[5][0]+i][forma[5][1]+j].setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/invalido.png")));
+    }
+    public void vistaPreviaSaliendoErronea(int i,int j,int[][] forma){
+        board[forma[0][0]+i][forma[0][1]+j].setIcon(null);
+        board[forma[1][0]+i][forma[1][1]+j].setIcon(null);
+        board[forma[2][0]+i][forma[2][1]+j].setIcon(null);
+        board[forma[3][0]+i][forma[3][1]+j].setIcon(null);
+        board[forma[4][0]+i][forma[4][1]+j].setIcon(null);
+        board[forma[5][0]+i][forma[5][1]+j].setIcon(null);
+    }
+
+    public String getJugadorActual() {
+        return this.jugador.getText();
+    }
 }

@@ -104,6 +104,13 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         vb.vistaPreviaEntrando(i,j,forma);
                         System.out.println("Entrando a"+i+","+j);
+                        /*try{
+                            vb.vistaPreviaEntrando(i,j,forma);
+                            System.out.println("Entrando a"+i+","+j);
+                        }
+                        catch(ArrayIndexOutOfBoundsException excepcion){
+                            vb.vistaPreviaEntrandoErrona(i, j, forma);
+                        }*/
                     }
                 }
             }
@@ -118,8 +125,18 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        tablero.setDueño(i,j,forma,vb.getJugadorActual());
                         this.ultimaSeleccion=0;
                         System.out.println("Click en"+i+","+j);
+                    }
+                }
+            }
+        }
+        else if(this.ultimaSeleccion==3){
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        System.out.println(tablero.getDueño(i,j));
                     }
                 }
             }
@@ -136,6 +153,13 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         vb.vistaPreviaSaliendo(i,j,forma);
                         System.out.println("Saliendo de"+i+","+j);
+                        /*try{
+                            vb.vistaPreviaSaliendo(i,j,forma);
+                            System.out.println("Saliendo de"+i+","+j);
+                        }
+                        catch(ArrayIndexOutOfBoundsException excepcion){
+                            vb.vistaPreviaSaliendoErronea(i, j, forma);
+                        }*/
                     }
                 }
             }
