@@ -55,7 +55,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.dispose();
         }
         else if(vb.getButtonLanzar()==e.getSource()){
-            
             vb.setGifDados(true);
             vb.GifDados.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/dados.gif"))); 
             System.out.println("Se ha lanzado el dado");
@@ -102,15 +101,13 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
-                        vb.vistaPreviaEntrando(i,j,forma);
-                        System.out.println("Entrando a"+i+","+j);
-                        /*try{
+                        try{
                             vb.vistaPreviaEntrando(i,j,forma);
                             System.out.println("Entrando a"+i+","+j);
                         }
                         catch(ArrayIndexOutOfBoundsException excepcion){
-                            vb.vistaPreviaEntrandoErrona(i, j, forma);
-                        }*/
+                            System.out.println("No se puede desplegar aca");
+                        }
                     }
                 }
             }
@@ -125,18 +122,16 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
-                        tablero.setDueño(i,j,forma,vb.getJugadorActual());
-                        this.ultimaSeleccion=0;
-                        System.out.println("Click en"+i+","+j);
-                    }
-                }
-            }
-        }
-        else if(this.ultimaSeleccion==3){
-            for(int i = 0 ; i<15; i++){
-                for(int j = 0 ; j<15 ; j++){
-                    if(vb.getBoardVisible()[i][j]==e.getSource()){
-                        System.out.println(tablero.getDueño(i,j));
+                        try{
+                            tablero.setDueño(i,j,forma,vb.getJugadorActual());
+                            vb.vistaPreviaSaliendo(i,j,forma);
+                            vb.pintar(i,j,forma, b.getJugadores());
+                            vb.setCriatura(i,j, "C");
+                            this.ultimaSeleccion=0;
+                        }
+                        catch(ArrayIndexOutOfBoundsException ae){
+                            vb.errorIndex();
+                        }
                     }
                 }
             }
@@ -151,15 +146,13 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
-                        vb.vistaPreviaSaliendo(i,j,forma);
-                        System.out.println("Saliendo de"+i+","+j);
-                        /*try{
+                        try{
                             vb.vistaPreviaSaliendo(i,j,forma);
                             System.out.println("Saliendo de"+i+","+j);
                         }
                         catch(ArrayIndexOutOfBoundsException excepcion){
-                            vb.vistaPreviaSaliendoErronea(i, j, forma);
-                        }*/
+                            System.out.println("No se puede desplegar aca");
+                        }
                     }
                 }
             }

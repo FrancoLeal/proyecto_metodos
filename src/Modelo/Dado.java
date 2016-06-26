@@ -11,7 +11,7 @@ public class Dado {
     private int j;
     private int[][] forma1 = {{0,0},{0,1},{0,2},{1,1},{2,1},{3,1}};
     private int[][] forma2 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
-    String [] caras;
+    private String [] caras;
     //Constructor
     public Dado(){
         String[] a ={"MAGIA","ATAQUE","INVOCAR","MOVIMIENTO","MOVIMIENTO","TRAMPA"};       

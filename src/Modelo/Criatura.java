@@ -4,18 +4,18 @@ public class Criatura {
     
     private final String NOMBRE;
     private final String DUEÑO;
-    private final int ID;
+    //private final int ID;
     private final int HPTOTAL;
     private int HPActual;
     private final int ATK;
     private final int DEF;
     private final int LVL;
     
-    public Criatura(String NOMBRE, String DUEÑO, int ID, int HPTOTAL, int ATK, int DEF, int LVL){
+    public Criatura(String NOMBRE, String DUEÑO/*, int ID*/, int HPTOTAL, int ATK, int DEF, int LVL){
         
         this.NOMBRE = NOMBRE;
         this.DUEÑO = DUEÑO;
-        this.ID = ID;
+        //this.ID = ID;
         this.HPTOTAL = HPTOTAL;
         HPActual = HPTOTAL;
         this.ATK = ATK;
@@ -30,9 +30,9 @@ public class Criatura {
     public String getDueño(){
         return this.DUEÑO;
     }
-    public int getId(){
+    /*public int getId(){
         return this.ID;
-    }
+    }*/
     public int getHPTotal(){
         return this.HPTOTAL;
     }
