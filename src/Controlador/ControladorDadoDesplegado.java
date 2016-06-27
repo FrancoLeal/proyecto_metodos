@@ -25,5 +25,11 @@ public class ControladorDadoDesplegado implements ActionListener{
             this.cb.setForma(dd.getForma1());
             this.cb.setUltimoBoton(6);
         }
+        else if(vd.getForma2()==e.getSource()){
+            vd.dispose();
+            this.cb.setForma(dd.getForma2());
+            this.cb.setUltimoBoton(6);
+            System.out.println("Funciona");
+        }
     }
 }

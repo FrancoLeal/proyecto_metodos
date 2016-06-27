@@ -327,7 +327,7 @@ public class VistaBatalla extends javax.swing.JFrame {
         this.cambioTurno.addActionListener(al);
         this.atacar.addActionListener(al);
         this.mover.addActionListener(al);
-        this.desplegar.addActionListener(al);
+        this.invocar.addActionListener(al);
         this.trampa.addActionListener(al);
         this.magia.addActionListener(al);
         
@@ -395,7 +395,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
 
     public JButton getButtonInvocar() {
-        return desplegar;
+        return invocar;
     }
 
     public JButton getButtonMagia() {
@@ -411,14 +411,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
     public JButton getButtonCambioTurno(){
         return this.cambioTurno;
-    }
-    
-    public void setDadoDesplegado(int[][] forma){
-        for (int i = 0 ; i<15;i++){
-            for(int j = 0 ; j<15; j++){
-                   
-            }
-        }
     }
     public JButton[][] getBoardVisible(){
         return this.board;
@@ -449,7 +441,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
     public void setCriatura(int i , int j, String nombre){
         nombre = new String();
-        Font fuente = new Font("Calibri", 0, 10);
+        Font fuente = new Font("Calibri", 0, 5);
         board[i][j].setText(nombre);
         board[i][j].setFont(fuente);
     }

@@ -29,7 +29,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenTrampa;
     private ImageIcon ImagenInvocar;
     private ImageIcon GifDados;
-    Dado dado;
+    private Dado dado;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
@@ -67,7 +67,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
         }
         else if (vb.getButtonDesplegar()==e.getSource()){
-            cdd = new ControladorDadoDesplegado(this);
+                this.cdd = new ControladorDadoDesplegado(this);
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
             setTurno();
@@ -75,10 +75,10 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             System.out.println(b.getOrdenJugadores().get(turnoActual));
         }
         else if (vb.getButtonAtacar()==e.getSource()){
-            this.ultimaSeleccion=1;
+                this.ultimaSeleccion=1;
         }
         else if(vb.getButtonInvocar()==e.getSource()){
-            this.ultimaSeleccion=3;
+                this.ultimaSeleccion=3;
         }
         else if(vb.getButtonMagia()==e.getSource()){
             this.ultimaSeleccion=4;
@@ -128,6 +128,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                             vb.pintar(i,j,forma, b.getJugadores());
                             vb.setCriatura(i,j, "C");
                             this.ultimaSeleccion=0;
+                            vb.getButtonDesplegar().setEnabled(false);
                         }
                         catch(ArrayIndexOutOfBoundsException ae){
                             vb.errorIndex();
