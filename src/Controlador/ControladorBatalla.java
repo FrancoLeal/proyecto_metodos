@@ -65,7 +65,24 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             Dado dado1 = new Dado();
             String cara = dado1.resultado();
             vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
-        }
+            vb.getjLabel3().setText(cara);
+            if(cara=="ATAQUE"){
+                
+            }
+            else if(cara=="MAGIA"){
+                
+            }
+            else if(cara=="MOVIMIENTO"){
+                
+            }
+            else if (cara=="TRAMPA"){
+                
+            }
+            else if(cara=="INVOCAR"){
+                
+            }
+            }
+        
         else if (vb.getButtonDesplegar()==e.getSource()){
             cdd = new ControladorDadoDesplegado(this);
         }

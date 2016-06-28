@@ -41,6 +41,7 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
       
       try{
          if(stmt!=null)
+             System.out.println("CERRANDO BDD");
             conn.close();
       }catch(SQLException se){
       }

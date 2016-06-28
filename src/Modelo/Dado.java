@@ -25,5 +25,5 @@ public class Dado {
     public int[][] getForma1(){
         return this.forma1;
     }
-    
+   
 }
