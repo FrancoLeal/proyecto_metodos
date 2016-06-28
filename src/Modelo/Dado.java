@@ -10,7 +10,7 @@ public class Dado {
     private int i;
     private int j;
     private int[][] forma1 = {{0,0},{0,1},{0,2},{1,1},{2,1},{3,1}};
-    private int[][] forma2 = {{0,0},{0,1},{0,2},{1,1},{1,2},{1,3}};
+    private int[][] forma2 = {{0,0},{0,1},{1,1},{2,1},{3,1},{3,2}};
     private String [] caras;
     //Constructor
     public Dado(){
@@ -25,5 +25,7 @@ public class Dado {
     public int[][] getForma1(){
         return this.forma1;
     }
-   
+    public int[][] getForma2(){
+        return this.forma2;
+    }
 }

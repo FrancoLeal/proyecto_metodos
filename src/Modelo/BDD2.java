@@ -23,9 +23,9 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
       Class.forName("com.mysql.jdbc.Driver");
 
       
-      System.out.println("Conectando a BDD");
+     
       conn = DriverManager.getConnection(URL_BDD);
-      System.out.println("Conectado a BDD");
+ 
       
      
       System.out.println("POBLANDO BDD");

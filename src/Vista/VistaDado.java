@@ -31,11 +31,14 @@ public class VistaDado extends javax.swing.JFrame {
     private void initComponents() {
 
         forma1 = new javax.swing.JButton();
+        forma2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
 
         forma1.setText("Elegir!");
+
+        forma2.setText("Elegir!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,13 +47,17 @@ public class VistaDado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(forma1)
-                .addContainerGap(659, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addComponent(forma2)
+                .addContainerGap(537, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(347, Short.MAX_VALUE)
-                .addComponent(forma1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(forma1)
+                    .addComponent(forma2))
                 .addGap(38, 38, 38))
         );
 
@@ -94,11 +101,16 @@ public class VistaDado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton forma1;
+    private javax.swing.JButton forma2;
     // End of variables declaration//GEN-END:variables
     public void agregarListener(ActionListener al){
+        this.forma2.addActionListener(al);
         this.forma1.addActionListener(al);
     }
     public JButton getForma1(){
         return this.forma1;
+    }
+    public JButton getForma2(){
+        return this.forma2;
     }
 }
