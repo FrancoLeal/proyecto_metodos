@@ -6,10 +6,7 @@
 package Modelo;
 
 import java.sql.*;
-/**
- *
- * @author Cristian Echegoyen H
- */
+
 public class BDD2 {
 static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;password=juegos";
 
@@ -17,7 +14,7 @@ static final String URL_BDD = "jdbc:derby://localhost:1527/BDD;user=Grupo1;passw
  public static void main(String[] args) {
    Connection conn = null;
    Statement stmt = null;
-   //If boton ingresar o registrarse :
+  
    try{
       
       Class.forName("com.mysql.jdbc.Driver");
