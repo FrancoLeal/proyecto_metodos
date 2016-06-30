@@ -151,4 +151,25 @@ public class VistaRegistro extends javax.swing.JFrame {
         this.Atras.addActionListener(al);
         this.Registrarse.addActionListener(al);
     }
+
+    public JPasswordField getjPasswordField1() {
+        return jPasswordField1;
+    }
+
+    public JPasswordField getjPasswordField2() {
+        return jPasswordField2;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public JButton getRegistrarse() {
+        return Registrarse;
+    }
+    
 }

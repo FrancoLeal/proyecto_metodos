@@ -1,6 +1,7 @@
 package BDD;
 
 import java.sql.*;
+import Controlador.ControladorRegistro;
 
 public class Usuario {
     private String nombre;
@@ -50,7 +51,7 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "insert into USUARIOS (USUARIO,PASSWORD,FIELD_BOSS) values" + "('" + this.nombre + "','" + this.password + "'," + this.jefeTerreno + ")";
+        final String consulta = "insert into JUGADOR (NOMBRE_JUGADOR,CONTRASENIA_JUGADOR) values" + "('" + this.nombre + "','" + this.password + ")";
         stmt.executeUpdate(consulta);
     }
     
@@ -58,7 +59,7 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "SELECT USUARIO,PASSWORD FROM USUARIOS WHERE USUARIO = '" + nombre +"' AND PASSWORD='" + password2 +"' AND IS_CPU=FALSE";        
+        final String consulta = "SELECT NOMBRE_JUGADOR,CONTRASENIA_JUGADOR FROM JUGADOR WHERE NOMBRE_JUGADOR = '" + nombre +"' AND CONTRASENIA_JUGADOR='" + password2 +"";        
         
         ResultSet resultados;
         resultados = stmt.executeQuery(consulta);
@@ -66,8 +67,8 @@ public class Usuario {
         
         
         if (resultados.next()==true) {
-            String nombre2 = resultados.getString("USUARIO");
-            String password = resultados.getString("PASSWORD");
+            String nombre2 = resultados.getString("NOMBRE_JUGADOR");
+            String password = resultados.getString("CONTRASENIA_JUGADOR");
             return new Usuario(nombre2, password);
         }
         else {

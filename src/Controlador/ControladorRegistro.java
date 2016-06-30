@@ -25,4 +25,12 @@ public class ControladorRegistro implements ActionListener{
             
         }
     }
+ //OBTENER LO INGRESADO POR EL USUARIO EN LA VENTANA REGISTRO 
+ String nombreUsuario = vr.jTextField1.getText();
+ String nickname = vr.jTextField2.getText();
+ String password = vr.jPasswordField1.getText();
+ String verificarPass= vr.jPasswordField2.getText();
+   // GETTER EN VISTA???
+ 
+    
 }
