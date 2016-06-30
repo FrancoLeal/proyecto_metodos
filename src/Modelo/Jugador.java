@@ -8,8 +8,10 @@ public class Jugador {
     private int trampa;
     private int ataque;
     private int mover;
-    public Jugador(String nombre/*, PuzzleDeDados puzzle*/){
+    private String jefe;
+    public Jugador(String nombre, String jefe/*, PuzzleDeDados puzzle*/){
         this.nombre = nombre;
+        this.jefe = jefe;
         //this.puzzle = puzzle;
     }
     public void setInvocacion(int invocacion){
@@ -53,5 +55,8 @@ public class Jugador {
 
     public int getMover() {
         return mover;
+    }
+    public String getJefe(){
+        return this.jefe;
     }
 }

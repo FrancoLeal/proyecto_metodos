@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class VistaBatalla extends javax.swing.JFrame {
     public VistaBatalla() {
         initComponents();
+        color.setOpaque(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -44,6 +45,7 @@ public class VistaBatalla extends javax.swing.JFrame {
         jugador = new javax.swing.JLabel();
         desplegar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        color = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,9 +84,11 @@ public class VistaBatalla extends javax.swing.JFrame {
         );
 
         tablero.setLayout(new java.awt.GridLayout(15,15));
+        Font fuente = new Font("Calibri", Font.BOLD , 11);
         for (int i = 0 ; i<15 ; i++){
             for (int j = 0 ; j<15 ; j++){
                 board[i][j]= new JButton();
+                board[i][j].setFont(fuente);
                 tablero.add(board[i][j]);
                 board[i][j].setBackground(Color.white);
             }
@@ -142,22 +146,39 @@ public class VistaBatalla extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Lanzar)
+                            .addComponent(Parar))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(GifDados, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(123, 123, 123)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dado3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 194, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(desplegar, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(43, 43, 43))
-                                    .addComponent(desplegar, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(409, 409, 409)
+                                        .addGap(62, 62, 62)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(38, 38, 38)
@@ -177,7 +198,7 @@ public class VistaBatalla extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(ptosMag, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(410, 410, 410)
+                                        .addGap(63, 63, 63)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(trampa)
@@ -188,41 +209,59 @@ public class VistaBatalla extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(ptosMov, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(cambioTurno))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Lanzar)
-                            .addComponent(Parar))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(GifDados, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(123, 123, 123)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dado1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dado3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(16, 16, 16)
+                                .addComponent(color, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)))))
                 .addGap(18, 18, 18)
                 .addComponent(dado4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(desplegar)
-                        .addGap(32, 32, 32)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(desplegar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(color, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Atras)
+                                        .addGap(20, 20, 20)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(atacar)
+                                    .addComponent(ptosAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(mover)
+                                    .addComponent(ptosMov))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(invocar)
+                                    .addComponent(ptosInvocar))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(magia)
+                                    .addComponent(ptosMag))
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(trampa)
+                                    .addComponent(ptosTrap))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cambioTurno)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Lanzar)
@@ -234,37 +273,7 @@ public class VistaBatalla extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dado1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dado2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(Atras)
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(atacar)
-                    .addComponent(ptosAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(mover)
-                    .addComponent(ptosMov))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(invocar)
-                    .addComponent(ptosInvocar))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(magia)
-                    .addComponent(ptosMag))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(trampa)
-                    .addComponent(ptosTrap))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cambioTurno)
-                .addGap(219, 528, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -298,6 +307,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public javax.swing.JButton Parar;
     private javax.swing.JButton atacar;
     private javax.swing.JButton cambioTurno;
+    private javax.swing.JLabel color;
     private javax.swing.JLabel dado1;
     private javax.swing.JLabel dado2;
     private javax.swing.JLabel dado3;
@@ -430,34 +440,58 @@ public class VistaBatalla extends javax.swing.JFrame {
         return this.board;
     }
 
-    public void setPtosAtk(String ptosAtk) {
-        this.ptosAtk.setText(ptosAtk);
+    public void setPtosAtk(int ptosAtk) {
+        int i = ptosAtk+Integer.parseInt(this.ptosAtk.getText());
+        this.ptosAtk.setText(Integer.toString(i));
     }
 
-    public void setPtosInvocar(String ptosInvocar) {
-        this.ptosInvocar.setText(ptosInvocar);
+    public void setPtosInvocar(int ptosInvocar) {
+        int i = ptosInvocar+Integer.parseInt(this.ptosInvocar.getText());
+        this.ptosInvocar.setText(Integer.toString(i));
     }
 
-    public void setPtosMag(String ptosMag) {
-        this.ptosMag.setText(ptosMag);
+    public void setPtosMag(int ptosMag) {
+        int i = ptosMag+Integer.parseInt(this.ptosMag.getText());
+        this.ptosMag.setText(Integer.toString(i));
     }
 
-    public void setPtosMov(String ptosMov) {
-        this.ptosMov.setText(ptosMov);
+    public void setPtosMov(int ptosMov) {
+        int i = ptosMov+Integer.parseInt(this.ptosMov.getText());
+        this.ptosMov.setText(Integer.toString(i));
     }
 
-    public void setPtosTrap(String ptosTrap) {
-        this.ptosTrap.setText(ptosTrap);
+    public void setPtosTrap(int ptosTrap) {
+        int i = ptosTrap+Integer.parseInt(this.ptosTrap.getText());
+        this.ptosTrap.setText(Integer.toString(i));
+    }
+
+    public int getPtosAtk() {
+        return Integer.parseInt(this.ptosAtk.getText());
+    }
+
+    public int getPtosInvocar() {
+        return Integer.parseInt(this.ptosInvocar.getText());
+    }
+
+    public int getPtosMag() {
+        return Integer.parseInt(this.ptosMag.getText());
+    }
+
+    public int getPtosMov() {
+        return Integer.parseInt(this.ptosMov.getText());
+    }
+
+    public int getPtosTrap() {
+        return Integer.parseInt(this.ptosTrap.getText());
     }
     
     public void setJugadorActual(String nombre){
         this.jugador.setText(nombre);
     }
     public void setCriatura(int i , int j, String nombre){
-        nombre = new String();
-        Font fuente = new Font("Calibri", 0, 5);
-        board[i][j].setText(nombre);
+        Font fuente = new Font("Calibri", Font.BOLD , 10);
         board[i][j].setFont(fuente);
+        board[i][j].setText(nombre);
     }
     public void pintar(int i,int j,int[][] forma, ArrayList<String> jugadores){
         if(jugadores.get(0).equals(getJugadorActual())){
@@ -486,7 +520,7 @@ public class VistaBatalla extends javax.swing.JFrame {
             board[forma[5][0]+i][forma[5][1]+j].setBackground(Color.green);
         }
         else if(jugadores.get(3).equals(getJugadorActual())){
-            board[forma[0][0]+i][forma[0][1]+j].setBackground(Color.yellow);
+                board[forma[0][0]+i][forma[0][1]+j].setBackground(Color.yellow);
                 board[forma[1][0]+i][forma[1][1]+j].setBackground(Color.yellow);
                 board[forma[2][0]+i][forma[2][1]+j].setBackground(Color.yellow);
                 board[forma[3][0]+i][forma[3][1]+j].setBackground(Color.yellow);
@@ -532,5 +566,55 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
     public void setJugadores(ArrayList<String> jugadores){
         this.jugadores=jugadores;
+    }
+    public void setJefesDeTerreno(ArrayList<String> jugadores, ArrayList<String> nombreJefe){
+        switch(jugadores.size()){
+            case 2:
+                board[0][7].setBackground(Color.red);
+                board[0][7].setText(nombreJefe.get(0));
+                board[0][7].setBackground(Color.blue);
+                board[0][7].setText(nombreJefe.get(1));
+            case 3:
+                board[0][7].setBackground(Color.red);
+                board[0][7].setText(nombreJefe.get(0));
+                board[14][7].setBackground(Color.blue);
+                board[14][7].setText(nombreJefe.get(1));
+                board[7][0].setBackground(Color.green);
+                board[7][0].setText(nombreJefe.get(2));
+            case 4:
+                board[0][7].setBackground(Color.red);
+                board[0][7].setText(nombreJefe.get(0));
+                board[14][7].setBackground(Color.blue);
+                board[14][7].setText(nombreJefe.get(1));
+                board[7][0].setBackground(Color.green);
+                board[7][0].setText(nombreJefe.get(2));
+                board[7][14].setBackground(Color.yellow);
+                board[7][14].setText(nombreJefe.get(3));
+                System.out.println(board[0][7].getFont());
+        }
+    }
+    public void sinPuntos(){
+        JOptionPane.showMessageDialog(null, "No tienes puntos suficientes", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void pintarTurno(ArrayList<String> jugadores){
+        System.out.println("Pintando");
+        if(jugadores.get(0).equals(getJugadorActual())){
+            color.setBackground(Color.red);
+        } 
+        else if (jugadores.get(1).equals(getJugadorActual())) {
+            color.setBackground(Color.blue);
+        }
+        else if(jugadores.get(2).equals(getJugadorActual())){
+            color.setBackground(Color.green);
+        }
+        else if(jugadores.get(3).equals(getJugadorActual())){
+            color.setBackground(Color.yellow);
+        }
+    }
+    public void sinCriatura(){
+        JOptionPane.showMessageDialog(null, "Esta casilla esta vacía", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void movimientoInvalido(){
+        JOptionPane.showMessageDialog(null, "No puedes moverte aqui", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
 }
