@@ -8,9 +8,10 @@ public class Usuario {
     private String password;
     private int jefeTerreno;
     
-    public Usuario(String nombre, String password){
+    public Usuario(String nombre, String password) throws SQLException{
         this.nombre = nombre;
         this.password = password;
+        save();
     }
     
     public Usuario(String nombre, String password, int jefeTerreno){
@@ -75,5 +76,6 @@ public class Usuario {
             System.out.println("No Existe");
             return null;
         }
+        
     }
 }
