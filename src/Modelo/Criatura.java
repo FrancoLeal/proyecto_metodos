@@ -3,7 +3,7 @@ package Modelo;
 public class Criatura {
     
     private final String NOMBRE;
-    private final String DUEÑO;
+    private String DUEÑO;
     //private final int ID;
     private final int HPTOTAL;
     private int HPActual;
@@ -50,11 +50,17 @@ public class Criatura {
     }
     public int recibirDaño(int daño){
         if(daño<HPActual){
-            HPActual -= daño;
+            if(daño>DEF){
+                HPActual -= daño;
+                System.out.println("Recibe "+Integer.toString(daño)+"de daño");
+            }
         }
         else{
             HPActual = 0;
         }
         return HPActual;
+    }
+    public void setDueño(String dueño){
+        this.DUEÑO=dueño;
     }
 }

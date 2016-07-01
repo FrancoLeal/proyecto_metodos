@@ -15,8 +15,6 @@ public class Dado {
     private Criatura criatura;
     //Constructor
     public Dado(Criatura criatura){
-        String[] a ={"MAGIA","ATAQUE","INVOCAR","MOVIMIENTO","MOVIMIENTO","TRAMPA"};       
-        this.caras = a;
         this.criatura=criatura;
     }
     //Métodos
@@ -32,5 +30,8 @@ public class Dado {
     }
     public Criatura getCriatura(){
         return this.criatura;
+    }
+    public void setCaras(String[] caras){
+        this.caras=caras;
     }
 }

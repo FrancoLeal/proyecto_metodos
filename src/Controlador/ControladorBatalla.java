@@ -7,12 +7,14 @@ import Modelo.Casilla;
 import Modelo.Criatura;
 import Modelo.Tablero;
 import Modelo.Jugador;
+import Modelo.PuzzleDeDados;
 import Vista.VistaBatalla;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.ImageIcon;
 //Definicion clase
 public class ControladorBatalla extends MouseAdapter implements ActionListener {
@@ -25,13 +27,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private int ultimaSeleccion = 0;
     private int[][] forma;
     private Tablero tablero;
-    private ImageIcon ImagenAtaque;
-    private ImageIcon ImagenMagia ;
-    private ImageIcon ImagenMovimiento;
-    private ImageIcon ImagenTrampa;
-    private ImageIcon ImagenInvocar;
-    private ImageIcon GifDados;
-    private Dado dado1;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
@@ -57,26 +52,55 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.dispose();
         }
         else if (vb.getButtonLanzar()==e.getSource()){
-            System.out.println("Se ha lanzado el dado");
-            vb.getGifDados().setVisible(false);
-            this.dado1 = new Dado(new Criatura("C", vb.getJugadorActual(), 100, 10, 10, 0));
-            String cara = dado1.resultado();
-            vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
-            vb.getjLabel3().setText(cara);
-            if(cara=="ATAQUE"){
-                vb.setPtosAtk(1);
+            PuzzleDeDados puzzle = b.getOrdenJugadores().get(turnoActual).getPuzzle();
+            Random r = new Random();
+            if(!vb.getNumeroDeDados().getText().equals("")){
+                ArrayList<Dado> dados = b.generarDados(puzzle,Integer.parseInt(vb.getNumeroDeDados().getText()));
+                if(dados.size()==1){
+                    String i1 = dados.get(0).resultado();
+                    vb.setPuntos(i1);
+                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
+                    vb.setDados(icon1);
+                }
+                else if(dados.size()==2){
+                    String i1 = dados.get(r.nextInt(1)).resultado();
+                    vb.setPuntos(i1);
+                    String i2 = dados.get(r.nextInt(1)).resultado();
+                    vb.setPuntos(i2);
+                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
+                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
+                    vb.setDados(icon1, icon2);
+                }
+                else if(dados.size()==3){
+                    String i1 = dados.get(r.nextInt(2)).resultado();
+                    vb.setPuntos(i1);
+                    String i2 = dados.get(r.nextInt(2)).resultado();
+                    vb.setPuntos(i2);
+                    String i3 = dados.get(r.nextInt(2)).resultado();
+                    vb.setPuntos(i3);
+                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
+                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
+                    ImageIcon icon3 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i3+".png"));
+                    vb.setDados(icon1, icon2,icon3);
+                }
+                else if(dados.size()==4){
+                    String i1 = dados.get(r.nextInt(3)).resultado();
+                    vb.setPuntos(i1);
+                    String i2 = dados.get(r.nextInt(3)).resultado();
+                    vb.setPuntos(i2);
+                    String i3 = dados.get(r.nextInt(3)).resultado();
+                    vb.setPuntos(i3);
+                    String i4 = dados.get(r.nextInt(3)).resultado();
+                    vb.setPuntos(i4);
+                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
+                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
+                    ImageIcon icon3 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i3+".png"));
+                    ImageIcon icon4 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i4+".png"));
+                    vb.setDados(icon1, icon2,icon3, icon4);
+                }
             }
-            else if(cara=="MAGIA"){
-                vb.setPtosMag(1);
-            }
-            else if(cara=="MOVIMIENTO"){
-                vb.setPtosMov(1);
-            }
-            else if (cara=="TRAMPA"){
-                vb.setPtosTrap(1);
-            }
-            else if(cara=="INVOCAR"){
-                vb.setPtosInvocar(1);
+            else{
+                vb.ingresarCantidadDados();
             }
         }
         
@@ -106,16 +130,28 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.setPtosInvocarInic(b.getOrdenJugadores().get(turnoActual).getInvocacion());
         }
         else if (vb.getButtonAtacar()==e.getSource()){
-            this.ultimaSeleccion=1;
-        }
-        else if(vb.getButtonInvocar()==e.getSource()){
-            this.ultimaSeleccion=3;
+            if(vb.getPtosAtk()!=0){
+                this.ultimaSeleccion=1;
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if(vb.getButtonMagia()==e.getSource()){
-            this.ultimaSeleccion=4;
+            if(vb.getPtosInvocar()!=0){
+                this.ultimaSeleccion=4;
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if(vb.getButtonTrampa()==e.getSource()){
-            this.ultimaSeleccion=5;
+            if(vb.getPtosTrap()!=0){
+                this.ultimaSeleccion=5;
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if (vb.getButtonMover()==e.getSource()){
             if(vb.getPtosMov()!=0){
@@ -136,13 +172,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
     }
     public void mouseEntered(MouseEvent e){
-        if (this.ultimaSeleccion==6){
+        if (this.ultimaSeleccion==3){
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
                             vb.vistaPreviaEntrando(i,j,forma);
-                            System.out.println("Entrando a"+i+","+j);
                         }
                         catch(ArrayIndexOutOfBoundsException excepcion){
                             System.out.println("No se puede desplegar aca");
@@ -158,6 +193,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     int x = 0;
     int y = 0;
+    int x2=0;
+    int y2=0;
     public void mouseClicked(MouseEvent e){
         for(int i = 0 ; i<15; i++){
             for(int j = 0 ; j<15 ; j++){
@@ -173,20 +210,22 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 }
             }
         }
-        if (this.ultimaSeleccion==6){
+        if (this.ultimaSeleccion==3){
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
                             if(tablero.comprobar(i,j,forma,vb.getJugadorActual())){
-                            tablero.setDueño(i,j,forma,vb.getJugadorActual());
-                            vb.vistaPreviaSaliendo(i,j,forma);
-                            vb.pintar(i,j,forma, cbg.getJugadores());
-                            vb.setCriatura(i,j, "C");
-                            tablero.getBoardModelo()[i][j].setCriatura(this.dado1.getCriatura());
-                            this.ultimaSeleccion=0;
-                            vb.getButtonInvocar().setEnabled(false);
-                            vb.setPtosInvocar(-1);
+                                tablero.setDueño(i,j,forma,vb.getJugadorActual());
+                                vb.vistaPreviaSaliendo(i,j,forma);
+                                vb.pintar(i,j,forma, cbg.getJugadores());
+                                vb.setCriatura(i,j, "C");
+                                Criatura c = b.getOrdenJugadores().get(turnoActual).getPuzzle().getDados().get(0).getCriatura();
+                                c.setDueño(b.getOrdenJugadores().get(turnoActual).getNombre());
+                                tablero.getBoardModelo()[i][j].setCriatura(c);
+                                this.ultimaSeleccion=0;
+                                vb.getButtonInvocar().setEnabled(false);
+                                vb.setPtosInvocar(-1);
                             }
                         }
                         catch(ArrayIndexOutOfBoundsException ae){
@@ -198,30 +237,30 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             }
         }
         else if(this.ultimaSeleccion==2){
-                for(int i = 0 ; i<15; i++){
-                    for(int j = 0 ; j<15 ; j++){
-                        if(vb.getBoardVisible()[i][j]==e.getSource()){
-                                if(!tablero.getBoardModelo()[i][j].isJefe()){
-                                    System.out.println("funciono!!!");
-                                    this.ultimaSeleccion=7;
-                                    x=i;
-                                    y=j;
-                                }
-                                else{
-                                    vb.errorJefe();
-                                }
-                                /*else{
-                                    vb.sinCriatura();
-                                }*/
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        if(!tablero.getBoardModelo()[i][j].isJefe()){
+                            if(tablero.getBoardModelo()[i][j].isCriatura()){
+                                this.ultimaSeleccion=7;
+                                x=i;
+                                y=j;
+                            }
+                            else{
+                                vb.sinCriatura();
+                            }
+                        }
+                        else{
+                            vb.errorJefe();
                         }
                     }
                 }
+            }
         }
         else if(this.ultimaSeleccion==7){
             try{
                 if(vb.getBoardVisible()[x+1][y]==e.getSource()){
                     if(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
-                        System.out.println(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno());
                         if(!tablero.getBoardModelo()[x+1][y].getDueño().equals("")){
                             vb.getBoardVisible()[x+1][y].setText(vb.getBoardVisible()[x][y].getText());
                             vb.getBoardVisible()[x][y].setText(null);
@@ -241,7 +280,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         if(tablero.getBoardModelo()[x-1][y].getCriatura()==null && tablero.getBoardModelo()[x-1][y].getJefeDeTerreno()==null){
                             if(!tablero.getBoardModelo()[x-1][y].getDueño().equals("")){
                                 vb.getBoardVisible()[x-1][y].setText(vb.getBoardVisible()[x][y].getText());
-                                System.out.println(vb.getBoardVisible()[x][y].getText());
                                 vb.getBoardVisible()[x][y].setText(null);
                                 vb.setPtosMov(-1);
                                 tablero.getBoardModelo()[x-1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
@@ -296,19 +334,102 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             catch(ArrayIndexOutOfBoundsException ae){
             }
         }
+        else if(this.ultimaSeleccion==1){
+            for(int i = 0 ; i<15; i++){
+                for(int j = 0 ; j<15 ; j++){
+                    if(vb.getBoardVisible()[i][j]==e.getSource()){
+                        if(tablero.getBoardModelo()[i][j].isCriatura()){
+                            this.ultimaSeleccion=8;
+                            System.out.println(this.ultimaSeleccion);
+                            x2=i;
+                            y2=j;
+                        }
+                    }
+                }
+            }
+        }
+        else if(this.ultimaSeleccion==8){
+            try{
+                if(vb.getBoardVisible()[x2+1][y2]==e.getSource()/*&&tablero.getBoardModelo()[x2+1][y2].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                    if(tablero.getBoardModelo()[x2+1][y2].isJefe()){
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2+1][y2].getJefeDeTerreno().setVida(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else if(tablero.getBoardModelo()[x2+1][y2].isCriatura()){
+                        System.out.println("si1");
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2+1][y2].getCriatura().recibirDaño(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else{
+                        vb.ataqueInvalido();
+                    }
+                }
+                else if(vb.getBoardVisible()[x2-1][y2]==e.getSource()){
+                    if(tablero.getBoardModelo()[x2-1][y2].isJefe()/*&&tablero.getBoardModelo()[x2-1][y2].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2-11][y2].getJefeDeTerreno().setVida(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else if(tablero.getBoardModelo()[x2-1][y2].isCriatura()){
+                        System.out.println("si2");
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2-1][y2].getCriatura().recibirDaño(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else{
+                        vb.ataqueInvalido();
+                    }
+                }
+                else if(vb.getBoardVisible()[x2][y2+1]==e.getSource()){
+                    if(tablero.getBoardModelo()[x2][y2+1].isJefe()/*&&tablero.getBoardModelo()[x2][y2+1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2][y2+1].getJefeDeTerreno().setVida(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else if(tablero.getBoardModelo()[x2][y2+1].isCriatura()){
+                        System.out.println("si3");
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2][y2+1].getCriatura().recibirDaño(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else{
+                        vb.ataqueInvalido();
+                    }
+                }
+                else if(vb.getBoardVisible()[x2][y2-1]==e.getSource()){
+                     if(tablero.getBoardModelo()[x2][y2-1].isJefe()/*&&tablero.getBoardModelo()[x2][y2-1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2][y2-1].getJefeDeTerreno().setVida(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else if(tablero.getBoardModelo()[x2][y2-1].isCriatura()){
+                        System.out.println("si4");
+                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x2][y2-1].getCriatura().recibirDaño(daño);
+                        this.ultimaSeleccion=0;
+                    }
+                    else{
+                        vb.ataqueInvalido();
+                    }
+                }
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+        }
     }
     
     public void mousePressed(MouseEvent e){
         
     }
     public void mouseExited(MouseEvent e){
-        if (this.ultimaSeleccion==6){
+        if (this.ultimaSeleccion==3){
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
                             vb.vistaPreviaSaliendo(i,j,forma);
-                            System.out.println("Saliendo de"+i+","+j);
                         }
                         catch(ArrayIndexOutOfBoundsException excepcion){
                             System.out.println("No se puede desplegar aca");
