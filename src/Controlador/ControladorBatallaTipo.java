@@ -22,17 +22,21 @@ public class ControladorBatallaTipo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){
         if(vbt.getButtonAtrás()==e.getSource()){
+            String vueltaAtras = "El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha vuelto atrás. ";
+            ControladorPrincipal.registrarAccion(vueltaAtras);
             vbt.dispose();
             cvp.setVista(true);
         }
         else if(vbt.getButtonPorEquipos()==e.getSource()){
-            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha seleccionado \"Batalla por Equipos.\"");
+            String batallaEquipos = "El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha seleccionado \"Batalla por Equipos.\"";
+            ControladorPrincipal.registrarAccion(batallaEquipos);
             batallaPorEquipos = true;
             vbt.setVisible(false);
             ControladorBatallaConfiguracion cbc = new ControladorBatallaConfiguracion(this);
         }
         else if(vbt.getButtonTodosVsTodos()==e.getSource()){
-            System.out.println("El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha seleccionado \"Batalla Todos contra Todos.\"");
+            String batallaTodos = "El usuario "+Controlador.ControladorLogin.usuarioActivo+" ha seleccionado \"Batalla Todos contra Todos.\"";
+            ControladorPrincipal.registrarAccion(batallaTodos);
             batallaPorEquipos = false;
             vbt.setVisible(false);
             ControladorBatallaConfiguracion cbc = new ControladorBatallaConfiguracion(this);
