@@ -59,13 +59,13 @@ public class ControladorBatallaConfiguracion implements ActionListener {
             ControladorPrincipal.registrarAccion(inicioJ4);
         }
         else if(vbc.getButtonComenzarBatalla()==e.getSource()){
-            String seleccionJ1 = "Jugador 1: "+Controlador.ControladorLogin.usuarioActivo+"; Equipo: "+vbc.getJugador1Equipo();
+            String seleccionJ1 = "Configuración Jugador 1: "+Controlador.ControladorLogin.usuarioActivo+"; Equipo: "+vbc.getJugador1Equipo();
             ControladorPrincipal.registrarAccion(seleccionJ1);
-            String seleccionJ2 = "Jugador 2: "+vbc.getSeleccionJugador2()+"; Equipo: "+vbc.getJugador2Equipo();
+            String seleccionJ2 = "Configuración Jugador 2: "+vbc.getSeleccionJugador2()+"; Equipo: "+vbc.getJugador2Equipo();
             ControladorPrincipal.registrarAccion(seleccionJ2);
-            String seleccionJ3 = "Jugador 3: "+vbc.getSeleccionJugador3()+"; Equipo: "+vbc.getJugador3Equipo();
+            String seleccionJ3 = "Configuración Jugador 3: "+vbc.getSeleccionJugador3()+"; Equipo: "+vbc.getJugador3Equipo();
             ControladorPrincipal.registrarAccion(seleccionJ3);
-            String seleccionJ4 = "Jugador 4: "+vbc.getSeleccionJugador4()+"; Equipo: "+vbc.getJugador4Equipo();
+            String seleccionJ4 = "Configuración Jugador 4: "+vbc.getSeleccionJugador4()+"; Equipo: "+vbc.getJugador4Equipo();
             ControladorPrincipal.registrarAccion(seleccionJ4);
             String batalla = "Dando comienzo a la batalla...";
             ControladorPrincipal.registrarAccion(batalla);

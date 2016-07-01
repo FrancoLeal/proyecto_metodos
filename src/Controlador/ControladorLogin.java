@@ -1,5 +1,6 @@
 package Controlador;
 //Importación de clases
+import BDD.Usuario;
 import Modelo.Login;
 import Modelo.Registro;
 import Vista.VistaLogin;
@@ -8,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 //Definición de la clase
 public class ControladorLogin implements ActionListener,KeyListener {
     //Atributos
@@ -18,9 +23,7 @@ public class ControladorLogin implements ActionListener,KeyListener {
             vl = new VistaLogin();
             vl.setVisible(true);
             vl.setLocationRelativeTo(null);
-            lg = new Login("franco", "juegos");
-            lg.getUsuario();
-            lg.getPassword();
+            
             vl.agregarListener(this);
             vl.agregarKeyListener(this);
     }
@@ -28,26 +31,40 @@ public class ControladorLogin implements ActionListener,KeyListener {
             if(vl.getButtonIngresar()==e.getSource()){
                 String usuario = vl.getUsuarioVista();
                 String password = vl.getPasswordVista();
-                if (lg.existeUsuario(usuario)){
-                    if(lg.verificarDatos(usuario,password)){
-                        usuarioActivo = usuario;
-                        String inicioSesion = "El usuario "+usuarioActivo+" ha iniciado sesión.";
-                        ControladorPrincipal.registrarAccion(inicioSesion);
-                        vl.dispose();
-                        ControladorVistaPrincipal cvp = new ControladorVistaPrincipal();
+                try {
+                    Usuario comprobadorUsuario = Usuario.obtener(usuario, password);
+                    if(comprobadorUsuario!=null){
+                        lg = new Login(comprobadorUsuario.getNombre(),comprobadorUsuario.getPassword());
+                        if (lg.existeUsuario(usuario)){
+                            if(lg.verificarDatos(usuario,password)){
+                                usuarioActivo = usuario;
+                                String inicioSesion = "El usuario "+usuarioActivo+" ha iniciado sesión.";
+                                ControladorPrincipal.registrarAccion(inicioSesion);
+                                vl.dispose();
+                                ControladorVistaPrincipal cvp = new ControladorVistaPrincipal();
+                            }
+                            else{
+                                String inicioSesionFallidaPass = "Inicio de sesión fallida: Usuario "+usuario+"; Contraseña incorrecta.";
+                                ControladorPrincipal.registrarAccion(inicioSesionFallidaPass);
+                                vl.contrasenaIncorrecta();
+                            }
+                    
+                        }
+                        else{
+                            String inicioSesionFallidaUser = "Inicio de sesión fallida: Usuario "+usuario+" no existe.";
+                            ControladorPrincipal.registrarAccion(inicioSesionFallidaUser);
+                            vl.usuarioInexistente(usuario);
+                        }
                     }
                     else{
-                        String inicioSesionFallidaPass = "Inicio de sesión fallida: Usuario "+usuario+"; Contraseña incorrecta.";
-                        ControladorPrincipal.registrarAccion(inicioSesionFallidaPass);
-                        vl.contrasenaIncorrecta();
+                        String inicioSesionFallidaUser = "Inicio de sesión fallida: Usuario "+usuario+" no existe.";
+                        ControladorPrincipal.registrarAccion(inicioSesionFallidaUser);
+                        vl.usuarioInexistente(usuario);
                     }
-                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                else{
-                    String inicioSesionFallidaUser = "Inicio de sesión fallida: Usuario "+usuario+" no existe.";
-                    ControladorPrincipal.registrarAccion(inicioSesionFallidaUser);
-                    vl.usuarioInexistente(usuario);
-                }
+                
             }
             if(vl.getButtonRegistrarse()==e.getSource()){
                 ControladorRegistro cr = new ControladorRegistro(this);

@@ -11,7 +11,6 @@ public class Usuario {
     public Usuario(String nombre, String password) throws SQLException{
         this.nombre = nombre;
         this.password = password;
-        save();
     }
     
     public Usuario(String nombre, String password, int jefeTerreno){
@@ -52,7 +51,7 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "insert into JUGADOR (NOMBRE_JUGADOR,CONTRASENIA_JUGADOR) values" + "('" + this.nombre + "','" + this.password + ")";
+        final String consulta = "INSERT INTO USUARIO (NOMBRE_USUARIO,CONTRASENIA_USUARIO,ESPNJ_USUARIO) VALUES " + "('" + this.nombre + "','" + this.password + "',0)";
         stmt.executeUpdate(consulta);
     }
     
@@ -60,22 +59,34 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "SELECT NOMBRE_JUGADOR,CONTRASENIA_JUGADOR FROM JUGADOR WHERE NOMBRE_JUGADOR = '" + nombre +"' AND CONTRASENIA_JUGADOR='" + password2 +"";        
+        final String consulta = "SELECT NOMBRE_USUARIO,CONTRASENIA_USUARIO FROM USUARIO WHERE NOMBRE_USUARIO = '" + nombre +"'";        
         
         ResultSet resultados;
         resultados = stmt.executeQuery(consulta);
         
-        
-        
         if (resultados.next()==true) {
-            String nombre2 = resultados.getString("NOMBRE_JUGADOR");
-            String password = resultados.getString("CONTRASENIA_JUGADOR");
+            String nombre2 = resultados.getString("NOMBRE_USUARIO");
+            String password = resultados.getString("CONTRASENIA_USUARIO");
             return new Usuario(nombre2, password);
         }
         else {
-            System.out.println("No Existe");
+            //System.out.println("No Existe");
             return null;
         }
         
+    }
+    
+    public static boolean obtener(String nombre) throws SQLException{
+        Conexion conexion = new Conexion();
+        boolean resultado = conexion.conectar();
+        Statement stmt = conexion.crearConsulta();
+        final String consulta = "SELECT NOMBRE_USUARIO FROM USUARIO WHERE NOMBRE_USUARIO = '" + nombre + "'";      
+        
+        ResultSet resultados;
+        resultados = stmt.executeQuery(consulta);
+        
+        return resultados.next(); //String nombre2 = resultados.getString("NOMBRE_USUARIO");
+        //System.out.println("El usuario "+nombre2+" ya existe.");
+        //System.out.println("El usuario "+nombre+" no existe.");
     }
 }
