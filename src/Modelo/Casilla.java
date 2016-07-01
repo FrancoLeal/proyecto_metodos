@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Casilla {
-    private String dueño;
+    private String dueño="";
     public Casilla(){
     }
     public void setDueño(String dueño){

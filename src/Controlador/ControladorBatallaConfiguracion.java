@@ -56,4 +56,7 @@ public class ControladorBatallaConfiguracion implements ActionListener {
             ControladorBatalla cb = new ControladorBatalla(this);
         }
     }
+    public boolean getBatallaTipo(){
+        return this.batallaPorEquipos;
+    }
 }
