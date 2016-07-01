@@ -8,10 +8,15 @@ public class Jugador {
     private int trampa;
     private int ataque;
     private int mover;
-    private String jefe;
-    public Jugador(String nombre, String jefe/*, PuzzleDeDados puzzle*/){
+    private JefeDeTerreno jefe;
+    public Jugador(String nombre, JefeDeTerreno jefe/*, PuzzleDeDados puzzle*/){
         this.nombre = nombre;
         this.jefe = jefe;
+        this.invocacion=0;
+        this.magia=0;
+        this.trampa=0;
+        this.ataque=0;
+        this.mover=0;
         //this.puzzle = puzzle;
     }
     public void setInvocacion(int invocacion){
@@ -22,15 +27,15 @@ public class Jugador {
     }
 
     public void setTrampa(int trampa) {
-        this.trampa = this.trampa+trampa;
+        this.trampa = trampa;
     }
 
     public void setAtaque(int ataque) {
-        this.ataque = this.ataque+ataque;
+        this.ataque = ataque;
     }
 
     public void setMover(int mover) {
-        this.mover = this.mover+mover;
+        this.mover = mover;
     }
 
     public String getNombre() {
@@ -56,7 +61,7 @@ public class Jugador {
     public int getMover() {
         return mover;
     }
-    public String getJefe(){
+    public JefeDeTerreno getJefe(){
         return this.jefe;
     }
 }

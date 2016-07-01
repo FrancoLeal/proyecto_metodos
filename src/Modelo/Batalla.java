@@ -4,64 +4,86 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Batalla {
-    private ArrayList<String> jugadores= new ArrayList();
-    private ArrayList<String> turnoJugadores= new ArrayList();
-    private ArrayList<String> jefes = new ArrayList();
+    private ArrayList<Jugador> jugadores= new ArrayList();
+    private ArrayList<Jugador> turnoJugadores= new ArrayList();
+    private ArrayList<JefeDeTerreno> jefes = new ArrayList();
     public Batalla(){
     }
-    public ArrayList<String> getJugadores(){
+    public ArrayList<Jugador> getJugadores(){
         return this.jugadores;   
     }
-    public ArrayList<String> getOrdenJugadores(){
+    public ArrayList<Jugador> getOrdenJugadores(){
         return this.turnoJugadores;   
     }
     public void setOrdenJugadores(){
         Random r = new Random();
-        ArrayList<String> jugadoresTemporal = (ArrayList<String>)jugadores.clone();
+        ArrayList<Jugador> jugadoresTemporal = (ArrayList<Jugador>) jugadores.clone();
         while (!jugadoresTemporal.isEmpty()){
             int i = r.nextInt(jugadoresTemporal.size());
             this.turnoJugadores.add(jugadoresTemporal.get(i));
             jugadoresTemporal.remove(i);
         }
     }
-    public ArrayList<String> getJefes(){
+    public ArrayList<String> getJefesNombres(){
+        ArrayList<String> nombreJefes = new ArrayList();
+        for(JefeDeTerreno jefe : this.jefes){
+            nombreJefes.add(jefe.getNombre());
+        }
+        return nombreJefes;
+    }
+    public ArrayList<JefeDeTerreno> getJefesDeTerreno(){
         return this.jefes;
     }
-    public void setBatalla(){
+    public void setBatalla(ArrayList<String> jugadores){
         if(jugadores.size() == 2){
-            Jugador Jugador1 = new Jugador(jugadores.get(0),"J");
-            JefeDeTerreno Jefe1 = new JefeDeTerreno(100, 0, 1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),"J");
-            JefeDeTerreno Jefe2 = new JefeDeTerreno(100, 0, 2);
-            System.out.println("2");
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J"));
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
+            this.jugadores.add(Jugador1);
+            this.jugadores.add(Jugador2);
         }
         else if (jugadores.size() == 3){
-            Jugador Jugador1 = new Jugador(jugadores.get(0),"J");
-            JefeDeTerreno Jefe1 = new JefeDeTerreno(100, 0, 1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),"J");
-            JefeDeTerreno Jefe2 = new JefeDeTerreno(100, 0, 2);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),"J");
-            JefeDeTerreno Jefe3 = new JefeDeTerreno(100, 0, 3);
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(100, 0, "J"));
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());
+            this.jugadores.add(Jugador1);
+            this.jugadores.add(Jugador2);
+            this.jugadores.add(Jugador3);
         }
         else if (jugadores.size() == 4){
-            Jugador Jugador1 = new Jugador(jugadores.get(0),"J");
-            JefeDeTerreno Jefe1 = new JefeDeTerreno(100, 0, 1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),"J");
-            JefeDeTerreno Jefe2 = new JefeDeTerreno(100, 0, 2);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),"J");
-            JefeDeTerreno Jefe3 = new JefeDeTerreno(100, 0, 3);
-            Jugador Jugador4 = new Jugador(jugadores.get(3),"J");
-            JefeDeTerreno Jefe4 = new JefeDeTerreno(100, 0, 4);
-            System.out.println("4");
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(100, 0, "J"));
+            Jugador Jugador4 = new Jugador(jugadores.get(3),new JefeDeTerreno(100, 0, "J"));
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());
             this.jefes.add(Jugador3.getJefe());
+            this.jugadores.add(Jugador1);
+            this.jugadores.add(Jugador2);
+            this.jugadores.add(Jugador3);
+            this.jugadores.add(Jugador4);
         }
     }
+  /*  public void setJefesDeTerreno(ArrayList<JefeDeTerreno> jefes, Casilla[][] board){
+        if(jefes.size()==2){
+            board[0][7].setJefeDeTerreno(jefes.get(0));
+            board[14][7].setJefeDeTerreno(jefes.get(1));
+        }
+        else if(jefes.size()==3){
+            board[0][7].setJefeDeTerreno(jefes.get(0));
+            board[14][7].setJefeDeTerreno(jefes.get(1));
+            board[7][0].setJefeDeTerreno(jefes.get(2));
+        }
+        else if(jefes.size()==4){
+            board[0][7].setJefeDeTerreno(jefes.get(0));
+            board[14][7].setJefeDeTerreno(jefes.get(1));
+            board[7][0].setJefeDeTerreno(jefes.get(2));
+            board[7][14].setJefeDeTerreno(jefes.get(3));
+        }
+    }*/
 }

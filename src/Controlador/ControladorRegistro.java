@@ -1,5 +1,6 @@
 package Controlador;
 
+import BDD.Conexion;
 import Vista.VistaRegistro;
 import Modelo.Registro;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,7 @@ public class ControladorRegistro implements ActionListener{
     private VistaRegistro vr;
     private ControladorLogin cl;
     private Usuario usuario;
+    private Conexion conexion;
     public ControladorRegistro(ControladorLogin cl){
         r = new Registro();
         vr = new VistaRegistro();
@@ -31,6 +33,8 @@ public class ControladorRegistro implements ActionListener{
         }
         else if (vr.getButtonRegistrarse()==e.getSource()){
             try {
+                conexion = new Conexion();
+                conexion.conectar();
                 usuario = new Usuario(vr.getUsuario(), vr.getPassword());
             } catch (SQLException ex) {
                 Logger.getLogger(ControladorRegistro.class.getName()).log(Level.SEVERE, null, ex);

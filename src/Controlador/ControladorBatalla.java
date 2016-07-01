@@ -4,6 +4,7 @@ import Modelo.Batalla;
 import Modelo.Dado;
 import Modelo.JefeDeTerreno;
 import Modelo.Casilla;
+import Modelo.Criatura;
 import Modelo.Tablero;
 import Modelo.Jugador;
 import Vista.VistaBatalla;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 //Definicion clase
 public class ControladorBatalla extends MouseAdapter implements ActionListener {
@@ -22,7 +24,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ControladorDadoDesplegado cdd;
     private int ultimaSeleccion = 0;
     private int[][] forma;
-    private int validarMov;
     private Tablero tablero;
     private ImageIcon ImagenAtaque;
     private ImageIcon ImagenMagia ;
@@ -30,7 +31,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ImageIcon ImagenTrampa;
     private ImageIcon ImagenInvocar;
     private ImageIcon GifDados;
-    private Dado dado;
+    private Dado dado1;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
@@ -39,64 +40,47 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         this.cbg = cbg;
         this.vb = new VistaBatalla();
         this.b = new Batalla();
-        if (cbg.getBatallaTipo()){
-            b.getJugadores().add("franco");
-            b.getJugadores().add("juanfra");
-            b.getJugadores().add("moises");
-            b.getJugadores().add("pinky");
-        }
-        else{
-            b.getJugadores().add("franco");
-            b.getJugadores().add("juanfra");
-            b.getJugadores().add("moises");
-            b.getJugadores().add("pinky");
-        }
-        b.setBatalla();
+        ArrayList<String> j = this.cbg.getJugadores();
+        b.setBatalla(j);
         b.setOrdenJugadores();
-        vb.setJugadorActual(b.getOrdenJugadores().get(0));
+        tablero.setJefesDeTerreno(j,b.getJefesDeTerreno());
+        vb.setJugadorActual(b.getOrdenJugadores().get(0).getNombre());
         vb.setVisible(true);
         vb.agregarListener(this,this);
         vb.setLocationRelativeTo(null);
-        vb.setJefesDeTerreno(b.getJugadores(),b.getJefes());
-        vb.pintarTurno(b.getJugadores());
-        vb.setPtosInvocar(1);
-        vb.setPtosMov(1);
+        vb.setJefesDeTerreno(j,b.getJefesNombres());
+        vb.pintarTurno(j);
     }
     
     public void actionPerformed(ActionEvent e){
         if(vb.getButtonAtras()==e.getSource()){
             vb.dispose();
         }
-        else if(vb.getButtonLanzar()==e.getSource()){
-            vb.setGifDados(true);
-            vb.GifDados.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/dados.gif"))); 
+        else if (vb.getButtonLanzar()==e.getSource()){
             System.out.println("Se ha lanzado el dado");
-        }
-        else if (vb.getButtonParar()==e.getSource()){
-            vb.getButtonLanzar().setVisible(false);
             vb.getGifDados().setVisible(false);
-            Dado dado1 = new Dado();
+            this.dado1 = new Dado(new Criatura("C", vb.getJugadorActual(), 100, 10, 10, 0));
             String cara = dado1.resultado();
             vb.jLabel1.setIcon(new ImageIcon(getClass().getResource("/ImagenesJuego/"+cara+".png")));
             vb.getjLabel3().setText(cara);
             if(cara=="ATAQUE"){
-                
+                vb.setPtosAtk(1);
             }
             else if(cara=="MAGIA"){
-                
+                vb.setPtosMag(1);
             }
             else if(cara=="MOVIMIENTO"){
-                
+                vb.setPtosMov(1);
             }
             else if (cara=="TRAMPA"){
-                
+                vb.setPtosTrap(1);
             }
             else if(cara=="INVOCAR"){
-                
+                vb.setPtosInvocar(1);
             }
-            }
+        }
         
-        else if (vb.getButtonDesplegar()==e.getSource()){
+        else if (vb.getButtonInvocar()==e.getSource()){
             if(vb.getPtosInvocar()!=0){
                 this.cdd = new ControladorDadoDesplegado(this);
             }
@@ -105,11 +89,21 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             }
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
+            b.getOrdenJugadores().get(turnoActual).setAtaque(vb.getPtosAtk());
+            b.getOrdenJugadores().get(turnoActual).setTrampa(vb.getPtosTrap());
+            b.getOrdenJugadores().get(turnoActual).setMagia(vb.getPtosMag());
+            b.getOrdenJugadores().get(turnoActual).setMover(vb.getPtosMov());
+            b.getOrdenJugadores().get(turnoActual).setInvocacion(vb.getPtosInvocar());
             setTurno();
-            vb.setJugadorActual(b.getOrdenJugadores().get(turnoActual));
+            vb.setJugadorActual(b.getOrdenJugadores().get(turnoActual).getNombre());
             System.out.println("Turno de "+b.getOrdenJugadores().get(turnoActual));
-            vb.pintarTurno(b.getJugadores());
-            vb.getButtonDesplegar().setEnabled(true);
+            vb.pintarTurno(cbg.getJugadores());
+            vb.getButtonInvocar().setEnabled(true);
+            vb.setPtosAtkInic(b.getOrdenJugadores().get(turnoActual).getAtaque());
+            vb.setPtosTrapInic(b.getOrdenJugadores().get(turnoActual).getTrampa());
+            vb.setPtosMagInic(b.getOrdenJugadores().get(turnoActual).getMagia());
+            vb.setPtosMovInic(b.getOrdenJugadores().get(turnoActual).getMover());
+            vb.setPtosInvocarInic(b.getOrdenJugadores().get(turnoActual).getInvocacion());
         }
         else if (vb.getButtonAtacar()==e.getSource()){
             this.ultimaSeleccion=1;
@@ -124,7 +118,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             this.ultimaSeleccion=5;
         }
         else if (vb.getButtonMover()==e.getSource()){
-            this.ultimaSeleccion=2;
+            if(vb.getPtosMov()!=0){
+                this.ultimaSeleccion=2;
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else{
             for (int i = 0 ; i<15 ; i++){
@@ -160,22 +159,40 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     int x = 0;
     int y = 0;
     public void mouseClicked(MouseEvent e){
+        for(int i = 0 ; i<15; i++){
+            for(int j = 0 ; j<15 ; j++){
+                if(vb.getBoardVisible()[i][j]==e.getSource()){
+                    if(tablero.getBoardModelo()[i][j].isCriatura()){
+                        vb.setDueñoCriatura(tablero.getBoardModelo()[i][j].getCriatura().getDueño());
+                        vb.setHpActualCriatura(tablero.getBoardModelo()[i][j].getCriatura().getHPActual());
+                        vb.setHpTotalCriatura(tablero.getBoardModelo()[i][j].getCriatura().getHPTotal());
+                        vb.setDañoCriatura(tablero.getBoardModelo()[i][j].getCriatura().getAtk());
+                        vb.setDefensaCriatura(tablero.getBoardModelo()[i][j].getCriatura().getDef());
+                        vb.setNombreCriatura(tablero.getBoardModelo()[i][j].getCriatura().getNombre());
+                    }
+                }
+            }
+        }
         if (this.ultimaSeleccion==6){
             for(int i = 0 ; i<15; i++){
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
+                            if(tablero.comprobar(i,j,forma,vb.getJugadorActual())){
                             tablero.setDueño(i,j,forma,vb.getJugadorActual());
                             vb.vistaPreviaSaliendo(i,j,forma);
-                            vb.pintar(i,j,forma, b.getJugadores());
+                            vb.pintar(i,j,forma, cbg.getJugadores());
                             vb.setCriatura(i,j, "C");
+                            tablero.getBoardModelo()[i][j].setCriatura(this.dado1.getCriatura());
                             this.ultimaSeleccion=0;
-                            vb.getButtonDesplegar().setEnabled(false);
+                            vb.getButtonInvocar().setEnabled(false);
                             vb.setPtosInvocar(-1);
+                            }
                         }
                         catch(ArrayIndexOutOfBoundsException ae){
                             vb.errorIndex();
                         }
+                        
                     }
                 }
             }
@@ -184,68 +201,100 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 for(int i = 0 ; i<15; i++){
                     for(int j = 0 ; j<15 ; j++){
                         if(vb.getBoardVisible()[i][j]==e.getSource()){
-                            if(!vb.getBoardVisible()[i][j].getText().isEmpty()){
-                                this.ultimaSeleccion=7;
-                                x=i;
-                                y=j;
-                                System.out.println(x+","+y);
-                            }
-                            else{
-                                vb.sinCriatura();
-                            }
+                                if(!tablero.getBoardModelo()[i][j].isJefe()){
+                                    System.out.println("funciono!!!");
+                                    this.ultimaSeleccion=7;
+                                    x=i;
+                                    y=j;
+                                }
+                                else{
+                                    vb.errorJefe();
+                                }
+                                /*else{
+                                    vb.sinCriatura();
+                                }*/
                         }
                     }
                 }
         }
         else if(this.ultimaSeleccion==7){
-            if(vb.getBoardVisible()[x+1][y]==e.getSource()){
-                if(!tablero.getBoardModelo()[x+1][y].getDueño().equals("")){
-                    vb.getBoardVisible()[x+1][y].setText(vb.getBoardVisible()[x][y].getText());
-                    vb.getBoardVisible()[x][y].setText(null);
-                    vb.setPtosMov(-1);
-                    this.ultimaSeleccion=0;
-                }
-                else{
-                    vb.movimientoInvalido();
-                    }
-                }
-                else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
-                    if(!tablero.getBoardModelo()[x-1][y].getDueño().equals("")){
-                        vb.getBoardVisible()[x-1][y].setText(vb.getBoardVisible()[x][y].getText());
-                        System.out.println(vb.getBoardVisible()[x][y].getText());
-                        vb.getBoardVisible()[x][y].setText(null);
-                        vb.setPtosMov(-1);
-                        this.ultimaSeleccion=0;
+            try{
+                if(vb.getBoardVisible()[x+1][y]==e.getSource()){
+                    if(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
+                        System.out.println(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno());
+                        if(!tablero.getBoardModelo()[x+1][y].getDueño().equals("")){
+                            vb.getBoardVisible()[x+1][y].setText(vb.getBoardVisible()[x][y].getText());
+                            vb.getBoardVisible()[x][y].setText(null);
+                            vb.setPtosMov(-1);
+                            tablero.getBoardModelo()[x+1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                            this.ultimaSeleccion=0;
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
                     }
                     else{
                         vb.movimientoInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
-                    if(!tablero.getBoardModelo()[x][y+1].getDueño().equals("")){
-                    vb.getBoardVisible()[x][y+1].setText(vb.getBoardVisible()[x][y].getText());
-                    vb.getBoardVisible()[x][y].setText(null);
-                    vb.setPtosMov(-1);
-                    this.ultimaSeleccion=0;
+                    else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
+                        if(tablero.getBoardModelo()[x-1][y].getCriatura()==null && tablero.getBoardModelo()[x-1][y].getJefeDeTerreno()==null){
+                            if(!tablero.getBoardModelo()[x-1][y].getDueño().equals("")){
+                                vb.getBoardVisible()[x-1][y].setText(vb.getBoardVisible()[x][y].getText());
+                                System.out.println(vb.getBoardVisible()[x][y].getText());
+                                vb.getBoardVisible()[x][y].setText(null);
+                                vb.setPtosMov(-1);
+                                tablero.getBoardModelo()[x-1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                                this.ultimaSeleccion=0;
+                            }
+                            else{
+                                vb.movimientoInvalido();
+                            }
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
+                    }
+                    else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
+                        if(tablero.getBoardModelo()[x+1][y].getCriatura()==null||tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
+                            if(!tablero.getBoardModelo()[x][y+1].getDueño().equals("")){
+                                vb.getBoardVisible()[x][y+1].setText(vb.getBoardVisible()[x][y].getText());
+                                vb.getBoardVisible()[x][y].setText(null);
+                                vb.setPtosMov(-1);
+                                tablero.getBoardModelo()[x][y+1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                                this.ultimaSeleccion=0;
+                            }
+                            else{
+                                vb.movimientoInvalido();
+                            }
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
+                    }
+                    else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
+                        if(tablero.getBoardModelo()[x+1][y].getCriatura()==null||tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
+                            if(!tablero.getBoardModelo()[x][y-1].getDueño().equals("")){
+                                vb.getBoardVisible()[x][y-1].setText(vb.getBoardVisible()[x][y].getText());
+                                vb.getBoardVisible()[x][y].setText(null);
+                                vb.setPtosMov(-1);
+                                tablero.getBoardModelo()[x][y-1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                                this.ultimaSeleccion=0;
+                            }
+                            else{
+                                vb.movimientoInvalido();
+                            }
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
                     }
                     else{
                         vb.movimientoInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
-                    if(!tablero.getBoardModelo()[x][y-1].getDueño().equals("")){
-                        vb.getBoardVisible()[x][y-1].setText(vb.getBoardVisible()[x][y].getText());
-                        vb.getBoardVisible()[x][y].setText(null);
-                        vb.setPtosMov(-1);
-                        this.ultimaSeleccion=0;
-                    }
-                    else{
-                        vb.movimientoInvalido();
-                    }
-                }
-                else{
-                    vb.movimientoInvalido();
-                }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
         }
     }
     

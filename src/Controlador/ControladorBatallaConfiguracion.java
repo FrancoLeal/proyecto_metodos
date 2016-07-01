@@ -3,15 +3,18 @@ package Controlador;
 import Vista.VistaBatallaConfiguracion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ControladorBatallaConfiguracion implements ActionListener {
     
     private VistaBatallaConfiguracion vbc;
     private ControladorBatallaTipo cbt;
     private boolean batallaPorEquipos;
+    private ArrayList<String> jugadores;
     
     public ControladorBatallaConfiguracion(ControladorBatallaTipo cbt){
         this.cbt = cbt;
+        jugadores = new ArrayList();
         batallaPorEquipos = cbt.getBatallaPorEquipos();
         this.vbc = new VistaBatallaConfiguracion(batallaPorEquipos);
         vbc.setVisible(true);
@@ -58,5 +61,8 @@ public class ControladorBatallaConfiguracion implements ActionListener {
     }
     public boolean getBatallaTipo(){
         return this.batallaPorEquipos;
+    }
+    public ArrayList<String> getJugadores(){
+        return vbc.getJugadores();
     }
 }

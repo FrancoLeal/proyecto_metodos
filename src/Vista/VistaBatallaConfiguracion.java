@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,6 +13,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     private byte equipoJugador2;
     private byte equipoJugador3;
     private byte equipoJugador4;
+    private ArrayList<String> jugadores;
 
     public VistaBatallaConfiguracion(boolean batallaPorEquipos) {
         initComponents();
@@ -29,6 +31,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
         jRadioButton10.setVisible(batallaPorEquipos);
         jRadioButton11.setVisible(batallaPorEquipos);
         jRadioButton12.setVisible(batallaPorEquipos);
+        this.jugadores=new ArrayList();
         if(this.batallaPorEquipos==true){
             tipoBatalla.setText("Batalla por Equipos");
         }
@@ -176,19 +179,19 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
 
         jLabel5.setText("Jugador 2:");
 
-        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PNJ 1", "PNJ 2", "PNJ 3", "PNJ 4" }));
+        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "pinky", "PNJ 1"}));
 
         editarPuzleJ2.setText("Editar puzle");
 
         jLabel6.setText("Jugador 3:");
 
-        seleccionJugador3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        seleccionJugador3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "juanfra", "PNJ 2"}));
 
         editarPuzleJ3.setText("Editar puzle");
 
         jLabel7.setText("Jugador 4:");
 
-        seleccionJugador4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        seleccionJugador4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "moises", "PNJ 3"}));
 
         editarPuzleJ4.setText("Editar puzle");
 
@@ -480,5 +483,18 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     }
     public JButton getButtonIniciarSesionJ4(){
         return this.iniciarSesionJ4;
+    }
+    public ArrayList<String> getJugadores(){
+        this.jugadores.add(this.jLabel4.getText());
+        if(!this.seleccionJugador2.getSelectedItem().equals(" ")){
+            this.jugadores.add((String) this.seleccionJugador2.getSelectedItem());
+        }
+        if(!this.seleccionJugador3.getSelectedItem().equals(" ")){
+            this.jugadores.add((String) this.seleccionJugador3.getSelectedItem());
+        }
+        if(!this.seleccionJugador4.getSelectedItem().equals(" ")){
+            this.jugadores.add((String) this.seleccionJugador4.getSelectedItem());
+        }
+        return this.jugadores;
     }
 }

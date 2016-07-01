@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import Vista.VistaBatalla;
+import java.util.ArrayList;
 //Declaracion clase
 public class Tablero{
     public Casilla[][] board;
@@ -29,5 +30,49 @@ public class Tablero{
         board[forma[3][0]+i][forma[3][1]+j].setDueño(dueño);
         board[forma[4][0]+i][forma[4][1]+j].setDueño(dueño);
         board[forma[5][0]+i][forma[5][1]+j].setDueño(dueño);
+    }
+    public boolean comprobar(int i , int j , int[][] forma, String jugadorActual){
+        for(int l = 0 ; l<6;l++){
+            if(i+forma[l][0]+1!=15&&board[(i+forma[l][0])+1][j+forma[l][1]].getDueño().equals(jugadorActual)){
+                return true;
+            }
+            else if(i+forma[l][0]-1!=-1&&board[(i+forma[l][0])-1][j+forma[l][1]].getDueño().equals(jugadorActual)){
+                return true;
+            }
+            else if(j+forma[l][0]+1!=15&&board[(i+forma[l][0])][j+forma[l][1]+1].getDueño().equals(jugadorActual)){
+                return true;
+            }
+            else if(j+forma[l][0]-1!=-1&&board[(i+forma[l][0])][j+forma[l][1]-1].getDueño().equals(jugadorActual)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setJefesDeTerreno(ArrayList<String> jugadores, ArrayList<JefeDeTerreno> jefes) {
+        if(jugadores.size()==2){
+                board[0][7].setDueño(jugadores.get(0));
+                board[0][7].setJefeDeTerreno(jefes.get(0));
+                board[14][7].setDueño(jugadores.get(1));
+                board[14][7].setJefeDeTerreno(jefes.get(1));
+        }
+        else if (jugadores.size()==3){
+                board[0][7].setDueño(jugadores.get(0));
+                board[0][7].setJefeDeTerreno(jefes.get(0));
+                board[14][7].setDueño(jugadores.get(1));
+                board[14][7].setJefeDeTerreno(jefes.get(1));
+                board[7][0].setDueño(jugadores.get(2));
+                board[7][0].setJefeDeTerreno(jefes.get(1));
+        }
+        else if(jugadores.size()==4){
+                board[0][7].setDueño(jugadores.get(0));
+                board[0][7].setJefeDeTerreno(jefes.get(0));
+                board[14][7].setDueño(jugadores.get(1));
+                board[14][7].setJefeDeTerreno(jefes.get(1));
+                board[7][0].setDueño(jugadores.get(2));
+                board[7][0].setJefeDeTerreno(jefes.get(1));
+                board[7][14].setDueño(jugadores.get(3));
+                board[7][14].setJefeDeTerreno(jefes.get(1));
+        }
     }
 }
