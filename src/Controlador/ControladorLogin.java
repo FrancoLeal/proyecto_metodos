@@ -2,9 +2,7 @@ package Controlador;
 //Importación de clases
 import BDD.Usuario;
 import Modelo.Login;
-import Modelo.Registro;
 import Vista.VistaLogin;
-import Vista.VistaRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,7 +10,6 @@ import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 //Definición de la clase
 public class ControladorLogin implements ActionListener,KeyListener {
     //Atributos

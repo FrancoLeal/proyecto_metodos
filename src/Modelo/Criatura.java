@@ -3,7 +3,7 @@ package Modelo;
 public class Criatura {
     
     private final String NOMBRE;
-    private String DUEÑO;
+    private  String DUEÑO;
     //private final int ID;
     private final int HPTOTAL;
     private int HPActual;

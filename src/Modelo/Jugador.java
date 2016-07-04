@@ -67,4 +67,7 @@ public class Jugador {
     public PuzzleDeDados getPuzzle(){
         return this.puzzle;
     }
+    public String getDueño(){
+        return this.nombre;
+    }
 }

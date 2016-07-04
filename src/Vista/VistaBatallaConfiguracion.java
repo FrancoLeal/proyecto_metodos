@@ -2,9 +2,8 @@ package Vista;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     
@@ -179,19 +178,19 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
 
         jLabel5.setText("Jugador 2:");
 
-        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "pinky", "PNJ 1"}));
+        seleccionJugador2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Sin Jugador>"}));
 
         editarPuzleJ2.setText("Editar puzle");
 
         jLabel6.setText("Jugador 3:");
 
-        seleccionJugador3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "juanfra", "PNJ 2"}));
+        seleccionJugador3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Sin Jugador>"}));
 
         editarPuzleJ3.setText("Editar puzle");
 
         jLabel7.setText("Jugador 4:");
 
-        seleccionJugador4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "moises", "PNJ 3"}));
+        seleccionJugador4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Sin Jugador>"}));
 
         editarPuzleJ4.setText("Editar puzle");
 
@@ -484,17 +483,32 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
     public JButton getButtonIniciarSesionJ4(){
         return this.iniciarSesionJ4;
     }
-    public ArrayList<String> getJugadores(){
+    public void setJugadores(){
         this.jugadores.add(this.jLabel4.getText());
-        if(!this.seleccionJugador2.getSelectedItem().equals(" ")){
+        if(!this.seleccionJugador2.getSelectedItem().equals("<Sin Jugador>")){
             this.jugadores.add((String) this.seleccionJugador2.getSelectedItem());
         }
-        if(!this.seleccionJugador3.getSelectedItem().equals(" ")){
+        if(!this.seleccionJugador3.getSelectedItem().equals("<Sin Jugador>")){
             this.jugadores.add((String) this.seleccionJugador3.getSelectedItem());
         }
-        if(!this.seleccionJugador4.getSelectedItem().equals(" ")){
+        if(!this.seleccionJugador4.getSelectedItem().equals("<Sin Jugador>")){
             this.jugadores.add((String) this.seleccionJugador4.getSelectedItem());
         }
+    }
+    public ArrayList<String> getJugadores(){
         return this.jugadores;
+    }
+
+    public void faltanJugadores() {
+        JOptionPane.showMessageDialog(null, "No hay jugadores suficientes para comenzar la batalla", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void agregarElemento2(String nombre){
+        seleccionJugador2.addItem(nombre);
+    }
+    public void agregarElemento3(String nombre){
+        seleccionJugador3.addItem(nombre);
+    }
+    public void agregarElemento4(String nombre){
+        seleccionJugador4.addItem(nombre);
     }
 }

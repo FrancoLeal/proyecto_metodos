@@ -1,7 +1,6 @@
 package BDD;
 
 import java.sql.*;
-import Controlador.ControladorRegistro;
 
 public class Usuario {
     private String nombre;

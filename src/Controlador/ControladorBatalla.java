@@ -2,8 +2,6 @@ package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
 import Modelo.Dado;
-import Modelo.JefeDeTerreno;
-import Modelo.Casilla;
 import Modelo.Criatura;
 import Modelo.Tablero;
 import Modelo.Jugador;
@@ -27,6 +25,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private int ultimaSeleccion = 0;
     private int[][] forma;
     private Tablero tablero;
+    private Jugador jugadorActual;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
@@ -45,6 +44,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         vb.setLocationRelativeTo(null);
         vb.setJefesDeTerreno(j,b.getJefesNombres());
         vb.pintarTurno(j);
+        this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
     }
     
     public void actionPerformed(ActionEvent e){
@@ -52,7 +52,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.dispose();
         }
         else if (vb.getButtonLanzar()==e.getSource()){
-            PuzzleDeDados puzzle = b.getOrdenJugadores().get(turnoActual).getPuzzle();
+            PuzzleDeDados puzzle = jugadorActual.getPuzzle();
             Random r = new Random();
             if(!vb.getNumeroDeDados().getText().equals("")){
                 ArrayList<Dado> dados = b.generarDados(puzzle,Integer.parseInt(vb.getNumeroDeDados().getText()));
@@ -113,21 +113,22 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             }
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
-            b.getOrdenJugadores().get(turnoActual).setAtaque(vb.getPtosAtk());
-            b.getOrdenJugadores().get(turnoActual).setTrampa(vb.getPtosTrap());
-            b.getOrdenJugadores().get(turnoActual).setMagia(vb.getPtosMag());
-            b.getOrdenJugadores().get(turnoActual).setMover(vb.getPtosMov());
-            b.getOrdenJugadores().get(turnoActual).setInvocacion(vb.getPtosInvocar());
+            jugadorActual.setAtaque(vb.getPtosAtk());
+            jugadorActual.setTrampa(vb.getPtosTrap());
+            jugadorActual.setMagia(vb.getPtosMag());
+            jugadorActual.setMover(vb.getPtosMov());
+            jugadorActual.setInvocacion(vb.getPtosInvocar());
             setTurno();
-            vb.setJugadorActual(b.getOrdenJugadores().get(turnoActual).getNombre());
-            System.out.println("Turno de "+b.getOrdenJugadores().get(turnoActual));
+            this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
+            vb.setJugadorActual(jugadorActual.getNombre());
+            System.out.println("Turno de "+jugadorActual);
             vb.pintarTurno(cbg.getJugadores());
             vb.getButtonInvocar().setEnabled(true);
-            vb.setPtosAtkInic(b.getOrdenJugadores().get(turnoActual).getAtaque());
-            vb.setPtosTrapInic(b.getOrdenJugadores().get(turnoActual).getTrampa());
-            vb.setPtosMagInic(b.getOrdenJugadores().get(turnoActual).getMagia());
-            vb.setPtosMovInic(b.getOrdenJugadores().get(turnoActual).getMover());
-            vb.setPtosInvocarInic(b.getOrdenJugadores().get(turnoActual).getInvocacion());
+            vb.setPtosAtkInic(jugadorActual.getAtaque());
+            vb.setPtosTrapInic(jugadorActual.getTrampa());
+            vb.setPtosMagInic(jugadorActual.getMagia());
+            vb.setPtosMovInic(jugadorActual.getMover());
+            vb.setPtosInvocarInic(jugadorActual.getInvocacion());
         }
         else if (vb.getButtonAtacar()==e.getSource()){
             if(vb.getPtosAtk()!=0){
@@ -193,8 +194,6 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     int x = 0;
     int y = 0;
-    int x2=0;
-    int y2=0;
     public void mouseClicked(MouseEvent e){
         for(int i = 0 ; i<15; i++){
             for(int j = 0 ; j<15 ; j++){
@@ -220,8 +219,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                                 vb.vistaPreviaSaliendo(i,j,forma);
                                 vb.pintar(i,j,forma, cbg.getJugadores());
                                 vb.setCriatura(i,j, "C");
-                                Criatura c = b.getOrdenJugadores().get(turnoActual).getPuzzle().getDados().get(0).getCriatura();
-                                c.setDueño(b.getOrdenJugadores().get(turnoActual).getNombre());
+                                Criatura c = jugadorActual.getPuzzle().getDados().get(0).getCriatura();
+                                c.setDueño(jugadorActual.getNombre());
                                 tablero.getBoardModelo()[i][j].setCriatura(c);
                                 this.ultimaSeleccion=0;
                                 vb.getButtonInvocar().setEnabled(false);
@@ -341,8 +340,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         if(tablero.getBoardModelo()[i][j].isCriatura()){
                             this.ultimaSeleccion=8;
                             System.out.println(this.ultimaSeleccion);
-                            x2=i;
-                            y2=j;
+                            x=i;
+                            y=j;
                         }
                     }
                 }
@@ -350,65 +349,69 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if(this.ultimaSeleccion==8){
             try{
-                if(vb.getBoardVisible()[x2+1][y2]==e.getSource()/*&&tablero.getBoardModelo()[x2+1][y2].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
-                    if(tablero.getBoardModelo()[x2+1][y2].isJefe()){
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2+1][y2].getJefeDeTerreno().setVida(daño);
-                        this.ultimaSeleccion=0;
+                if(vb.getBoardVisible()[x+1][y]==e.getSource()/*&&tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                    System.out.println("Atacando");
+                    if(tablero.getBoardModelo()[x+1][y].isJefe()){
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().setVida(daño);
+                        //this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x2+1][y2].isCriatura()){
+                    else if(tablero.getBoardModelo()[x+1][y].isCriatura()){
                         System.out.println("si1");
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2+1][y2].getCriatura().recibirDaño(daño);
-                        this.ultimaSeleccion=0;
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x+1][y].getCriatura().recibirDaño(daño);
+                        //this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x2-1][y2]==e.getSource()){
-                    if(tablero.getBoardModelo()[x2-1][y2].isJefe()/*&&tablero.getBoardModelo()[x2-1][y2].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2-11][y2].getJefeDeTerreno().setVida(daño);
-                        this.ultimaSeleccion=0;
+                else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
+                    System.out.println("Atacando");
+                    if(tablero.getBoardModelo()[x-1][y].isJefe()/*&&tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x-11][y].getJefeDeTerreno().setVida(daño);
+                        //this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x2-1][y2].isCriatura()){
+                    else if(tablero.getBoardModelo()[x-1][y].isCriatura()){
                         System.out.println("si2");
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2-1][y2].getCriatura().recibirDaño(daño);
-                        this.ultimaSeleccion=0;
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x-1][y].getCriatura().recibirDaño(daño);
+                        //this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x2][y2+1]==e.getSource()){
-                    if(tablero.getBoardModelo()[x2][y2+1].isJefe()/*&&tablero.getBoardModelo()[x2][y2+1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2][y2+1].getJefeDeTerreno().setVida(daño);
-                        this.ultimaSeleccion=0;
+                else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
+                    System.out.println("Atacando");
+                    if(tablero.getBoardModelo()[x][y+1].isJefe()/*&&tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().setVida(daño);
+                        //this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x2][y2+1].isCriatura()){
+                    else if(tablero.getBoardModelo()[x][y+1].isCriatura()){
                         System.out.println("si3");
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2][y2+1].getCriatura().recibirDaño(daño);
-                        this.ultimaSeleccion=0;
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x][y+1].getCriatura().recibirDaño(daño);
+                        //this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x2][y2-1]==e.getSource()){
-                     if(tablero.getBoardModelo()[x2][y2-1].isJefe()/*&&tablero.getBoardModelo()[x2][y2-1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2][y2-1].getJefeDeTerreno().setVida(daño);
-                        this.ultimaSeleccion=0;
+                else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
+                    System.out.println("Atacando");
+                     if(tablero.getBoardModelo()[x][y-1].isJefe()/*&&tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().setVida(daño);
+                        //this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x2][y2-1].isCriatura()){
+                    else if(tablero.getBoardModelo()[x][y-1].isCriatura()){
                         System.out.println("si4");
-                        int daño = tablero.getBoardModelo()[x2][y2].getCriatura().getAtk();
-                        tablero.getBoardModelo()[x2][y2-1].getCriatura().recibirDaño(daño);
-                        this.ultimaSeleccion=0;
+                        int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
+                        tablero.getBoardModelo()[x][y-1].getCriatura().recibirDaño(daño);
+                        //this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
