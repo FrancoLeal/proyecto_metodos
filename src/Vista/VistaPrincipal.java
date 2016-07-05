@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ControladorPrincipal;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -19,7 +20,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
      */
     public VistaPrincipal() {
         initComponents();
-        this.setTitle("Luch Oh!:Dados de Mantequilla");
+        this.setTitle(ControladorPrincipal.titulo);
     }
 
     /**

@@ -1,4 +1,5 @@
 package Vista;
+import Controlador.ControladorPrincipal;
 import Modelo.Tablero;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,6 +16,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public VistaBatalla() {
         initComponents();
         color.setOpaque(true);
+        this.setTitle(ControladorPrincipal.titulo);
     }
 
     @SuppressWarnings("unchecked")

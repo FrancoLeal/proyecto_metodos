@@ -1,5 +1,6 @@
 package Vista;
 
+import Controlador.ControladorPrincipal;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -16,7 +17,7 @@ public class VistaBatallaConfiguracion extends javax.swing.JFrame {
 
     public VistaBatallaConfiguracion(boolean batallaPorEquipos) {
         initComponents();
-        this.setTitle("Luch Oh!:Dados de Mantequilla");
+        this.setTitle(ControladorPrincipal.titulo);
         this.batallaPorEquipos = batallaPorEquipos;
         jRadioButton1.setVisible(batallaPorEquipos);
         jRadioButton2.setVisible(batallaPorEquipos);
