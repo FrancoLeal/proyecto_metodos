@@ -6,6 +6,7 @@
 package Vista;
 
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -153,5 +154,10 @@ public class VistaLoginSecundario extends javax.swing.JFrame {
     public void logExitoso(){
         JOptionPane.showMessageDialog(null, "Has ingresado como " + getUsuario() , "Estás logeado!", JOptionPane.INFORMATION_MESSAGE);
 
+    }
+    
+    public void agregarKeyListener(KeyListener kl){
+        this.usuario.addKeyListener(kl);
+        this.password.addKeyListener(kl);
     }
 }

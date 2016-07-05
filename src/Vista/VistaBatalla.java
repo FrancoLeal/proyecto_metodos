@@ -22,7 +22,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     private void initComponents() {
 
         lanzar = new javax.swing.JButton();
-        Atras = new javax.swing.JButton();
         tablero = new javax.swing.JPanel();
         dado1 = new javax.swing.JLabel();
         dado2 = new javax.swing.JLabel();
@@ -65,13 +64,6 @@ public class VistaBatalla extends javax.swing.JFrame {
         lanzar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lanzarActionPerformed(evt);
-            }
-        });
-
-        Atras.setText("Atrás");
-        Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasActionPerformed(evt);
             }
         });
 
@@ -232,10 +224,6 @@ public class VistaBatalla extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lanzar)))
                 .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Atras)
-                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,9 +305,7 @@ public class VistaBatalla extends javax.swing.JFrame {
                             .addComponent(cara3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cara4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(Atras)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,10 +314,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     private void lanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzarActionPerformed
         // TOgenerarnumeros objDado = new generarnumeros();
     }//GEN-LAST:event_lanzarActionPerformed
-
-    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AtrasActionPerformed
 
     private void lanzar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanzar1ActionPerformed
         // TODO add your handling code here:
@@ -343,7 +325,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Atras;
     private javax.swing.JButton atacar;
     private javax.swing.JButton cambioTurno;
     private javax.swing.JLabel cara1;
@@ -386,7 +367,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     private ArrayList<String> jugadores;
     public void agregarListener(ActionListener al, MouseListener ml){
         this.lanzar.addActionListener(al);
-        this.Atras.addActionListener(al);
         for (int i = 0 ; i<15 ; i++){
             for (int j = 0 ; j<15 ; j++){
                 board[i][j].addActionListener(al);
@@ -407,10 +387,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
     public JButton getButtonLanzar(){
         return this.lanzar;
-    }
-    
-    public JButton getButtonAtras(){
-        return this.Atras;
     }
 
     public JButton getParar() {

@@ -6,70 +6,90 @@ import Modelo.Login;
 import Vista.VistaLoginSecundario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ControladorLoginSecundario implements ActionListener{
-    private VistaLoginSecundario vls;
-    private Login lgs;
-    private ControladorBatallaConfiguracion cbc;
-    public ControladorLoginSecundario(ControladorBatallaConfiguracion cbc){
-        this.vls = new VistaLoginSecundario();
-        this.vls.setLocationRelativeTo(null);
-        this.cbc=cbc;
-        this.vls.setVisible(true);
-        this.vls.agregarListener(this);
+public class ControladorLoginSecundario implements ActionListener, KeyListener{
+    private VistaLoginSecundario vLogSecundario;
+    private Login logSecundario;
+    private ControladorBatallaConfiguracion contrBatallaConfig;
+    public ControladorLoginSecundario(ControladorBatallaConfiguracion contrBatallaConfig){
+        this.vLogSecundario = new VistaLoginSecundario();
+        this.vLogSecundario.setLocationRelativeTo(null);
+        this.contrBatallaConfig=contrBatallaConfig;
+        this.vLogSecundario.setVisible(true);
+        this.vLogSecundario.agregarListener(this);
+        this.vLogSecundario.agregarKeyListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(vls.getButtonIniciarSesion()==e.getSource()){
-            String usuario = vls.getUsuario();
-            String password = vls.getPassword();
+        if(vLogSecundario.getButtonIniciarSesion()==e.getSource()){
+            String usuario = vLogSecundario.getUsuario();
+            String password = vLogSecundario.getPassword();
             try{
                 if(usuario!=null){
                     if(password!=null){
                         Usuario comprobadorUsuario = Usuario.obtener(usuario, password);
                         if(comprobadorUsuario!=null){
-                            lgs = new Login(comprobadorUsuario.getNombre(),comprobadorUsuario.getPassword());
-                            if (lgs.existeUsuario(usuario)){
-                                if(lgs.verificarDatos(usuario,password)){
+                            logSecundario = new Login(comprobadorUsuario.getNombre(),comprobadorUsuario.getPassword());
+                            if (logSecundario.existeUsuario(usuario)){
+                                if(logSecundario.verificarDatos(usuario,password)){
                                     String inicioSesion = "El usuario "+usuario+" ha iniciado sesión.";
                                     ControladorPrincipal.registrarAccion(inicioSesion);
-                                    cbc.setUsuario(usuario);
-                                    vls.logExitoso();
-                                    vls.dispose();
+                                    contrBatallaConfig.setUsuario(usuario);
+                                    vLogSecundario.logExitoso();
+                                    vLogSecundario.dispose();
                                 }
                                 else{
                                     String inicioSesionFallidaPass = "Inicio de sesión fallida: Usuario "+usuario+"; Contraseña incorrecta.";
                                     ControladorPrincipal.registrarAccion(inicioSesionFallidaPass);
-                                    vls.errorPassword();
+                                    vLogSecundario.errorPassword();
                                 }
                             }
                             else{
                                 String inicioSesionFallidaUser = "Inicio de sesión fallida: Usuario "+usuario+" no existe.";
                                 ControladorPrincipal.registrarAccion(inicioSesionFallidaUser);
-                                vls.errorUsuario();
+                                vLogSecundario.errorUsuario();
                             }
                         }
                         else{
                                 String inicioSesionFallidaUser = "Inicio de sesión fallida: Usuario "+usuario+" no existe.";
                                 ControladorPrincipal.registrarAccion(inicioSesionFallidaUser);
-                                vls.errorUsuario();
+                                vLogSecundario.errorUsuario();
                             }
                     }
                     else{
-                        vls.faltaPassword();
+                        vLogSecundario.faltaPassword();
                     }
                 }
                 else{
-                    vls.faltaUsuario();
+                    vLogSecundario.faltaUsuario();
                 }
             }
             catch(SQLException ex){
                 Logger.getLogger(ControladorLoginSecundario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+        @Override
+    public void keyTyped(KeyEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode()==KeyEvent.VK_ENTER){
+            vLogSecundario.getButtonIniciarSesion().doClick();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

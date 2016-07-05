@@ -46,10 +46,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e){
-        if(vb.getButtonAtras()==e.getSource()){
-            vb.dispose();
-        }
-        else if (vb.getButtonLanzar()==e.getSource()){
+        if (vb.getButtonLanzar()==e.getSource()){
             cdl = new ControladorDadoLanzar(this, jugadorActual);
         }
         
