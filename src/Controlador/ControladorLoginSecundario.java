@@ -1,6 +1,6 @@
 package Controlador;
 
-import BDD.Usuario;
+import Modelo.Usuario;
 import static Controlador.ControladorLogin.usuarioActivo;
 import Modelo.Login;
 import Vista.VistaLoginSecundario;

@@ -1,6 +1,6 @@
 package Controlador;
 //Importación de clases
-import BDD.Usuario;
+import Modelo.Usuario;
 import Modelo.Login;
 import Vista.VistaLogin;
 import java.awt.event.ActionEvent;

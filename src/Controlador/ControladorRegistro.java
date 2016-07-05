@@ -1,11 +1,11 @@
 package Controlador;
 
-import BDD.Conexion;
+import Modelo.Conexion;
 import Vista.VistaRegistro;
 import Modelo.Registro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import BDD.Usuario;
+import Modelo.Usuario;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
