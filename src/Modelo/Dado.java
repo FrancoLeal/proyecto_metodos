@@ -1,9 +1,6 @@
 package Modelo;
 
 import java.util.Random;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import Controlador.ControladorBatalla;
 //Declaraacion clase
 public class Dado {
     //Atributos
@@ -15,7 +12,7 @@ public class Dado {
     private String dueño;
     //Constructor
     public Dado(String dueño){
-        criatura = new Criatura("Criatura",dueño,1000,150,100,0);
+        criatura = new Criatura("Criatura",dueño,500,150,100,0);
         this.dueño=dueño;
     }
     //Métodos

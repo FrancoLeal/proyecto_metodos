@@ -710,4 +710,8 @@ public class VistaBatalla extends javax.swing.JFrame {
     public void errorDueñoCriatura() {
         JOptionPane.showMessageDialog(null, "Esta ciratura no te pertenece", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    public void perdedor(String dueño) {
+        JOptionPane.showMessageDialog(null, "El jugador"+dueño+"ha perdido", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

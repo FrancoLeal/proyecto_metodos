@@ -75,4 +75,16 @@ public class Tablero{
                 board[7][14].setJefeDeTerreno(jefes.get(1));
         }
     }
+    public void eliminarJugador(int x , int y, String dueño){
+        this.board[x][y].setJefeDeTerreno(null);
+        for(int i = 0 ; i<15 ; i++){
+            for(int j = 0 ; j <15 ; j++){
+                if(board[i][j].isCriatura()){
+                    if(board[i][j].getCriatura().getDueño().equals(dueño)){
+                        board[i][j].setCriatura(null);
+                    }
+                }
+            }
+        }
+    }
 }
