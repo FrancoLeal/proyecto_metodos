@@ -3,7 +3,7 @@ package Modelo;
 public class Criatura {
     
     private final String NOMBRE;
-    private  String DUEÑO;
+    private final String DUEÑO;
     //private final int ID;
     private final int HPTOTAL;
     private int HPActual;
@@ -59,8 +59,5 @@ public class Criatura {
             HPActual = 0;
         }
         return HPActual;
-    }
-    public void setDueño(String dueño){
-        this.DUEÑO=dueño;
     }
 }

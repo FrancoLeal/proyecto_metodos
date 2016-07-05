@@ -7,6 +7,7 @@ public class Batalla {
     private ArrayList<Jugador> jugadores= new ArrayList();
     private ArrayList<Jugador> turnoJugadores= new ArrayList();
     private ArrayList<JefeDeTerreno> jefes = new ArrayList();
+    private ArrayList<Dado> dados = new ArrayList();
     public Batalla(){
     }
     public ArrayList<Jugador> getJugadores(){
@@ -72,7 +73,7 @@ public class Batalla {
             this.jugadores.add(Jugador4);
         }
     }
-  /*  public void setJefesDeTerreno(ArrayList<JefeDeTerreno> jefes, Casilla[][] board){
+    public void setJefesDeTerreno(ArrayList<JefeDeTerreno> jefes, Casilla[][] board){
         if(jefes.size()==2){
             board[0][7].setJefeDeTerreno(jefes.get(0));
             board[14][7].setJefeDeTerreno(jefes.get(1));
@@ -88,28 +89,5 @@ public class Batalla {
             board[7][0].setJefeDeTerreno(jefes.get(2));
             board[7][14].setJefeDeTerreno(jefes.get(3));
         }
-    }*/
-    public ArrayList<Dado> generarDados(PuzzleDeDados puzzle, int cantidadDados){
-        ArrayList<Dado> dados = new ArrayList();
-        Random r = new Random();
-        if(cantidadDados==1){
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-        }
-        else if (cantidadDados==2){
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-        }
-        else if(cantidadDados==3){
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-        }
-        else if(cantidadDados==4){
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-            dados.add(puzzle.getDados().get(r.nextInt(14)));
-        }
-        return dados;
     }
 }

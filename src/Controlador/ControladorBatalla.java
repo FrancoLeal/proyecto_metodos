@@ -1,19 +1,14 @@
 package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
-import Modelo.Dado;
-import Modelo.Criatura;
 import Modelo.Tablero;
 import Modelo.Jugador;
-import Modelo.PuzzleDeDados;
 import Vista.VistaBatalla;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Random;
-import javax.swing.ImageIcon;
 //Definicion clase
 public class ControladorBatalla extends MouseAdapter implements ActionListener {
     //Definicion atributos
@@ -22,20 +17,22 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ControladorBatallaConfiguracion cbg;
     private int turnoActual;
     private ControladorDadoDesplegado cdd;
+    private ControladorDadoLanzar cdl;
     private int ultimaSeleccion = 0;
     private int[][] forma;
     private Tablero tablero;
     private Jugador jugadorActual;
+    private ArrayList<String> dados;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
         tablero = new Tablero();
         this.turnoActual = 0;
         this.cbg = cbg;
-        this.vb = new VistaBatalla();
-        this.b = new Batalla();
         ArrayList<String> j = this.cbg.getJugadores();
+        this.b = new Batalla();
         b.setBatalla(j);
+        this.vb = new VistaBatalla();
         b.setOrdenJugadores();
         tablero.setJefesDeTerreno(j,b.getJefesDeTerreno());
         vb.setJugadorActual(b.getOrdenJugadores().get(0).getNombre());
@@ -52,65 +49,16 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.dispose();
         }
         else if (vb.getButtonLanzar()==e.getSource()){
-            PuzzleDeDados puzzle = jugadorActual.getPuzzle();
-            Random r = new Random();
-            if(!vb.getNumeroDeDados().getText().equals("")){
-                ArrayList<Dado> dados = b.generarDados(puzzle,Integer.parseInt(vb.getNumeroDeDados().getText()));
-                if(dados.size()==1){
-                    String i1 = dados.get(0).resultado();
-                    vb.setPuntos(i1);
-                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
-                    vb.setDados(icon1);
-                }
-                else if(dados.size()==2){
-                    String i1 = dados.get(r.nextInt(1)).resultado();
-                    vb.setPuntos(i1);
-                    String i2 = dados.get(r.nextInt(1)).resultado();
-                    vb.setPuntos(i2);
-                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
-                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
-                    vb.setDados(icon1, icon2);
-                }
-                else if(dados.size()==3){
-                    String i1 = dados.get(r.nextInt(2)).resultado();
-                    vb.setPuntos(i1);
-                    String i2 = dados.get(r.nextInt(2)).resultado();
-                    vb.setPuntos(i2);
-                    String i3 = dados.get(r.nextInt(2)).resultado();
-                    vb.setPuntos(i3);
-                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
-                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
-                    ImageIcon icon3 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i3+".png"));
-                    vb.setDados(icon1, icon2,icon3);
-                }
-                else if(dados.size()==4){
-                    String i1 = dados.get(r.nextInt(3)).resultado();
-                    vb.setPuntos(i1);
-                    String i2 = dados.get(r.nextInt(3)).resultado();
-                    vb.setPuntos(i2);
-                    String i3 = dados.get(r.nextInt(3)).resultado();
-                    vb.setPuntos(i3);
-                    String i4 = dados.get(r.nextInt(3)).resultado();
-                    vb.setPuntos(i4);
-                    ImageIcon icon1 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i1+".png"));
-                    ImageIcon icon2 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i2+".png"));
-                    ImageIcon icon3 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i3+".png"));
-                    ImageIcon icon4 = new ImageIcon(getClass().getResource("/ImagenesJuego/"+i4+".png"));
-                    vb.setDados(icon1, icon2,icon3, icon4);
-                }
-            }
-            else{
-                vb.ingresarCantidadDados();
-            }
+            cdl = new ControladorDadoLanzar(this);
         }
         
         else if (vb.getButtonInvocar()==e.getSource()){
-            if(vb.getPtosInvocar()!=0){
+//            if(vb.getPtosInvocar()!=0){
                 this.cdd = new ControladorDadoDesplegado(this);
-            }
-            else{
-                vb.sinPuntos();
-            }
+//            }
+//            else{
+//                vb.sinPuntos();
+//            }
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
             jugadorActual.setAtaque(vb.getPtosAtk());
@@ -131,36 +79,36 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.setPtosInvocarInic(jugadorActual.getInvocacion());
         }
         else if (vb.getButtonAtacar()==e.getSource()){
-            if(vb.getPtosAtk()!=0){
+//            if(vb.getPtosAtk()!=0){
                 this.ultimaSeleccion=1;
-            }
-            else{
-                vb.sinPuntos();
-            }
+//            }
+//            else{
+//                vb.sinPuntos();
+//            }
         }
         else if(vb.getButtonMagia()==e.getSource()){
-            if(vb.getPtosInvocar()!=0){
+//            if(vb.getPtosInvocar()!=0){
                 this.ultimaSeleccion=4;
-            }
-            else{
-                vb.sinPuntos();
-            }
+//            }
+//            else{
+//                vb.sinPuntos();
+//            }
         }
         else if(vb.getButtonTrampa()==e.getSource()){
-            if(vb.getPtosTrap()!=0){
+//            if(vb.getPtosTrap()!=0){
                 this.ultimaSeleccion=5;
-            }
-            else{
-                vb.sinPuntos();
-            }
+//            }
+//            else{
+//                vb.sinPuntos();
+//            }
         }
         else if (vb.getButtonMover()==e.getSource()){
-            if(vb.getPtosMov()!=0){
+//            if(vb.getPtosMov()!=0){
                 this.ultimaSeleccion=2;
-            }
-            else{
-                vb.sinPuntos();
-            }
+//            }
+//            else{
+//                vb.sinPuntos();
+//            }
         }
         else{
             for (int i = 0 ; i<15 ; i++){
@@ -219,9 +167,9 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                                 vb.vistaPreviaSaliendo(i,j,forma);
                                 vb.pintar(i,j,forma, cbg.getJugadores());
                                 vb.setCriatura(i,j, "C");
-                                Criatura c = jugadorActual.getPuzzle().getDados().get(0).getCriatura();
-                                c.setDueño(jugadorActual.getNombre());
-                                tablero.getBoardModelo()[i][j].setCriatura(c);
+//                                Criatura c = jugadorActual.getPuzzle().getDados().get(0).getCriatura();
+//                                c.setDueño(jugadorActual.getNombre());
+//                                tablero.getBoardModelo()[i][j].setCriatura(c);
                                 this.ultimaSeleccion=0;
                                 vb.getButtonInvocar().setEnabled(false);
                                 vb.setPtosInvocar(-1);
