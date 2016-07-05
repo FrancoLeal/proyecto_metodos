@@ -12,8 +12,11 @@ public class Dado {
     public static final int[][] FORMA2 = {{0,0},{0,1},{1,1},{2,1},{3,1},{3,2}};
     private String [] caras;
     private Criatura criatura;
+    private String dueño;
     //Constructor
-    public Dado(){
+    public Dado(String dueño){
+        criatura = new Criatura("Criatura",dueño,1000,150,100,0);
+        this.dueño=dueño;
     }
     //Métodos
     public String resultado(){
@@ -31,5 +34,8 @@ public class Dado {
     }
     public void setCaras(String[] caras){
         this.caras=caras;
+    }
+    public Criatura getCriatura(){
+        return this.criatura;
     }
 }

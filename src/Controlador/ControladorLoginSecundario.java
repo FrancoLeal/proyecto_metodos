@@ -16,8 +16,9 @@ public class ControladorLoginSecundario implements ActionListener{
     private ControladorBatallaConfiguracion cbc;
     public ControladorLoginSecundario(ControladorBatallaConfiguracion cbc){
         this.vls = new VistaLoginSecundario();
+        this.vls.setLocationRelativeTo(null);
         this.cbc=cbc;
-        vls.setVisible(true);
+        this.vls.setVisible(true);
         this.vls.agregarListener(this);
     }
 
@@ -37,6 +38,7 @@ public class ControladorLoginSecundario implements ActionListener{
                                     String inicioSesion = "El usuario "+usuario+" ha iniciado sesión.";
                                     ControladorPrincipal.registrarAccion(inicioSesion);
                                     cbc.setUsuario(usuario);
+                                    vls.logExitoso();
                                     vls.dispose();
                                 }
                                 else{

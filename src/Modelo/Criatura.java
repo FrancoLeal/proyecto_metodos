@@ -51,7 +51,7 @@ public class Criatura {
     public int recibirDaño(int daño){
         if(daño<HPActual){
             if(daño>DEF){
-                HPActual -= daño;
+                HPActual= HPActual+DEF-daño;
                 System.out.println("Recibe "+Integer.toString(daño)+"de daño");
             }
         }

@@ -54,8 +54,6 @@ public class VistaBatalla extends javax.swing.JFrame {
         hpActualCriatura = new javax.swing.JLabel();
         dañoCriatura = new javax.swing.JLabel();
         defensaCriatura = new javax.swing.JLabel();
-        numeroDeDados = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         cara1 = new javax.swing.JLabel();
         cara2 = new javax.swing.JLabel();
         cara3 = new javax.swing.JLabel();
@@ -149,8 +147,6 @@ public class VistaBatalla extends javax.swing.JFrame {
 
         jLabel9.setText("Defensa             :");
 
-        jLabel10.setText("Ingresa cantidad de dados");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -233,11 +229,7 @@ public class VistaBatalla extends javax.swing.JFrame {
                                 .addComponent(atacar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(ptosAtk, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(numeroDeDados, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
                         .addComponent(lanzar)))
                 .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -259,28 +251,22 @@ public class VistaBatalla extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jugador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(26, 26, 26)
+                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(atacar)
-                            .addComponent(ptosAtk))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ptosAtk)
+                                .addComponent(lanzar)))
                         .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(numeroDeDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10)
-                                    .addComponent(lanzar))
-                                .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(mover)
+                                .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(mover)
-                                        .addGap(7, 7, 7)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(invocar)
-                                            .addComponent(ptosInvocar)))
-                                    .addComponent(ptosMov))
-                                .addGap(7, 7, 7)))
+                                    .addComponent(invocar)
+                                    .addComponent(ptosInvocar)))
+                            .addComponent(ptosMov))
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,7 +361,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JLabel hpActualCriatura;
     private javax.swing.JLabel hpTotalCriatura;
     private javax.swing.JButton invocar;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -388,7 +373,6 @@ public class VistaBatalla extends javax.swing.JFrame {
     private javax.swing.JButton magia;
     private javax.swing.JButton mover;
     private javax.swing.JLabel nombreCriatura;
-    private javax.swing.JTextField numeroDeDados;
     private javax.swing.JLabel ptosAtk;
     private javax.swing.JLabel ptosInvocar;
     private javax.swing.JLabel ptosMag;
@@ -694,11 +678,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public void ataqueInvalido(){
         JOptionPane.showMessageDialog(null, "No hay nadie para atacar", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
-
-    public JTextField getNumeroDeDados() {
-        return this.numeroDeDados;
-    }
-
+    
     public JLabel getDado1() {
         return dado1;
     }
@@ -742,9 +722,14 @@ public class VistaBatalla extends javax.swing.JFrame {
         else if(cara=="INVOCAR"){
             setPtosInvocar(1);
         }
+        this.lanzar.setEnabled(false);
     }
 
     public void ingresarCantidadDados() {
         JOptionPane.showMessageDialog(null, "Ingresa un numero de dados por favor", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void errorDueñoCriatura() {
+        JOptionPane.showMessageDialog(null, "Esta ciratura no te pertenece", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
 }

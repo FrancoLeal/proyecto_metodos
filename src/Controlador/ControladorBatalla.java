@@ -1,6 +1,7 @@
 package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
+import Modelo.Dado;
 import Modelo.Tablero;
 import Modelo.Jugador;
 import Vista.VistaBatalla;
@@ -22,7 +23,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private int[][] forma;
     private Tablero tablero;
     private Jugador jugadorActual;
-    private ArrayList<String> dados;
+    private ArrayList<Dado> dados;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg){
@@ -49,7 +50,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.dispose();
         }
         else if (vb.getButtonLanzar()==e.getSource()){
-            cdl = new ControladorDadoLanzar(this);
+            cdl = new ControladorDadoLanzar(this, jugadorActual);
         }
         
         else if (vb.getButtonInvocar()==e.getSource()){
@@ -72,6 +73,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             System.out.println("Turno de "+jugadorActual);
             vb.pintarTurno(cbg.getJugadores());
             vb.getButtonInvocar().setEnabled(true);
+            vb.getButtonLanzar().setEnabled(true);
             vb.setPtosAtkInic(jugadorActual.getAtaque());
             vb.setPtosTrapInic(jugadorActual.getTrampa());
             vb.setPtosMagInic(jugadorActual.getMagia());
@@ -167,9 +169,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                                 vb.vistaPreviaSaliendo(i,j,forma);
                                 vb.pintar(i,j,forma, cbg.getJugadores());
                                 vb.setCriatura(i,j, "C");
-//                                Criatura c = jugadorActual.getPuzzle().getDados().get(0).getCriatura();
-//                                c.setDueño(jugadorActual.getNombre());
-//                                tablero.getBoardModelo()[i][j].setCriatura(c);
+                                tablero.getBoardModelo()[i][j].setCriatura(jugadorActual.getPuzzle().getDados().get(0).getCriatura());
                                 this.ultimaSeleccion=0;
                                 vb.getButtonInvocar().setEnabled(false);
                                 vb.setPtosInvocar(-1);
@@ -189,9 +189,14 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         if(!tablero.getBoardModelo()[i][j].isJefe()){
                             if(tablero.getBoardModelo()[i][j].isCriatura()){
-                                this.ultimaSeleccion=7;
-                                x=i;
-                                y=j;
+                                if(tablero.getBoardModelo()[i][j].getCriatura().getDueño().equals(vb.getJugadorActual())){
+                                    this.ultimaSeleccion=7;
+                                    x=i;
+                                    y=j;
+                                }
+                                else{
+                                    vb.errorDueñoCriatura();
+                                }
                             }
                             else{
                                 vb.sinCriatura();
@@ -213,6 +218,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                             vb.getBoardVisible()[x][y].setText(null);
                             vb.setPtosMov(-1);
                             tablero.getBoardModelo()[x+1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                            tablero.getBoardModelo()[x][y].setCriatura(null);
                             this.ultimaSeleccion=0;
                         }
                         else{
@@ -286,10 +292,15 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         if(tablero.getBoardModelo()[i][j].isCriatura()){
-                            this.ultimaSeleccion=8;
-                            System.out.println(this.ultimaSeleccion);
-                            x=i;
-                            y=j;
+                            if(tablero.getBoardModelo()[i][j].getCriatura().getDueño().equals(vb.getJugadorActual())){
+                                this.ultimaSeleccion=8;
+                                System.out.println(this.ultimaSeleccion);
+                                x=i;
+                                y=j;
+                            }
+                            else{
+                                    vb.errorDueñoCriatura();
+                                }
                         }
                     }
                 }
@@ -297,18 +308,21 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if(this.ultimaSeleccion==8){
             try{
-                if(vb.getBoardVisible()[x+1][y]==e.getSource()/*&&tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                if(vb.getBoardVisible()[x+1][y]==e.getSource()&&!tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
                     System.out.println("Atacando");
                     if(tablero.getBoardModelo()[x+1][y].isJefe()){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().setVida(daño);
-                        //this.ultimaSeleccion=0;
+                        this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x+1][y].isCriatura()){
-                        System.out.println("si1");
+                    else if(tablero.getBoardModelo()[x+1][y].isCriatura()&&!tablero.getBoardModelo()[x+1][y].getCriatura().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x+1][y].getCriatura().recibirDaño(daño);
-                        //this.ultimaSeleccion=0;
+                        if(tablero.getBoardModelo()[x+1][y].getCriatura().getHPActual()<=0){
+                            tablero.getBoardModelo()[x+1][y].setCriatura(null);
+                            vb.getBoardVisible()[x+1][y].setText(null);
+                        }
+                        this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
@@ -316,16 +330,19 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 }
                 else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
                     System.out.println("Atacando");
-                    if(tablero.getBoardModelo()[x-1][y].isJefe()/*&&tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                    if(tablero.getBoardModelo()[x-1][y].isJefe()&&!tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x-11][y].getJefeDeTerreno().setVida(daño);
-                        //this.ultimaSeleccion=0;
+                        this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x-1][y].isCriatura()){
-                        System.out.println("si2");
+                    else if(tablero.getBoardModelo()[x-1][y].isCriatura()&&!tablero.getBoardModelo()[x-1][y].getCriatura().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x-1][y].getCriatura().recibirDaño(daño);
-                        //this.ultimaSeleccion=0;
+                        if(tablero.getBoardModelo()[x-1][y].getCriatura().getHPActual()<=0){
+                            tablero.getBoardModelo()[x-1][y].setCriatura(null);
+                            vb.getBoardVisible()[x-1][y].setText(null);
+                        }
+                        this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
@@ -333,16 +350,20 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 }
                 else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
                     System.out.println("Atacando");
-                    if(tablero.getBoardModelo()[x][y+1].isJefe()/*&&tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                    if(tablero.getBoardModelo()[x][y+1].isJefe()&&!tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().setVida(daño);
-                        //this.ultimaSeleccion=0;
+                        this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x][y+1].isCriatura()){
+                    else if(tablero.getBoardModelo()[x][y+1].isCriatura()&&!tablero.getBoardModelo()[x][y+1].getCriatura().getDueño().equals(vb.getJugadorActual())){
                         System.out.println("si3");
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y+1].getCriatura().recibirDaño(daño);
-                        //this.ultimaSeleccion=0;
+                        if(tablero.getBoardModelo()[x][y+1].getCriatura().getHPActual()<=0){
+                            tablero.getBoardModelo()[x][y+1].setCriatura(null);
+                            vb.getBoardVisible()[x][y+1].setText(null);
+                        }
+                        this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
@@ -350,16 +371,19 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 }
                 else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
                     System.out.println("Atacando");
-                     if(tablero.getBoardModelo()[x][y-1].isJefe()/*&&tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño()==vb.getJugadorActual()*/){
+                     if(tablero.getBoardModelo()[x][y-1].isJefe()&&!tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().setVida(daño);
-                        //this.ultimaSeleccion=0;
+                        this.ultimaSeleccion=0;
                     }
-                    else if(tablero.getBoardModelo()[x][y-1].isCriatura()){
-                        System.out.println("si4");
+                    else if(tablero.getBoardModelo()[x][y-1].isCriatura()&&!tablero.getBoardModelo()[x][y-1].getCriatura().getDueño().equals(vb.getJugadorActual())){
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y-1].getCriatura().recibirDaño(daño);
-                        //this.ultimaSeleccion=0;
+                        if(tablero.getBoardModelo()[x][y-1].getCriatura().getHPActual()<=0){
+                            tablero.getBoardModelo()[x][y-1].setCriatura(null);
+                            vb.getBoardVisible()[x][y-1].setText(null);
+                        }
+                        this.ultimaSeleccion=0;
                     }
                     else{
                         vb.ataqueInvalido();
@@ -407,5 +431,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     public void setUltimoBoton(int i ){
         this.ultimaSeleccion=i;
+    }
+    public void setDados(ArrayList<Dado> dados){
+        this.dados=dados;
+        for(Dado dado : dados){
+            vb.setPuntos(dado.resultado());
+        }
     }
 }

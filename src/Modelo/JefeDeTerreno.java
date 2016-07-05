@@ -22,6 +22,8 @@ public class JefeDeTerreno {
     }
     public void setVida(int daño){
         this.vida=vida-daño;
+        System.out.println("Recibe "+daño+"de daño");
+        System.out.println("Vida restante: "+vida);
     }
     public String getDueño(){
         return this.dueño;

@@ -150,4 +150,8 @@ public class VistaLoginSecundario extends javax.swing.JFrame {
     public void faltaPassword(){
         JOptionPane.showMessageDialog(null, "Ingrese una contraseña", "Error", JOptionPane.INFORMATION_MESSAGE);
     }
+    public void logExitoso(){
+        JOptionPane.showMessageDialog(null, "Has ingresado como " + getUsuario() , "Estás logeado!", JOptionPane.INFORMATION_MESSAGE);
+
+    }
 }

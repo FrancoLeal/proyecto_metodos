@@ -37,19 +37,22 @@ public class Batalla {
     }
     public void setBatalla(ArrayList<String> jugadores){
         if(jugadores.size() == 2){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados();
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J",jugadores.get(1)),puzzle1);
+            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
+            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jugadores.add(Jugador1);
             this.jugadores.add(Jugador2);
         }
         else if (jugadores.size() == 3){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados();
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J",jugadores.get(1)),puzzle1);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(100, 0, "J",jugadores.get(2)),puzzle1);
+            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
+            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
+            PuzzleDeDados puzzle3 = new PuzzleDeDados(jugadores.get(2));
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzle3);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());
@@ -58,11 +61,14 @@ public class Batalla {
             this.jugadores.add(Jugador3);
         }
         else if (jugadores.size() == 4){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados();
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(100, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(100, 0, "J",jugadores.get(1)),puzzle1);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(100, 0, "J",jugadores.get(2)),puzzle1);
-            Jugador Jugador4 = new Jugador(jugadores.get(3),new JefeDeTerreno(100, 0, "J",jugadores.get(3)),puzzle1);
+            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
+            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
+            PuzzleDeDados puzzle3 = new PuzzleDeDados(jugadores.get(2));
+            PuzzleDeDados puzzle4 = new PuzzleDeDados(jugadores.get(3));
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzle3);
+            Jugador Jugador4 = new Jugador(jugadores.get(3),new JefeDeTerreno(1000, 0, "J",jugadores.get(3)),puzzle4);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());
