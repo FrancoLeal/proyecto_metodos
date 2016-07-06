@@ -10,6 +10,7 @@ public class Jugador {
     private int mover;
     private JefeDeTerreno jefe;
     private int ID_USUARIO;
+    private int ID_JEFE;
     public Jugador(String nombre, JefeDeTerreno jefe, PuzzleDeDados puzzle){
         this.nombre = nombre;
         this.jefe = jefe;
@@ -22,6 +23,8 @@ public class Jugador {
     }
     public Jugador(int ID_USUARIO){
         this.ID_USUARIO=ID_USUARIO;
+    }
+    public Jugador(){
     }
     public void setInvocacion(int invocacion){
         this.invocacion=invocacion;
@@ -76,5 +79,8 @@ public class Jugador {
     }
     public int getID(){
         return this.ID_USUARIO;
+    }
+    public void setIDJefe(int ID_JEFE){
+        this.ID_JEFE=ID_JEFE;
     }
 }

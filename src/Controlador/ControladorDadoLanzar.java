@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ControladorDadoLanzar implements ActionListener{
     private VistaDadoLanzar vdl;
-    private ArrayList<Dado> dadosModelo = new ArrayList();;
+    private ArrayList<Dado> dadosModelo = new ArrayList();
     private ControladorBatalla cb;
     private PuzzleDeDados pdd;
     private ArrayList<Integer> dadosVista;
@@ -22,22 +22,28 @@ public class ControladorDadoLanzar implements ActionListener{
         vdl.setVisible(true);
         vdl.agregarListener(this);
         this.cb=cb;
-        this.pdd = new PuzzleDeDados(jugador.getNombre());
+        this.pdd = jugador.getPuzzle();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(vdl.getButtonSeleccionar()==e.getSource()){
             vdl.anadirDados();
-            dadosVista = vdl.getDados();
-            int i = 0;
-            while(dadosModelo.size()<dadosVista.size()){
-                this.dadosModelo.add(pdd.getDados().get(dadosVista.get(i)));
-                i++;
+            if(vdl.getDados().size()<=4){
+                dadosVista = vdl.getDados();
+                int i = 0;
+                while(dadosModelo.size()<dadosVista.size()){
+                    this.dadosModelo.add(pdd.getDados().get(dadosVista.get(i)));
+                    i++;
+                }
+                cb.setDados(this.dadosModelo);
+                System.out.println(this.dadosModelo);
+                vdl.dispose();
+                cb.setEnabledInvocar(true);
             }
-            cb.setDados(this.dadosModelo);
-            System.out.println(this.dadosModelo);
-            vdl.dispose();
+            else{
+                vdl.muchosDados();
+            }
         }
     }
 }

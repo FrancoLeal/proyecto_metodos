@@ -15,7 +15,7 @@ public class JugadorDAO {
             if(stmt==null){
                 resultados=stmt.executeQuery(consulta);
                 while (resultados.next()){
-                    jugador = new Jugador(resultados.getInt(0));
+                    jugador = new Jugador(resultados.getInt(1));
                 }
             }
             resultados.close();
@@ -130,6 +130,55 @@ public class JugadorDAO {
             stmt.close();
             conexion.desconectar();
             return criatura;
+        }
+        else{
+            conexion.desconectar();
+            return null;
+        }
+    }
+    public Jugador obtenerIDJefe(int ID_USUARIO) throws SQLException{
+        Jugador jugador=null;
+        Conexion conexion = new Conexion();
+        boolean resultado = conexion.conectar();
+        if(resultado == true){
+            Statement stmt = conexion.crearConsulta();
+            final String consulta = "SELECT JEFE_DE_TERRENO FROM USUARIO WHERE ID_USUARIO = '" + ID_USUARIO +"'"; 
+            ResultSet resultados = null;
+            if(stmt==null){
+                resultados=stmt.executeQuery(consulta);
+                while (resultados.next()){
+                    jugador=new Jugador();
+                    jugador.setIDJefe(resultados.getInt("JEFE_DE_TERRENO"));
+                }
+            }
+            resultados.close();
+            stmt.close();
+            conexion.desconectar();
+            return jugador;
+        }
+        else{
+            conexion.desconectar();
+            return null;
+        }
+    }
+    public JefeDeTerreno obtenerJefe(int ID_JEFE) throws SQLException{
+        JefeDeTerreno jefe=null;
+        Conexion conexion = new Conexion();
+        boolean resultado = conexion.conectar();
+        if(resultado == true){
+            Statement stmt = conexion.crearConsulta();
+            final String consulta = "SELECT NOMBRE_JEFE_TERRENO, HP_JEFE_TERRENO FROM JEFE_TERRENO WHERE ID_JEFE = '" + ID_JEFE +"'"; 
+            ResultSet resultados = null;
+            if(stmt==null){
+                resultados=stmt.executeQuery(consulta);
+                while (resultados.next()){
+                    jefe = new JefeDeTerreno(resultados.getInt("HP_JEFE_TERRENO"),resultados.getString("NOMBRE_JEFE_TERRENO"));
+                }
+            }
+            resultados.close();
+            stmt.close();
+            conexion.desconectar();
+            return jefe;
         }
         else{
             conexion.desconectar();

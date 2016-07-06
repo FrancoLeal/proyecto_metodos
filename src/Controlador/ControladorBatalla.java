@@ -1,6 +1,7 @@
 package Controlador;
 //Importacion de clases
 import Modelo.Batalla;
+import Modelo.Criatura;
 import Modelo.Dado;
 import Modelo.Tablero;
 import Modelo.Jugador;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 //Definicion clase
 public class ControladorBatalla extends MouseAdapter implements ActionListener {
@@ -24,9 +26,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private Tablero tablero;
     private Jugador jugadorActual;
     private ArrayList<Dado> dados;
+    private Criatura criaturaAInvocar;
+    private ControladorInvocar ci;
     
     //Definicion constructor
-    public ControladorBatalla(ControladorBatallaConfiguracion cbg){
+    public ControladorBatalla(ControladorBatallaConfiguracion cbg) throws SQLException{
         tablero = new Tablero();
         this.turnoActual = 0;
         this.cbg = cbg;
@@ -52,7 +56,11 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         
         else if (vb.getButtonInvocar()==e.getSource()){
 //            if(vb.getPtosInvocar()!=0){
-                this.cdd = new ControladorDadoDesplegado(this);
+                ArrayList<Criatura> criaturas = new ArrayList();
+                for(Dado dado : this.dados){
+                    criaturas.add(dado.getCriatura());
+                }
+                this.ci=new ControladorInvocar(this,criaturas);
 //            }
 //            else{
 //                vb.sinPuntos();
@@ -64,6 +72,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             jugadorActual.setMagia(vb.getPtosMag());
             jugadorActual.setMover(vb.getPtosMov());
             jugadorActual.setInvocacion(0);
+            vb.getButtonInvocar().setEnabled(false);
+            criaturaAInvocar=null;
             setTurno();
             this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
             vb.setJugadorActual(jugadorActual.getNombre());
@@ -166,7 +176,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                                 vb.vistaPreviaSaliendo(i,j,forma);
                                 vb.pintar(i,j,forma, cbg.getJugadores());
                                 vb.setCriatura(i,j, "C");
-                                tablero.getBoardModelo()[i][j].setCriatura(jugadorActual.getPuzzle().getDados().get(0).getCriatura());
+                                tablero.getBoardModelo()[i][j].setCriatura(criaturaAInvocar);
                                 this.ultimaSeleccion=0;
                                 vb.getButtonInvocar().setEnabled(false);
                                 vb.setPtosInvocar(-1);
@@ -549,5 +559,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         for(Dado dado : dados){
             vb.setPuntos(dado.resultado());
         }
+    }
+    public void setEnabledInvocar(boolean b){
+        vb.getButtonInvocar().setEnabled(b);
+    }
+    public void setCriaturaInvocar(Criatura criatura){
+        this.criaturaAInvocar=criatura;
+        this.ultimaSeleccion=3;
     }
 }

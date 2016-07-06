@@ -23,37 +23,205 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="159" max="32767" attributes="0"/>
-              <Component id="seleccionar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="dado1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="dado2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="dado3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="dado4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="criatura1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                              <Component id="dado1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="dado5" min="-2" pref="60" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="criatura5" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace pref="6" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="criatura9" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="criatura2" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                              <Component id="dado2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="criatura6" min="-2" pref="69" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="dado3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                              <Component id="criatura3" min="-2" pref="60" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="criatura4" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                              <Component id="dado4" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="criatura7" min="-2" pref="57" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="criatura8" min="-2" pref="57" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="dado6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="criatura10" min="-2" pref="67" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="dado7" min="-2" pref="58" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                                      <Component id="criatura11" min="-2" pref="58" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dado8" min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Component id="criatura12" pref="74" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                              <Component id="seleccionar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="dado9" min="-2" pref="70" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="dado10" min="-2" pref="69" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="dado11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="dado12" min="-2" pref="65" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="dado13" min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="criatura13" min="-2" pref="73" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                      <Component id="dado14" min="-2" pref="64" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="dado15" min="-2" pref="64" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="criatura14" min="-2" pref="65" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="criatura15" min="-2" pref="79" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="202" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="dado1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dado2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dado3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="dado4" alignment="3" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="criatura1" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                      <Component id="dado1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="criatura2" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="criatura3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="criatura4" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dado2" min="-2" max="-2" attributes="0"/>
+                          <Component id="dado3" min="-2" max="-2" attributes="0"/>
+                          <Component id="dado4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="criatura5" pref="20" max="32767" attributes="0"/>
+                  <Component id="criatura6" alignment="0" max="32767" attributes="0"/>
+                  <Component id="criatura7" max="32767" attributes="0"/>
+                  <Component id="criatura8" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dado5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado8" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="criatura9" pref="19" max="32767" attributes="0"/>
+                  <Component id="criatura10" alignment="0" max="32767" attributes="0"/>
+                  <Component id="criatura11" alignment="0" max="32767" attributes="0"/>
+                  <Component id="criatura12" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dado9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado12" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="criatura13" alignment="0" max="32767" attributes="0"/>
+                  <Component id="criatura14" alignment="0" max="32767" attributes="0"/>
+                  <Component id="criatura15" min="-2" pref="19" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dado13" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado14" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dado15" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="seleccionar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,6 +250,94 @@
     <Component class="javax.swing.JCheckBox" name="dado4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dado4"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura2">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura3">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura4">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura5">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura6">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura7">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura8">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado5"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado6"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado7"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado8"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura9">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura10">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura11">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura12">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado9"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado10"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dado10ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado11"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado12"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura13">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura14">
+    </Component>
+    <Component class="javax.swing.JLabel" name="criatura15">
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado13"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado14"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="dado15">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dado15"/>
       </Properties>
     </Component>
   </SubComponents>

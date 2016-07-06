@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,7 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
      */
     public VistaDadoLanzar() {
         initComponents();
-        this.dados = new ArrayList();
+        //this.dados = new ArrayList();
     }
 
     /**
@@ -38,6 +39,32 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
         dado2 = new javax.swing.JCheckBox();
         dado3 = new javax.swing.JCheckBox();
         dado4 = new javax.swing.JCheckBox();
+        criatura1 = new javax.swing.JLabel();
+        criatura2 = new javax.swing.JLabel();
+        criatura3 = new javax.swing.JLabel();
+        criatura4 = new javax.swing.JLabel();
+        criatura5 = new javax.swing.JLabel();
+        criatura6 = new javax.swing.JLabel();
+        criatura7 = new javax.swing.JLabel();
+        criatura8 = new javax.swing.JLabel();
+        dado5 = new javax.swing.JCheckBox();
+        dado6 = new javax.swing.JCheckBox();
+        dado7 = new javax.swing.JCheckBox();
+        dado8 = new javax.swing.JCheckBox();
+        criatura9 = new javax.swing.JLabel();
+        criatura10 = new javax.swing.JLabel();
+        criatura11 = new javax.swing.JLabel();
+        criatura12 = new javax.swing.JLabel();
+        dado9 = new javax.swing.JCheckBox();
+        dado10 = new javax.swing.JCheckBox();
+        dado11 = new javax.swing.JCheckBox();
+        dado12 = new javax.swing.JCheckBox();
+        criatura13 = new javax.swing.JLabel();
+        criatura14 = new javax.swing.JLabel();
+        criatura15 = new javax.swing.JLabel();
+        dado13 = new javax.swing.JCheckBox();
+        dado14 = new javax.swing.JCheckBox();
+        dado15 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,41 +78,197 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
 
         dado4.setText("Dado4");
 
+        dado5.setText("Dado5");
+
+        dado6.setText("Dado6");
+
+        dado7.setText("Dado7");
+
+        dado8.setText("Dado8");
+
+        dado9.setText("Dado9");
+
+        dado10.setText("Dado10");
+        dado10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dado10ActionPerformed(evt);
+            }
+        });
+
+        dado11.setText("Dado11");
+
+        dado12.setText("Dado12");
+
+        dado13.setText("Dado13");
+
+        dado14.setText("Dado14");
+
+        dado15.setText("Dado15");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
-                .addComponent(seleccionar)
-                .addGap(154, 154, 154))
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(dado1)
-                .addGap(27, 27, 27)
-                .addComponent(dado2)
-                .addGap(18, 18, 18)
-                .addComponent(dado3)
-                .addGap(18, 18, 18)
-                .addComponent(dado4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(criatura1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(dado1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(dado5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(criatura5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
+                            .addComponent(criatura9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(15, 15, 15)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(criatura2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(dado2))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(criatura6, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(dado3)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(4, 4, 4)
+                                                .addComponent(criatura3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(criatura4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addComponent(dado4))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(criatura7, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(criatura8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(dado6)
+                                            .addComponent(criatura10, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dado7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(82, 82, 82)
+                                        .addComponent(criatura11, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dado8, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(criatura12, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(seleccionar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(dado9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(dado10, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dado11)
+                                .addGap(11, 11, 11)
+                                .addComponent(dado12, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dado13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(criatura13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(dado14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dado15, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(criatura14, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(criatura15, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(12, 12, 12)))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(criatura1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(dado1))
+                    .addComponent(criatura2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(criatura3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(criatura4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dado2)
+                            .addComponent(dado3)
+                            .addComponent(dado4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(criatura5, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(criatura6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dado1)
-                    .addComponent(dado2)
-                    .addComponent(dado3)
-                    .addComponent(dado4))
-                .addGap(26, 26, 26)
+                    .addComponent(dado5)
+                    .addComponent(dado6)
+                    .addComponent(dado7)
+                    .addComponent(dado8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(criatura9, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                    .addComponent(criatura10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dado9)
+                    .addComponent(dado10)
+                    .addComponent(dado11)
+                    .addComponent(dado12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(criatura13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criatura15, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dado13)
+                    .addComponent(dado14)
+                    .addComponent(dado15))
+                .addGap(28, 28, 28)
                 .addComponent(seleccionar)
-                .addGap(26, 26, 26))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void dado10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dado10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dado10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,12 +306,39 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel criatura1;
+    private javax.swing.JLabel criatura10;
+    private javax.swing.JLabel criatura11;
+    private javax.swing.JLabel criatura12;
+    private javax.swing.JLabel criatura13;
+    private javax.swing.JLabel criatura14;
+    private javax.swing.JLabel criatura15;
+    private javax.swing.JLabel criatura2;
+    private javax.swing.JLabel criatura3;
+    private javax.swing.JLabel criatura4;
+    private javax.swing.JLabel criatura5;
+    private javax.swing.JLabel criatura6;
+    private javax.swing.JLabel criatura7;
+    private javax.swing.JLabel criatura8;
+    private javax.swing.JLabel criatura9;
     private javax.swing.JCheckBox dado1;
+    private javax.swing.JCheckBox dado10;
+    private javax.swing.JCheckBox dado11;
+    private javax.swing.JCheckBox dado12;
+    private javax.swing.JCheckBox dado13;
+    private javax.swing.JCheckBox dado14;
+    private javax.swing.JCheckBox dado15;
     private javax.swing.JCheckBox dado2;
     private javax.swing.JCheckBox dado3;
     private javax.swing.JCheckBox dado4;
+    private javax.swing.JCheckBox dado5;
+    private javax.swing.JCheckBox dado6;
+    private javax.swing.JCheckBox dado7;
+    private javax.swing.JCheckBox dado8;
+    private javax.swing.JCheckBox dado9;
     private javax.swing.JButton seleccionar;
     // End of variables declaration//GEN-END:variables
+
     private ArrayList<Integer> dados = new ArrayList();
     public void agregarListener(ActionListener al){
        this.seleccionar.addActionListener(al);
@@ -146,39 +356,39 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
         if(dado4.isSelected()){
             dados.add(4);
         }
-//        if(dado5.isSelected()==true){
-//            dados.add(dado5.getName());
-//        }
-//        if(dado6.isSelected()==true){
-//            dados.add(dado6.getName());
-//        }
-//        if(dado7.isSelected()==true){
-//            dados.add(dado7.getName());
-//        }
-//        if(dado8.isSelected()==true){
-//            dados.add(dado8.getName());
-//        }
-//        if(dado9.isSelected()==true){
-//            dados.add(dado9.getName());
-//        }
-//        if(dado10.isSelected()==true){
-//            dados.add(dado10.getName());
-//        }
-//        if(dado11.isSelected()==true){
-//            dados.add(dado11.getName());
-//        }
-//        if(dado12.isSelected()==true){
-//            dados.add(dado12.getName());
-//        }
-//        if(dado13.isSelected()==true){
-//            dados.add(dado13.getName());
-//        }
-//        if(dado14.isSelected()==true){
-//            dados.add(dado14.getName());
-//        }
-//        if(dado15.isSelected()==true){
-//            dados.add(dado15.getName());
-//        }
+        if(dado5.isSelected()){
+            dados.add(5);
+        }
+        if(dado6.isSelected()){
+            dados.add(6);
+        }
+        if(dado7.isSelected()){
+            dados.add(7);
+        }
+        if(dado8.isSelected()){
+            dados.add(8);
+        }
+        if(dado9.isSelected()){
+            dados.add(9);
+        }
+        if(dado10.isSelected()){
+            dados.add(10);
+        }
+        if(dado11.isSelected()){
+            dados.add(11);
+        }
+        if(dado12.isSelected()){
+            dados.add(12);
+        }
+        if(dado13.isSelected()){
+            dados.add(13);
+        }
+        if(dado14.isSelected()){
+            dados.add(14);
+        }
+        if(dado15.isSelected()){
+            dados.add(15);
+        }
     }
     
     public ArrayList<Integer> getDados() {
@@ -187,5 +397,26 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
     
     public JButton getButtonSeleccionar() {
         return this.seleccionar;
+    }
+
+    public void muchosDados() {
+                JOptionPane.showMessageDialog(null, "Haz seleccionado muchos dados. Por favor, escoge máximo4","Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+    private void setDados(ArrayList<String> criaturas){
+        criatura1.setText(criaturas.get(0));
+        criatura2.setText(criaturas.get(1));
+        criatura3.setText(criaturas.get(2));
+        criatura4.setText(criaturas.get(3));
+        criatura5.setText(criaturas.get(4));
+        criatura6.setText(criaturas.get(5));
+        criatura7.setText(criaturas.get(6));
+        criatura8.setText(criaturas.get(7));
+        criatura9.setText(criaturas.get(8));
+        criatura10.setText(criaturas.get(9));
+        criatura11.setText(criaturas.get(10));
+        criatura12.setText(criaturas.get(11));
+        criatura13.setText(criaturas.get(12));
+        criatura14.setText(criaturas.get(13));
+        criatura15.setText(criaturas.get(14));
     }
 }

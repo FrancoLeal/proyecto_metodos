@@ -42,4 +42,7 @@ public class Dado {
     public void setCriatura(Criatura criatura){
         this.criatura=criatura;
     }
+    public Criatura getCriatura(){
+        return this.criatura;
+    }
 }

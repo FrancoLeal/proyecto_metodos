@@ -3,7 +3,10 @@ package Controlador;
 import Vista.VistaBatallaConfiguracion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorBatallaConfiguracion implements ActionListener {
     
@@ -80,7 +83,11 @@ public class ControladorBatallaConfiguracion implements ActionListener {
                 String batalla = "Dando comienzo a la batalla...";
                 ControladorPrincipal.registrarAccion(batalla);
                 vbc.setVisible(false);
-                ControladorBatalla cb = new ControladorBatalla(this);
+                try {
+                    ControladorBatalla cb = new ControladorBatalla(this);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ControladorBatallaConfiguracion.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else{
                 vbc.faltanJugadores();

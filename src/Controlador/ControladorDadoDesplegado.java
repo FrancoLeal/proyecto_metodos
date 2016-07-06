@@ -7,13 +7,15 @@ import java.awt.event.ActionListener;
 //Declaracion clase
 public class ControladorDadoDesplegado implements ActionListener{
     private VistaDado vd;
+    private ControladorInvocar ci;
     private ControladorBatalla cb;
     
-    public ControladorDadoDesplegado(ControladorBatalla cb){
+    public ControladorDadoDesplegado(ControladorBatalla cb, ControladorInvocar ci){
         vd = new VistaDado();
         vd.setVisible(true);
         vd.agregarListener(this);
-        this.cb = cb;
+        this.ci = ci;
+        this.cb=cb;
     }
 
     @Override
