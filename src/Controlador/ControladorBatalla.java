@@ -63,7 +63,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             jugadorActual.setTrampa(vb.getPtosTrap());
             jugadorActual.setMagia(vb.getPtosMag());
             jugadorActual.setMover(vb.getPtosMov());
-            jugadorActual.setInvocacion(vb.getPtosInvocar());
+            jugadorActual.setInvocacion(0);
             setTurno();
             this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
             vb.setJugadorActual(jugadorActual.getNombre());
@@ -75,7 +75,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.setPtosTrapInic(jugadorActual.getTrampa());
             vb.setPtosMagInic(jugadorActual.getMagia());
             vb.setPtosMovInic(jugadorActual.getMover());
-            vb.setPtosInvocarInic(jugadorActual.getInvocacion());
+            vb.setPtosInvocarInic(0);
         }
         else if (vb.getButtonAtacar()==e.getSource()){
 //            if(vb.getPtosAtk()!=0){
@@ -209,7 +209,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         else if(this.ultimaSeleccion==7){
             try{
                 if(vb.getBoardVisible()[x+1][y]==e.getSource()){
-                    if(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
+                    if(tablero.getBoardModelo()[x-1][y].getCriatura()==null&&tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
                         if(!tablero.getBoardModelo()[x+1][y].getDueño().equals("")){
                             vb.getBoardVisible()[x+1][y].setText(vb.getBoardVisible()[x][y].getText());
                             vb.getBoardVisible()[x][y].setText(null);
@@ -226,52 +226,21 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         vb.movimientoInvalido();
                     }
                 }
-                    else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
-                        if(tablero.getBoardModelo()[x-1][y].getCriatura()==null && tablero.getBoardModelo()[x-1][y].getJefeDeTerreno()==null){
-                            if(!tablero.getBoardModelo()[x-1][y].getDueño().equals("")){
-                                vb.getBoardVisible()[x-1][y].setText(vb.getBoardVisible()[x][y].getText());
-                                vb.getBoardVisible()[x][y].setText(null);
-                                vb.setPtosMov(-1);
-                                tablero.getBoardModelo()[x-1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
-                                this.ultimaSeleccion=0;
-                            }
-                            else{
-                                vb.movimientoInvalido();
-                            }
-                        }
-                        else{
-                            vb.movimientoInvalido();
-                        }
-                    }
-                    else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
-                        if(tablero.getBoardModelo()[x+1][y].getCriatura()==null||tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
-                            if(!tablero.getBoardModelo()[x][y+1].getDueño().equals("")){
-                                vb.getBoardVisible()[x][y+1].setText(vb.getBoardVisible()[x][y].getText());
-                                vb.getBoardVisible()[x][y].setText(null);
-                                vb.setPtosMov(-1);
-                                tablero.getBoardModelo()[x][y+1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
-                                this.ultimaSeleccion=0;
-                            }
-                            else{
-                                vb.movimientoInvalido();
-                            }
-                        }
-                        else{
-                            vb.movimientoInvalido();
-                        }
-                    }
-                    else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
-                        if(tablero.getBoardModelo()[x+1][y].getCriatura()==null||tablero.getBoardModelo()[x+1][y].getJefeDeTerreno()==null){
-                            if(!tablero.getBoardModelo()[x][y-1].getDueño().equals("")){
-                                vb.getBoardVisible()[x][y-1].setText(vb.getBoardVisible()[x][y].getText());
-                                vb.getBoardVisible()[x][y].setText(null);
-                                vb.setPtosMov(-1);
-                                tablero.getBoardModelo()[x][y-1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
-                                this.ultimaSeleccion=0;
-                            }
-                            else{
-                                vb.movimientoInvalido();
-                            }
+//                else{
+//                    vb.movimientoInvalido();
+//                }
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x-1][y]==e.getSource()){
+                    if(tablero.getBoardModelo()[x-1][y].getCriatura()==null && tablero.getBoardModelo()[x-1][y].getJefeDeTerreno()==null){
+                        if(!tablero.getBoardModelo()[x-1][y].getDueño().equals("")){
+                            vb.getBoardVisible()[x-1][y].setText(vb.getBoardVisible()[x][y].getText());
+                            vb.getBoardVisible()[x][y].setText(null);
+                            vb.setPtosMov(-1);
+                            tablero.getBoardModelo()[x-1][y].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                            this.ultimaSeleccion=0;
                         }
                         else{
                             vb.movimientoInvalido();
@@ -281,6 +250,58 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         vb.movimientoInvalido();
                     }
                 }
+//                else{
+//                    vb.movimientoInvalido();
+//                }
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x][y+1]==e.getSource()){
+                    if(tablero.getBoardModelo()[x][y+1].getCriatura()==null&&tablero.getBoardModelo()[x][y+1].getJefeDeTerreno()==null){
+                        if(!tablero.getBoardModelo()[x][y+1].getDueño().equals("")){
+                            vb.getBoardVisible()[x][y+1].setText(vb.getBoardVisible()[x][y].getText());
+                            vb.getBoardVisible()[x][y].setText(null);
+                            vb.setPtosMov(-1);
+                            tablero.getBoardModelo()[x][y+1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                            this.ultimaSeleccion=0;
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
+                    }
+                   else{
+                        vb.movimientoInvalido();
+                    }
+                }
+//                else{
+//                    vb.movimientoInvalido();
+//                }
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x][y-1]==e.getSource()){
+                    if(tablero.getBoardModelo()[x][y-1].getCriatura()==null&&tablero.getBoardModelo()[x][y-1].getJefeDeTerreno()==null){
+                        if(!tablero.getBoardModelo()[x][y-1].getDueño().equals("")){
+                            vb.getBoardVisible()[x][y-1].setText(vb.getBoardVisible()[x][y].getText());
+                            vb.getBoardVisible()[x][y].setText(null);
+                            vb.setPtosMov(-1);
+                            tablero.getBoardModelo()[x][y-1].setCriatura(tablero.getBoardModelo()[x][y].getCriatura());
+                            this.ultimaSeleccion=0;
+                        }
+                        else{
+                            vb.movimientoInvalido();
+                        }
+                    }
+                    else{
+                        vb.movimientoInvalido();
+                    }
+                }
+//                else{
+//                    vb.movimientoInvalido();
+//                }
+            }
             catch(ArrayIndexOutOfBoundsException ae){
             }
         }
@@ -291,13 +312,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         if(tablero.getBoardModelo()[i][j].isCriatura()){
                             if(tablero.getBoardModelo()[i][j].getCriatura().getDueño().equals(vb.getJugadorActual())){
                                 this.ultimaSeleccion=8;
-                                System.out.println(this.ultimaSeleccion);
                                 x=i;
                                 y=j;
                             }
                             else{
-                                    vb.errorDueñoCriatura();
-                                }
+                                vb.errorDueñoCriatura();
+                            }
                         }
                     }
                 }
@@ -305,9 +325,10 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         else if(this.ultimaSeleccion==8){
             try{
-                if(vb.getBoardVisible()[x+1][y]==e.getSource()&&!tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
-                    System.out.println("Atacando");
+                if(vb.getBoardVisible()[x+1][y]==e.getSource()){
+                    System.out.println("Atacando en x+1, y");
                     if(tablero.getBoardModelo()[x+1][y].isJefe()){
+                        System.out.println("Atacando jefe");
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().setVida(daño);
                         System.out.println("Vida restante "+tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getVida());
@@ -315,7 +336,14 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                             vb.perdedor(tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño());
                             tablero.eliminarJugador(x+1,y,tablero.getBoardModelo()[x+1][y].getJefeDeTerreno().getDueño());
                             vb.getBoardVisible()[x+1][y].setText(null);
+                            b.getOrdenJugadores().remove(jugadorActual);
+                            b.getJugadores().remove(jugadorActual);
                         }
+                        if(b.getJugadores().size()==1){
+                                vb.ganador(b.getJugadores().get(0).getNombre());
+                                vb.dispose();
+                                this.cbg.setVista(true);
+                        } 
                         for(int i=0;i<15;i++){
                             for(int j=0;j<15;j++){
                                 if(tablero.getBoardModelo()[i][j].isEmpty()){
@@ -338,15 +366,28 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x-1][y]==e.getSource()){
-                    System.out.println("Atacando");
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x-1][y]==e.getSource()){
+                    System.out.println("Atacando en x-1, y");
                     if(tablero.getBoardModelo()[x-1][y].isJefe()&&!tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
+                        System.out.println("Atacando jefe");
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().setVida(daño);
                         System.out.println("Vida restante "+tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getVida());
                         if(tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getVida()<=0){
+                            vb.perdedor(tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño());
                             tablero.eliminarJugador(x-1,y,tablero.getBoardModelo()[x-1][y].getJefeDeTerreno().getDueño());
                             vb.getBoardVisible()[x-1][y].setText(null);
+                            b.getOrdenJugadores().remove(jugadorActual);
+                            b.getJugadores().remove(jugadorActual);
+                        }
+                        if(b.getJugadores().size()==1){
+                                vb.ganador(b.getJugadores().get(0).getNombre());
+                                vb.dispose();
+                                this.cbg.setVista(true);
                         }
                         for(int i=0;i<15;i++){
                             for(int j=0;j<15;j++){
@@ -370,15 +411,28 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x][y+1]==e.getSource()){
-                    System.out.println("Atacando");
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x][y+1]==e.getSource()){
+                    System.out.println("Atacando en x, y+1");
                     if(tablero.getBoardModelo()[x][y+1].isJefe()&&!tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
+                        System.out.println("Atacando jefe");
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().setVida(daño);
                         System.out.println("Vida restante "+tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getVida());
                         if(tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getVida()<=0){
+                            vb.perdedor(tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño());
                             tablero.eliminarJugador(x,y+1,tablero.getBoardModelo()[x][y+1].getJefeDeTerreno().getDueño());
                             vb.getBoardVisible()[x][y+1].setText(null);
+                            b.getOrdenJugadores().remove(jugadorActual);
+                            b.getJugadores().remove(jugadorActual);
+                            if(b.getJugadores().size()==1){
+                                vb.ganador(b.getJugadores().get(0).getNombre());
+                                vb.dispose();
+                                this.cbg.setVista(true);
+                            } 
                         }
                         for(int i=0;i<15;i++){
                             for(int j=0;j<15;j++){
@@ -402,15 +456,28 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                         vb.ataqueInvalido();
                     }
                 }
-                else if(vb.getBoardVisible()[x][y-1]==e.getSource()){
-                    System.out.println("Atacando");
-                     if(tablero.getBoardModelo()[x][y-1].isJefe()&&!tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
+            }
+            catch(ArrayIndexOutOfBoundsException ae){
+            }
+            try{
+                if(vb.getBoardVisible()[x][y-1]==e.getSource()){
+                    System.out.println("Atacando en x, y-1");
+                    if(tablero.getBoardModelo()[x][y-1].isJefe()&&!tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño().equals(vb.getJugadorActual())){
+                        System.out.println("Atacando jefe");
                         int daño = tablero.getBoardModelo()[x][y].getCriatura().getAtk();
                         tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().setVida(daño);
                         System.out.println("Vida restante "+tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getVida());
                         if(tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getVida()<=0){
+                            vb.perdedor(tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño());
                             tablero.eliminarJugador(x,y-1,tablero.getBoardModelo()[x][y-1].getJefeDeTerreno().getDueño());
                             vb.getBoardVisible()[x][y-1].setText(null);
+                            b.getOrdenJugadores().remove(jugadorActual);
+                            b.getJugadores().remove(jugadorActual);
+                            if(b.getJugadores().size()==1){
+                                vb.ganador(b.getJugadores().get(0).getNombre());
+                                vb.dispose();
+                                this.cbg.setVista(true);
+                            } 
                         }
                         for(int i=0;i<15;i++){
                             for(int j=0;j<15;j++){

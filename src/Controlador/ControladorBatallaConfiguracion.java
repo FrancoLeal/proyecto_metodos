@@ -105,4 +105,7 @@ public class ControladorBatallaConfiguracion implements ActionListener {
             vbc.agregarElemento4(usuario);
         }
     }
+    public void setVista(boolean b){
+        this.vbc.setVisible(b);
+    }
 }
