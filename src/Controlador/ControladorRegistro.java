@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Modelo.Usuario;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -44,7 +45,7 @@ public class ControladorRegistro implements ActionListener{
                         JOptionPane.showMessageDialog(null,intentoRegistro1);
                     }
                     else{
-                        usuario = new Usuario(vr.getUsuario(), vr.getPassword());
+                        usuario = new Usuario(vr.getUsuario(), vr.getPassword(),vr.getSeleccionElegirPuzle(),vr.getSeleccionElegirJefe());
                         usuario.save();
                         String registroExitoso = "El usuario "+vr.getUsuario()+" fue registrado exitosamente.";
                         ControladorPrincipal.registrarAccion(registroExitoso);
@@ -63,5 +64,7 @@ public class ControladorRegistro implements ActionListener{
             }
         }
     }
-    
+    public ArrayList<String> getPuzzles(){
+        return vr.getPuzzles();
+    }  
 }

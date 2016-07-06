@@ -5,17 +5,19 @@ import java.sql.*;
 public class Usuario {
     private String nombre;
     private String password;
-    private int jefeTerreno;
+    private final int PNJ=0;
+    private int ID_PUZZLE;
+    private int ID_JEFE_TERRENO;
     
     public Usuario(String nombre, String password) throws SQLException{
         this.nombre = nombre;
         this.password = password;
     }
     
-    public Usuario(String nombre, String password, int jefeTerreno){
+    public Usuario(String nombre, String password,int ID_PUZZLE, int ID_JEFE_TERRENO){
         this.nombre = nombre;
         this.password = password;
-        this.jefeTerreno = jefeTerreno;
+        this.ID_PUZZLE=ID_PUZZLE;
     }
 
 
@@ -39,9 +41,16 @@ public class Usuario {
         this.password = password;
     }
     
-    public void setJefeTerrano(int jefeTerreno) {
-        this.jefeTerreno = jefeTerreno;
+
+    public void setID_PUZZLE(int ID_PUZZLE) {
+     
+        this.ID_PUZZLE = ID_PUZZLE;
     }
+
+    public void setID_JEFE_TERRENO(int ID_JEFE_TERRENO) {
+        this.ID_JEFE_TERRENO = ID_JEFE_TERRENO;
+    }
+    
     
     
     // Funciones BDD
@@ -50,7 +59,7 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "INSERT INTO USUARIO (NOMBRE_USUARIO,CONTRASENIA_USUARIO,ESPNJ_USUARIO) VALUES " + "('" + this.nombre + "','" + this.password + "',0)";
+        final String consulta = "INSERT INTO USUARIO (NOMBRE_USUARIO,CONTRASENIA_USUARIO,ESPNJ_USUARIO,ID_PUZLE,ID_JEFE_TERRENO) VALUES " + "'('" + this.nombre + "','" + this.password + "','"+ this.ID_PUZZLE"','"+0+"','"+this.ID_JEFE_TERRENO+"')'";
         stmt.executeUpdate(consulta);
     }
     
