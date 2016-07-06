@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,10 +9,11 @@ public class Batalla {
     private ArrayList<Jugador> turnoJugadores= new ArrayList();
     private ArrayList<JefeDeTerreno> jefes = new ArrayList();
     private ArrayList<Dado> dados = new ArrayList();
+    private JugadorDAO DAO = new JugadorDAO();
     public Batalla(){
     }
     public ArrayList<Jugador> getJugadores(){
-        return this.jugadores;   
+        return this.jugadores;
     }
     public ArrayList<Jugador> getOrdenJugadores(){
         return this.turnoJugadores;   
@@ -35,24 +37,54 @@ public class Batalla {
     public ArrayList<JefeDeTerreno> getJefesDeTerreno(){
         return this.jefes;
     }
-    public void setBatalla(ArrayList<String> jugadores){
+    public void setBatalla(ArrayList<String> jugadores) throws SQLException{
         if(jugadores.size() == 2){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
-            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
+            Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
+            PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
+            ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            puzzlej1.setDados(dadosj1);
+            for(Dado dado : puzzlej1.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
+            PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
+            ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            puzzlej2.setDados(dadosj2);
+            for(Dado dado : puzzlej2.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzlej1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzlej2);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jugadores.add(Jugador1);
             this.jugadores.add(Jugador2);
         }
         else if (jugadores.size() == 3){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
-            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
-            PuzzleDeDados puzzle3 = new PuzzleDeDados(jugadores.get(2));
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzle3);
+            Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
+            PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
+            ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            puzzlej1.setDados(dadosj1);
+            for(Dado dado : puzzlej1.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
+            PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
+            ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            puzzlej2.setDados(dadosj2);
+            for(Dado dado : puzzlej2.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador3=DAO.obtenerIDJugador(jugadores.get(2));
+            PuzzleDeDados puzzlej3 = DAO.obtenerPuzzleJugador(jugador3.getID());
+            ArrayList<Dado> dadosj3 = DAO.obtenerDados(puzzlej3.getID());
+            puzzlej3.setDados(dadosj3);
+            for(Dado dado : puzzlej3.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzlej1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzlej2);
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzlej3);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());
@@ -61,14 +93,38 @@ public class Batalla {
             this.jugadores.add(Jugador3);
         }
         else if (jugadores.size() == 4){
-            PuzzleDeDados puzzle1 = new PuzzleDeDados(jugadores.get(0));
-            PuzzleDeDados puzzle2 = new PuzzleDeDados(jugadores.get(1));
-            PuzzleDeDados puzzle3 = new PuzzleDeDados(jugadores.get(2));
-            PuzzleDeDados puzzle4 = new PuzzleDeDados(jugadores.get(3));
-            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzle1);
-            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzle2);
-            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzle3);
-            Jugador Jugador4 = new Jugador(jugadores.get(3),new JefeDeTerreno(1000, 0, "J",jugadores.get(3)),puzzle4);
+            Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
+            PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
+            ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            puzzlej1.setDados(dadosj1);
+            for(Dado dado : puzzlej1.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
+            PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
+            ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            puzzlej2.setDados(dadosj2);
+            for(Dado dado : puzzlej2.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador3=DAO.obtenerIDJugador(jugadores.get(2));
+            PuzzleDeDados puzzlej3 = DAO.obtenerPuzzleJugador(jugador3.getID());
+            ArrayList<Dado> dadosj3 = DAO.obtenerDados(puzzlej3.getID());
+            puzzlej3.setDados(dadosj3);
+            for(Dado dado : puzzlej3.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador jugador4=DAO.obtenerIDJugador(jugadores.get(3));
+            PuzzleDeDados puzzlej4 = DAO.obtenerPuzzleJugador(jugador4.getID());
+            ArrayList<Dado> dadosj4 = DAO.obtenerDados(puzzlej4.getID());
+            puzzlej4.setDados(dadosj4);
+            for(Dado dado : puzzlej4.getDados()){
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+            }
+            Jugador Jugador1 = new Jugador(jugadores.get(0),new JefeDeTerreno(1000, 0, "J",jugadores.get(0)),puzzlej1);
+            Jugador Jugador2 = new Jugador(jugadores.get(1),new JefeDeTerreno(1000, 0, "J",jugadores.get(1)),puzzlej2);
+            Jugador Jugador3 = new Jugador(jugadores.get(2),new JefeDeTerreno(1000, 0, "J",jugadores.get(2)),puzzlej3);
+            Jugador Jugador4 = new Jugador(jugadores.get(3),new JefeDeTerreno(1000, 0, "J",jugadores.get(3)),puzzlej4);
             this.jefes.add(Jugador1.getJefe());
             this.jefes.add(Jugador2.getJefe());
             this.jefes.add(Jugador3.getJefe());

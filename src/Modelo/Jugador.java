@@ -1,14 +1,15 @@
 package Modelo;
 
 public class Jugador {
-    private final String nombre;
-    private final PuzzleDeDados puzzle;
+    private String nombre;
+    private PuzzleDeDados puzzle;
     private int invocacion;
     private int magia;
     private int trampa;
     private int ataque;
     private int mover;
     private JefeDeTerreno jefe;
+    private int ID_USUARIO;
     public Jugador(String nombre, JefeDeTerreno jefe, PuzzleDeDados puzzle){
         this.nombre = nombre;
         this.jefe = jefe;
@@ -18,6 +19,9 @@ public class Jugador {
         this.ataque=0;
         this.mover=0;
         this.puzzle = puzzle;
+    }
+    public Jugador(int ID_USUARIO){
+        this.ID_USUARIO=ID_USUARIO;
     }
     public void setInvocacion(int invocacion){
         this.invocacion=invocacion;
@@ -69,5 +73,8 @@ public class Jugador {
     }
     public String getDueño(){
         return this.nombre;
+    }
+    public int getID(){
+        return this.ID_USUARIO;
     }
 }
