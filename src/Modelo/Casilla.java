@@ -40,4 +40,12 @@ public class Casilla {
             return false;
         }
     }
+    public boolean isEmpty(){
+        if(!this.isCriatura()&&!this.isJefe()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

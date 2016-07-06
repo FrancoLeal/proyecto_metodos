@@ -1,6 +1,7 @@
 
 package Vista;
 
+import Controlador.ControladorPrincipal;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -8,7 +9,7 @@ public class VistaBatallaTipo extends javax.swing.JFrame {
 
     public VistaBatallaTipo() {
         initComponents();
-        this.setTitle("Luch Oh!:Dados de Mantequilla");
+        this.setTitle(ControladorPrincipal.titulo);
     }
 
     /**

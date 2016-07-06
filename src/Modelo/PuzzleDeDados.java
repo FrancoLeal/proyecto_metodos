@@ -3,18 +3,18 @@ import java.util.*;
 
 public class PuzzleDeDados {
     private ArrayList<Dado> dados;
-    public PuzzleDeDados(String dueño){
+    private int ID_PUZLE;
+    public PuzzleDeDados(int ID_PUZLE){
         this.dados=new ArrayList();
-        String[] a = {"ATAQUE","ATAQUE","INVOCAR","INVOCAR","MOVIMIENTO","MOVIMIENTO"};
-        String[] b = {"MAGIA","ATAQUE","INVOCAR","INVOCAR","MOVIMIENTO","TRAMPA"};
-        String[] c = {"MAGIA","ATAQUE","INVOCAR","INVOCAR","MAGIA","TRAMPA"};
-        String[] d = {"MAGIA","ATAQUE","INVOCAR","INVOCAR","ATAQUE","TRAMPA"};
-        for(int i = 0 ; i<15 ; i++){
-            dados.add(new Dado(dueño));
-            dados.get(i).setCaras(a);
-        }
+        this.ID_PUZLE=ID_PUZLE;
     }
     public ArrayList<Dado> getDados(){
         return this.dados;
+    }
+    public void setDados(ArrayList<Dado> dados){
+        this.dados=dados;
+    }
+    public int getID(){
+        return this.ID_PUZLE;
     }
 }

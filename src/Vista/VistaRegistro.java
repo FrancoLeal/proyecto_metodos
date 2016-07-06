@@ -6,6 +6,7 @@
  */
 package Vista;
 
+import Controlador.ControladorPrincipal;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class VistaRegistro extends javax.swing.JFrame {
      */
     public VistaRegistro() {
         initComponents();
+        this.setTitle(ControladorPrincipal.titulo);
     }
 
     /**

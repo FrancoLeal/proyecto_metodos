@@ -1,4 +1,5 @@
 package Vista;
+import Controlador.ControladorPrincipal;
 import Modelo.Tablero;
 import java.awt.Color;
 import java.awt.Font;
@@ -15,6 +16,7 @@ public class VistaBatalla extends javax.swing.JFrame {
     public VistaBatalla() {
         initComponents();
         color.setOpaque(true);
+        this.setTitle(ControladorPrincipal.titulo);
     }
 
     @SuppressWarnings("unchecked")
@@ -706,6 +708,15 @@ public class VistaBatalla extends javax.swing.JFrame {
     }
 
     public void errorDueñoCriatura() {
-        JOptionPane.showMessageDialog(null, "Esta ciratura no te pertenece", "Error", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Esta criatura no te pertenece", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void perdedor(String dueño) {
+        JOptionPane.showMessageDialog(null, "El jugador"+dueño+"ha perdido", "Error", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void ganador(String dueño) {
+        JOptionPane.showMessageDialog(null, "El jugador"+dueño+"ha ganado", "Felicidades!", JOptionPane.INFORMATION_MESSAGE);
+
     }
 }
