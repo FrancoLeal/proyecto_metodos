@@ -63,8 +63,5 @@ public class ControladorRegistro implements ActionListener{
                 Logger.getLogger(ControladorRegistro.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-    public ArrayList<String> getPuzzles(){
-        return vr.getPuzzles();
-    }  
+    } 
 }

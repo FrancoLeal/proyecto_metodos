@@ -193,15 +193,48 @@ public class VistaRegistro extends javax.swing.JFrame {
     public JButton getRegistrarse() {
         return Registrarse;
     }
-    public String getSeleccionElegirPuzle(){
-        return elegirPuzle.getSelectedItem().toString();
+    public int getSeleccionElegirPuzle(){
+        if(elegirPuzle.getSelectedItem().toString()=="Puzzle 1"){
+            return 1;
+        }
+        else if(elegirPuzle.getSelectedItem().toString()=="Puzzle 2"){
+            return 3;
+        }
+        else if(elegirPuzle.getSelectedItem().toString()=="Puzzle 3"){
+            return 5;
+        }
+        else if(elegirPuzle.getSelectedItem().toString()=="Puzzle 4"){
+            return 7;
+        }
+        else if(elegirPuzle.getSelectedItem().toString()=="Puzzle 5"){
+            return 9;
+        }
+        else if(elegirPuzle.getSelectedItem().toString()=="Puzzle 6"){
+            return 11;
+        }
+        else{
+            return 0;
+        }
     }
 
     public JComboBox<String> getElegirPuzle() {
         return elegirPuzle;
     }
-   public String getSeleccionElegirJefe(){
-       return elegirJefe.getSelectedItem().toString();
-   }
-
+   public int getSeleccionElegirJefe(){
+        if(elegirJefe.getSelectedItem().toString()=="Ra"){
+            return 1;
+        }
+        else if(elegirJefe.getSelectedItem().toString()=="Odin"){
+           return 3;
+        }
+        else if(elegirJefe.getSelectedItem().toString()=="Zeus"){
+           return 5;
+        }
+        else if(elegirJefe.getSelectedItem().toString()=="Guan-Yu"){
+           return 7;
+        }
+        else{
+            return 0;
+        }
+    }
 }

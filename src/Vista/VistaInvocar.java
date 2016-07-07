@@ -111,6 +111,7 @@ public class VistaInvocar extends javax.swing.JFrame {
     private javax.swing.JButton criatura3;
     private javax.swing.JButton criatura4;
     // End of variables declaration//GEN-END:variables
+    private int posCriatura;
     public void agregarListener(ActionListener al){
         criatura1.addActionListener(al);
         criatura2.addActionListener(al);
@@ -130,7 +131,7 @@ public class VistaInvocar extends javax.swing.JFrame {
             criatura1.setText(criaturas.get(0));
             criatura2.setText(criaturas.get(1));
         }
-        else if(criaturas.size()==2){
+        else if(criaturas.size()==3){
             criatura4.setEnabled(false);
             criatura1.setText(criaturas.get(0));
             criatura2.setText(criaturas.get(1));
@@ -145,18 +146,25 @@ public class VistaInvocar extends javax.swing.JFrame {
     }
 
     public JButton getButtonCriatura1() {
+        posCriatura = 1;
         return this.criatura1;
     }
 
     public JButton getButtonCriatura2() {
+        posCriatura = 2;
         return this.criatura2;
     }
 
     public JButton getButtonCriatura3() {
+        posCriatura = 3;
         return this.criatura3;
     }
 
     public JButton getButtonCriatura4() {
+        posCriatura = 4;
         return this.criatura4;
+    }
+    public int getPosCriatura(){
+        return this.posCriatura;
     }
 }

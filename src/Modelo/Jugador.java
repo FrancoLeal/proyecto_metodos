@@ -83,4 +83,7 @@ public class Jugador {
     public void setIDJefe(int ID_JEFE){
         this.ID_JEFE=ID_JEFE;
     }
+    public int getIDJefe(){
+        return this.ID_JEFE;
+    }
 }

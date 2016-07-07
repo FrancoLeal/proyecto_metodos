@@ -30,7 +30,7 @@ public class Usuario {
     }
 
     public int getJefeTerreno(){
-        return jefeTerreno;
+        return ID_JEFE_TERRENO;
     }
     
     public void setNombre(String nombre) {
@@ -59,8 +59,9 @@ public class Usuario {
         Conexion conexion = new Conexion();
         boolean resultado = conexion.conectar();
         Statement stmt = conexion.crearConsulta();
-        final String consulta = "INSERT INTO USUARIO (NOMBRE_USUARIO,CONTRASENIA_USUARIO,ESPNJ_USUARIO,ID_PUZLE,ID_JEFE_TERRENO) VALUES " + "'('" + this.nombre + "','" + this.password + "','"+ this.ID_PUZZLE"','"+0+"','"+this.ID_JEFE_TERRENO+"')'";
+        final String consulta = "INSERT INTO USUARIO (NOMBRE_USUARIO,CONTRASENIA_USUARIO,ID_PUZLE,JEFE_DE_TERRENO) VALUES " + "('" + this.nombre + "','" + this.password + "',"+this.ID_PUZZLE+","+this.ID_JEFE_TERRENO+")";
         stmt.executeUpdate(consulta);
+        stmt.close();
     }
     
     public static Usuario obtener(String nombre,String password2) throws SQLException{
@@ -75,10 +76,14 @@ public class Usuario {
         if (resultados.next()==true) {
             String nombre2 = resultados.getString("NOMBRE_USUARIO");
             String password = resultados.getString("CONTRASENIA_USUARIO");
+            resultados.close();
+            stmt.close();
+            conexion.desconectar();
             return new Usuario(nombre2, password);
         }
         else {
             //System.out.println("No Existe");
+            conexion.desconectar();
             return null;
         }
         
@@ -93,7 +98,8 @@ public class Usuario {
         ResultSet resultados;
         resultados = stmt.executeQuery(consulta);
         
-        return resultados.next(); //String nombre2 = resultados.getString("NOMBRE_USUARIO");
+        return resultados.next();
+        //String nombre2 = resultados.getString("NOMBRE_USUARIO");
         //System.out.println("El usuario "+nombre2+" ya existe.");
         //System.out.println("El usuario "+nombre+" no existe.");
     }

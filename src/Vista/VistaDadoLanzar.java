@@ -400,9 +400,9 @@ public class VistaDadoLanzar extends javax.swing.JFrame {
     }
 
     public void muchosDados() {
-                JOptionPane.showMessageDialog(null, "Haz seleccionado muchos dados. Por favor, escoge máximo4","Error", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Haz seleccionado muchos dados. Por favor, escoge máximo4","Error", JOptionPane.INFORMATION_MESSAGE);
     }
-    private void setDados(ArrayList<String> criaturas){
+    public void setDados(ArrayList<String> criaturas){
         criatura1.setText(criaturas.get(0));
         criatura2.setText(criaturas.get(1));
         criatura3.setText(criaturas.get(2));

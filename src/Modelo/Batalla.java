@@ -42,19 +42,27 @@ public class Batalla {
             Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
             PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
             ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            for(Dado dado : dadosj1){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej1.setDados(dadosj1);
             for(Dado dado : puzzlej1.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador1.getNombre()));
             }
-            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getID());
+            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getIDJefe());
+            jefe1.setDueño(jugadores.get(0));
             Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
             PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
             ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            for(Dado dado : dadosj2){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej2.setDados(dadosj2);
             for(Dado dado : puzzlej2.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador2.getNombre()));
             }
-            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getID());
+            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getIDJefe());
+            jefe2.setDueño(jugadores.get(1));
             Jugador Jugador1 = new Jugador(jugadores.get(0),jefe1,puzzlej1);
             Jugador Jugador2 = new Jugador(jugadores.get(1),jefe2,puzzlej2);
             this.jefes.add(Jugador1.getJefe());
@@ -66,27 +74,39 @@ public class Batalla {
             Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
             PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
             ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            for(Dado dado : dadosj1){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej1.setDados(dadosj1);
             for(Dado dado : puzzlej1.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador1.getNombre()));
             }
-            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getID());
+            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getIDJefe());
+            jefe1.setDueño(jugadores.get(0));
             Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
             PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
             ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            for(Dado dado : dadosj2){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej2.setDados(dadosj2);
             for(Dado dado : puzzlej2.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador2.getNombre()));
             }
-            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getID());
+            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getIDJefe());
+            jefe2.setDueño(jugadores.get(1));
             Jugador jugador3=DAO.obtenerIDJugador(jugadores.get(2));
             PuzzleDeDados puzzlej3 = DAO.obtenerPuzzleJugador(jugador3.getID());
             ArrayList<Dado> dadosj3 = DAO.obtenerDados(puzzlej3.getID());
+            for(Dado dado : dadosj3){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej3.setDados(dadosj3);
             for(Dado dado : puzzlej3.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador3.getNombre()));
             }
-            JefeDeTerreno jefe3 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador3.getID()).getID());
+            JefeDeTerreno jefe3 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador3.getID()).getIDJefe());
+            jefe3.setDueño(jugadores.get(2));
             Jugador Jugador1 = new Jugador(jugadores.get(0),jefe1,puzzlej1);
             Jugador Jugador2 = new Jugador(jugadores.get(1),jefe2,puzzlej2);
             Jugador Jugador3 = new Jugador(jugadores.get(2),jefe3,puzzlej3);
@@ -101,35 +121,51 @@ public class Batalla {
             Jugador jugador1=DAO.obtenerIDJugador(jugadores.get(0));
             PuzzleDeDados puzzlej1 = DAO.obtenerPuzzleJugador(jugador1.getID());
             ArrayList<Dado> dadosj1 = DAO.obtenerDados(puzzlej1.getID());
+            for(Dado dado : dadosj1){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej1.setDados(dadosj1);
             for(Dado dado : puzzlej1.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador1.getNombre()));
             }
-            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getID());
+            JefeDeTerreno jefe1 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador1.getID()).getIDJefe());
+            jefe1.setDueño(jugadores.get(0));
             Jugador jugador2=DAO.obtenerIDJugador(jugadores.get(1));
             PuzzleDeDados puzzlej2 = DAO.obtenerPuzzleJugador(jugador2.getID());
             ArrayList<Dado> dadosj2 = DAO.obtenerDados(puzzlej2.getID());
+            for(Dado dado : dadosj2){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej2.setDados(dadosj2);
             for(Dado dado : puzzlej2.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador2.getNombre()));
             }
-            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getID());
+            JefeDeTerreno jefe2 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador2.getID()).getIDJefe());
+            jefe2.setDueño(jugadores.get(1));
             Jugador jugador3=DAO.obtenerIDJugador(jugadores.get(2));
             PuzzleDeDados puzzlej3 = DAO.obtenerPuzzleJugador(jugador3.getID());
             ArrayList<Dado> dadosj3 = DAO.obtenerDados(puzzlej3.getID());
+            for(Dado dado : dadosj3){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej3.setDados(dadosj3);
             for(Dado dado : puzzlej3.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador3.getNombre()));
             }
-            JefeDeTerreno jefe3 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador3.getID()).getID());
+            JefeDeTerreno jefe3 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador3.getID()).getIDJefe());
+            jefe3.setDueño(jugadores.get(2));
             Jugador jugador4=DAO.obtenerIDJugador(jugadores.get(3));
             PuzzleDeDados puzzlej4 = DAO.obtenerPuzzleJugador(jugador4.getID());
             ArrayList<Dado> dadosj4 = DAO.obtenerDados(puzzlej4.getID());
+            for(Dado dado : dadosj4){
+                dado.setCaras(DAO.obtenerCaras(dado.getIDInt()));
+            }
             puzzlej4.setDados(dadosj4);
             for(Dado dado : puzzlej4.getDados()){
-                dado.setCriatura(DAO.obtenerCriatura(dado.getID()));
+                dado.setCriatura(DAO.obtenerCriatura(dado.getID(),jugador4.getNombre()));
             }
-            JefeDeTerreno jefe4 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador4.getID()).getID());
+            JefeDeTerreno jefe4 = DAO.obtenerJefe(DAO.obtenerIDJefe(jugador4.getID()).getIDJefe());
+            jefe4.setDueño(jugadores.get(3));
             Jugador Jugador1 = new Jugador(jugadores.get(0),jefe1,puzzlej1);
             Jugador Jugador2 = new Jugador(jugadores.get(1),jefe2,puzzlej2);
             Jugador Jugador3 = new Jugador(jugadores.get(2),jefe3,puzzlej3);

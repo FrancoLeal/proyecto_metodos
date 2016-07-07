@@ -1,5 +1,6 @@
 package Controlador;
 //Importacion clases
+import Modelo.Criatura;
 import Modelo.Dado;
 import Vista.VistaDado;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,7 @@ public class ControladorDadoDesplegado implements ActionListener{
     private VistaDado vd;
     private ControladorInvocar ci;
     private ControladorBatalla cb;
+    private Criatura criatura;
     
     public ControladorDadoDesplegado(ControladorBatalla cb, ControladorInvocar ci){
         vd = new VistaDado();
@@ -29,7 +31,11 @@ public class ControladorDadoDesplegado implements ActionListener{
             vd.dispose();
             this.cb.setForma(Dado.FORMA2);
             this.cb.setUltimoBoton(3);
-            System.out.println("Funciona");
         }
+        this.cb.setCriaturaInvocar(this.criatura);
+    }
+    public void setCriaturaInvocar(Criatura criatura,String dueño){
+        this.criatura=criatura;
+        this.criatura.setDueño(dueño);
     }
 }

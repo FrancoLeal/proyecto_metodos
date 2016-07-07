@@ -28,6 +28,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     private ArrayList<Dado> dados;
     private Criatura criaturaAInvocar;
     private ControladorInvocar ci;
+    private int posCriatura;
+    private ArrayList<Criatura> criaturas;
     
     //Definicion constructor
     public ControladorBatalla(ControladorBatallaConfiguracion cbg) throws SQLException{
@@ -46,6 +48,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         vb.setLocationRelativeTo(null);
         vb.setJefesDeTerreno(j,b.getJefesNombres());
         vb.pintarTurno(j);
+        vb.getButtonInvocar().setEnabled(false);
         this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
     }
     
@@ -55,16 +58,16 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
         }
         
         else if (vb.getButtonInvocar()==e.getSource()){
-//            if(vb.getPtosInvocar()!=0){
-                ArrayList<Criatura> criaturas = new ArrayList();
+            if(vb.getPtosInvocar()!=0){
+                this.criaturas = new ArrayList();
                 for(Dado dado : this.dados){
                     criaturas.add(dado.getCriatura());
                 }
-                this.ci=new ControladorInvocar(this,criaturas);
-//            }
-//            else{
-//                vb.sinPuntos();
-//            }
+                this.ci=new ControladorInvocar(this,criaturas,jugadorActual.getNombre());
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if(vb.getButtonCambioTurno()==e.getSource()){
             jugadorActual.setAtaque(vb.getPtosAtk());
@@ -72,8 +75,8 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             jugadorActual.setMagia(vb.getPtosMag());
             jugadorActual.setMover(vb.getPtosMov());
             jugadorActual.setInvocacion(0);
-            vb.getButtonInvocar().setEnabled(false);
             criaturaAInvocar=null;
+            posCriatura=0;
             setTurno();
             this.jugadorActual=b.getOrdenJugadores().get(turnoActual);
             vb.setJugadorActual(jugadorActual.getNombre());
@@ -88,42 +91,43 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
             vb.setPtosInvocarInic(0);
         }
         else if (vb.getButtonAtacar()==e.getSource()){
-//            if(vb.getPtosAtk()!=0){
+            if(vb.getPtosAtk()!=0){
                 this.ultimaSeleccion=1;
-//            }
-//            else{
-//                vb.sinPuntos();
-//            }
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if(vb.getButtonMagia()==e.getSource()){
-//            if(vb.getPtosInvocar()!=0){
+            if(vb.getPtosInvocar()!=0){
                 this.ultimaSeleccion=4;
-//            }
-//            else{
-//                vb.sinPuntos();
-//            }
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if(vb.getButtonTrampa()==e.getSource()){
-//            if(vb.getPtosTrap()!=0){
+            if(vb.getPtosTrap()!=0){
                 this.ultimaSeleccion=5;
-//            }
-//            else{
-//                vb.sinPuntos();
-//            }
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else if (vb.getButtonMover()==e.getSource()){
-//            if(vb.getPtosMov()!=0){
+            if(vb.getPtosMov()!=0){
                 this.ultimaSeleccion=2;
-//            }
-//            else{
-//                vb.sinPuntos();
-//            }
+            }
+            else{
+                vb.sinPuntos();
+            }
         }
         else{
             for (int i = 0 ; i<15 ; i++){
                 for (int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         System.out.println("X="+i+", Y="+j);
+                        System.out.println(tablero.getBoardModelo()[i][j].isJefe());
                     }
                 }
             }
@@ -135,7 +139,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                 for(int j = 0 ; j<15 ; j++){
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
-                            vb.vistaPreviaEntrando(i,j,forma);
+                            vb.vistaPreviaEntrando(i,j,this.forma);
                         }
                         catch(ArrayIndexOutOfBoundsException excepcion){
                             System.out.println("No se puede desplegar aca");
@@ -172,6 +176,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                     if(vb.getBoardVisible()[i][j]==e.getSource()){
                         try{
                             if(tablero.comprobar(i,j,forma,vb.getJugadorActual())){
+                                this.dados.remove(posCriatura);
                                 tablero.setDueño(i,j,forma,vb.getJugadorActual());
                                 vb.vistaPreviaSaliendo(i,j,forma);
                                 vb.pintar(i,j,forma, cbg.getJugadores());
@@ -393,9 +398,10 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
                             vb.getBoardVisible()[x-1][y].setText(null);
                             b.getOrdenJugadores().remove(jugadorActual);
                             b.getJugadores().remove(jugadorActual);
+                            System.out.println();
                         }
                         if(b.getJugadores().size()==1){
-                                vb.ganador(b.getJugadores().get(0).getNombre());
+                                vb.ganador(jugadorActual.getNombre());
                                 vb.dispose();
                                 this.cbg.setVista(true);
                         }
@@ -556,7 +562,7 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     }
     public void setDados(ArrayList<Dado> dados){
         this.dados=dados;
-        for(Dado dado : dados){
+        for(Dado dado : this.dados){
             vb.setPuntos(dado.resultado());
         }
     }
@@ -566,5 +572,12 @@ public class ControladorBatalla extends MouseAdapter implements ActionListener {
     public void setCriaturaInvocar(Criatura criatura){
         this.criaturaAInvocar=criatura;
         this.ultimaSeleccion=3;
+    }
+
+    public void setPosCriatura(int posCriatura) {
+        this.posCriatura=posCriatura;
+    }
+    public ArrayList<Criatura> getCriaturas(){
+        return this.criaturas;
     }
 }

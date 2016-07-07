@@ -685,19 +685,24 @@ public class VistaBatalla extends javax.swing.JFrame {
         getDado1().setIcon(icon1);
     }
     public void setPuntos(String cara){
-        if(cara=="ATAQUE"){
+        if(cara.equals("ATAQUE")){
+            System.out.println(cara);
             setPtosAtk(1);
         }
-        else if(cara=="MAGIA"){
+        else if(cara.equals("MAGIA")){
+            System.out.println(cara);
             setPtosMag(1);
         }
-        else if(cara=="MOVIMIENTO"){
+        else if(cara.equals("MOVIMIENTO")){
+            System.out.println(cara);
             setPtosMov(1);
         }
-        else if (cara=="TRAMPA"){
+        else if (cara.equals("TRAMPA")){
+            System.out.println(cara);
             setPtosTrap(1);
         }
-        else if(cara=="INVOCAR"){
+        else if(cara.equals("INVOCAR")){
+            System.out.println(cara);
             setPtosInvocar(1);
         }
         this.lanzar.setEnabled(false);

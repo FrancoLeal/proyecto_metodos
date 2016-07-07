@@ -13,9 +13,14 @@ public class ControladorInvocar implements ActionListener{
     private ArrayList<Criatura> criaturas;
     private ArrayList<String> nombreCriaturas;
     private ControladorDadoDesplegado cdd; 
-    public ControladorInvocar(ControladorBatalla cb, ArrayList<Criatura> criaturas){
+    private int posCriatura;
+    private String dueño;
+    
+    public ControladorInvocar(ControladorBatalla cb, ArrayList<Criatura> criaturas, String dueño){
         this.cb=cb;
+        this.dueño=dueño;
         this.criaturas=criaturas;
+        nombreCriaturas= new ArrayList();
         vi=new VistaInvocar();
         vi.setVisible(true);
         vi.agregarListener(this);
@@ -31,18 +36,48 @@ public class ControladorInvocar implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(vi.getButtonCriatura1()==e.getSource()){
-            cb.setCriaturaInvocar(criaturas.get(0));
+            cdd = new ControladorDadoDesplegado(this.cb,this);
+            System.out.println("ACCION 1 -- "+cb.getCriaturas().size());
+            //try{
+                cdd.setCriaturaInvocar(cb.getCriaturas().get(0),this.dueño);
+//            }
+//            catch(NullPointerException ne){
+//                System.out.println("Error 1!!!!");
+//            }
         }
         else if(vi.getButtonCriatura2()==e.getSource()){
-            cb.setCriaturaInvocar(criaturas.get(1));
+            cdd = new ControladorDadoDesplegado(this.cb,this);
+            System.out.println("ACCION 2-- "+cb.getCriaturas().size());
+            //try{
+            cdd.setCriaturaInvocar(cb.getCriaturas().get(1),this.dueño);
+//            }
+//            catch(NullPointerException ne){
+//                System.out.println("Error 2!!!!");
+//            }
         }
         else if(vi.getButtonCriatura3()==e.getSource()){
-            cb.setCriaturaInvocar(criaturas.get(2));
+            cdd = new ControladorDadoDesplegado(this.cb,this);
+            System.out.println("ACCION 3-- "+cb.getCriaturas().size());
+            //try{
+            cdd.setCriaturaInvocar(cb.getCriaturas().get(2),this.dueño);
+//            }
+//            catch(NullPointerException ne){
+//                System.out.println("Error 3!!!!");
+//            }
         }
         else if(vi.getButtonCriatura4()==e.getSource()){
-            cb.setCriaturaInvocar(criaturas.get(3));
+            cdd = new ControladorDadoDesplegado(this.cb,this);
+            System.out.println("ACCION 4-- "+cb.getCriaturas().size());
+            //try{
+            cdd.setCriaturaInvocar(cb.getCriaturas().get(3),this.dueño);
+//        }
+//            catch(NullPointerException ne){
+//                System.out.println("Error 4!!!!");
+//            }
         }
         vi.dispose();
-        cdd = new ControladorDadoDesplegado(this.cb,this);
+    }
+    public int getPosCriatura(){
+        return this.posCriatura;
     }
 }

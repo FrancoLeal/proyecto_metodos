@@ -45,4 +45,13 @@ public class Dado {
     public Criatura getCriatura(){
         return this.criatura;
     }
+    public ArrayList<String> getCaras(){
+        return this.caras;
+    }
+    public void setCaras(ArrayList<String> caras){
+        this.caras=caras;
+    }
+    public int getIDInt(){
+        return Integer.parseInt(this.ID_DADO);
+    }
 }

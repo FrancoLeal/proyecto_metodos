@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.Batalla;
+import Modelo.Criatura;
 import Modelo.Dado;
 import Modelo.Jugador;
 import Modelo.PuzzleDeDados;
@@ -21,8 +22,13 @@ public class ControladorDadoLanzar implements ActionListener{
         vdl = new VistaDadoLanzar();
         vdl.setVisible(true);
         vdl.agregarListener(this);
-        this.cb=cb;
         this.pdd = jugador.getPuzzle();
+        ArrayList<String> criaturas = new ArrayList();
+        for(Dado dado : pdd.getDados()){
+            criaturas.add(dado.getCriatura().getNombre());
+        }
+        vdl.setDados(criaturas);
+        this.cb=cb;
     }
 
     @Override
@@ -32,12 +38,16 @@ public class ControladorDadoLanzar implements ActionListener{
             if(vdl.getDados().size()<=4){
                 dadosVista = vdl.getDados();
                 int i = 0;
-                while(dadosModelo.size()<dadosVista.size()){
+                try{
+                while(i<=4){
                     this.dadosModelo.add(pdd.getDados().get(dadosVista.get(i)));
                     i++;
                 }
+                }
+                catch (IndexOutOfBoundsException io){
+                    
+                }
                 cb.setDados(this.dadosModelo);
-                System.out.println(this.dadosModelo);
                 vdl.dispose();
                 cb.setEnabledInvocar(true);
             }

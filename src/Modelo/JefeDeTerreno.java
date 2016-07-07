@@ -22,4 +22,7 @@ public class JefeDeTerreno {
     public String getDueño(){
         return this.dueño;
     }
+    public void setDueño(String dueño){
+        this.dueño=dueño;
+    }
 }
