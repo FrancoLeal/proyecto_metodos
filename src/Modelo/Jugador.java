@@ -14,11 +14,11 @@ public class Jugador {
     public Jugador(String nombre, JefeDeTerreno jefe, PuzzleDeDados puzzle){
         this.nombre = nombre;
         this.jefe = jefe;
-        this.invocacion=0;
-        this.magia=0;
-        this.trampa=0;
-        this.ataque=0;
-        this.mover=0;
+        this.invocacion=1000;
+        this.magia=1000;
+        this.trampa=1000;
+        this.ataque=1000;
+        this.mover=1000;
         this.puzzle = puzzle;
     }
     public Jugador(int ID_USUARIO){
